@@ -18,15 +18,7 @@ public class Pagamento extends Procedimento {
     public void setPagante(String pagante) {
         this.pagante = pagante;
     }
-
-    public String getData() {
-        return data;
-    }
-
-    public void setData(String data) {
-        this.data = data;
-    }
-
+    
     public double getValor() {
         return valor;
     }
