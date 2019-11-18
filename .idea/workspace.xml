@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cbecff7c-26cc-4731-807e-e85b4aaebc65" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/APSOO.iml" beforeDir="false" afterPath="$PROJECT_DIR$/APSOO.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dao/FuncionarioDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/FuncionarioDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modelo/Funcionario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/Funcionario.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -74,7 +71,7 @@
       <option name="presentableId" value="Default" />
       <updated>1574026737519</updated>
       <workItem from="1574026740192" duration="3349000" />
-      <workItem from="1574082820153" duration="6979000" />
+      <workItem from="1574082820153" duration="10452000" />
     </task>
     <servers />
   </component>

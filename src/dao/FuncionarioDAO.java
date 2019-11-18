@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class FuncionarioDAO {
+public abstract class FuncionarioDAO extends DAO {
 
     static Connection conn = null;
     static ResultSet rs = null;
@@ -42,7 +42,8 @@ public class FuncionarioDAO {
     * @param cpfFuncionario String
     * @return
     * */
-    public static String recuperaFuncionario(String cpfFuncionario) throws SQLException {
+    @Override
+    public String recuperar(String cpfFuncionario) throws SQLException {
 
         String funcionario = null;
         sql.append("SELECT * ");
@@ -82,7 +83,8 @@ public class FuncionarioDAO {
      * @param funcionario Funcionario
      * @return
      * */
-    public static boolean cadastraFuncionario(@NotNull Funcionario funcionario) throws SQLException {
+    @Override
+    public boolean cadastrar(@NotNull Funcionario funcionario) throws SQLException {
 
         sql.append("INSERT INTO funcionarios");
         sql.append
@@ -107,7 +109,8 @@ public class FuncionarioDAO {
      * @param String novoValor
      * @return
      * */
-    public static boolean alteraFuncionario(String cpfFuncionario, String coluna, String novoValor) throws SQLException {
+    @Override
+    public boolean alterar(String cpfFuncionario, String coluna, String novoValor) throws SQLException {
 
         sql.append("UPDATE funcionarios ");
         sql.append("SET " + coluna + " = " + novoValor);
@@ -121,7 +124,8 @@ public class FuncionarioDAO {
      * @param String cpfFuncionario
      * @return
      * */
-    public static boolean removeFuncionario(String cpfFuncionario) throws SQLException {
+    @Override
+    public boolean remover(String cpfFuncionario) throws SQLException {
 
         String funcionario = null;
         sql.append("DELETE FROM funcionarios ");
