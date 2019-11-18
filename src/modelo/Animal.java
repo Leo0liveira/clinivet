@@ -7,6 +7,13 @@ public class Animal {
     private String cor;
     private int id;
 
+    public Animal(String nome, char sexo, String cor, int id) {
+        this.nome = nome;
+        this.sexo = sexo;
+        this.cor = cor;
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }

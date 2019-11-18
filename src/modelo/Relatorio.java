@@ -7,6 +7,13 @@ public class Relatorio {
     private int data;
     private int id;
 
+    public Relatorio(String autor, String assunto, int data, int id) {
+        this.autor = autor;
+        this.assunto = assunto;
+        this.data = data;
+        this.id = id;
+    }
+
     public String getAutor() {
         return autor;
     }

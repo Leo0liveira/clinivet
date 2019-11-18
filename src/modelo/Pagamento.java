@@ -3,8 +3,13 @@ package modelo;
 public class Pagamento extends Procedimento {
 
     private String pagante;
-    private String data;
     private double valor;
+
+    public Pagamento(String pagante, double valor, String tipo, int dataHora, int id) {
+        super(tipo, dataHora, id);
+        this.pagante = pagante;
+        this.valor = valor;
+    }
 
     public String getPagante() {
         return pagante;

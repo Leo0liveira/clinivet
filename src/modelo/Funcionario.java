@@ -14,6 +14,23 @@ public class Funcionario {
     private int id;
     private String cpf;
 
+    public Funcionario(String nome, char sexo, String endereco, String cidade, String estado, String telefoneResidencial, String telefoneCelular, String email, int dataHora, int id, String cpf) {
+        this.nome = nome;
+        this.sexo = sexo;
+        this.endereco = endereco;
+        this.cidade = cidade;
+        this.estado = estado;
+        this.telefoneResidencial = telefoneResidencial;
+        this.telefoneCelular = telefoneCelular;
+        this.email = email;
+        this.dataHora = dataHora;
+        this.id = id;
+        this.cpf = cpf;
+    }
+
+    public Funcionario() {
+    }
+
     public String getCpf() {
         return cpf;
     }

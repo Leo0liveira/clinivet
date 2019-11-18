@@ -6,6 +6,12 @@ public class Documento {
     private String caminhoArquivo;
     private int id;
 
+    public Documento(int dataHora, String caminhoArquivo, int id) {
+        this.dataHora = dataHora;
+        this.caminhoArquivo = caminhoArquivo;
+        this.id = id;
+    }
+
     public void imprimirArquivo() {
         //TODO: implementar;
     }

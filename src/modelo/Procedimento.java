@@ -6,6 +6,13 @@ public class Procedimento {
     private int dataHora;
     private int id;
 
+    public Procedimento(String tipo, int dataHora, int id) {
+        this.tipo = tipo;
+        this.dataHora = dataHora;
+        this.id = id;
+    }
+
+
     public String getTipo() {
         return tipo;
     }

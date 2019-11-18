@@ -5,6 +5,11 @@ public class Resultado {
     private String descricao;
     private boolean status;
 
+    public Resultado(String descricao, boolean status) {
+        this.descricao = descricao;
+        this.status = status;
+    }
+
     public String getDescricao() {
         return descricao;
     }

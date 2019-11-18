@@ -4,6 +4,11 @@ public class Servico extends Procedimento {
 
     private String nome;
 
+    public Servico(String tipo, int dataHora, int id, String nome) {
+        super(tipo, dataHora, id);
+        this.nome = nome;
+    }
+
     public String getNome() {
         return nome;
     }
