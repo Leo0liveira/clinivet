@@ -13,6 +13,19 @@ public class Cliente {
     private int dataHora;
     private int id;
 
+    public Cliente(String nome, char sexo, String endereco, String cidade, String estado, String telefoneResidencial, String telefoneCelular, String email, int dataHora, int id) {
+        this.nome = nome;
+        this.sexo = sexo;
+        this.endereco = endereco;
+        this.cidade = cidade;
+        this.estado = estado;
+        this.telefoneResidencial = telefoneResidencial;
+        this.telefoneCelular = telefoneCelular;
+        this.email = email;
+        this.dataHora = dataHora;
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }

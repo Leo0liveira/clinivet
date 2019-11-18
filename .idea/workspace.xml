@@ -3,7 +3,25 @@
   <component name="ChangeListManager">
     <list default="true" id="cbecff7c-26cc-4731-807e-e85b4aaebc65" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/src/dao/FuncionarioDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/FuncionarioDAO.java" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/src/modelo/Administrador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/Administrador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modelo/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/Animal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modelo/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/Cliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modelo/Consulta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/Consulta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modelo/Documento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/Documento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modelo/Especie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/Especie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modelo/Funcionario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/Funcionario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modelo/Pagamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/Pagamento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modelo/Pedido.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/Pedido.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modelo/Procedimento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/Procedimento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modelo/Raca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/Raca.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modelo/Relatorio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/Relatorio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modelo/Resultado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/Resultado.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modelo/Servico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/Servico.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modelo/Veterinario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/Veterinario.java" afterDir="false" />
+>>>>>>> 9cf73974540395f2af0be88464abd1df182aa9fb
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -35,6 +53,13 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1574030102700" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -71,7 +96,12 @@
       <option name="presentableId" value="Default" />
       <updated>1574026737519</updated>
       <workItem from="1574026740192" duration="3349000" />
+<<<<<<< HEAD
       <workItem from="1574082820153" duration="10452000" />
+=======
+      <workItem from="1574082820153" duration="6979000" />
+      <workItem from="1574103231894" duration="1211000" />
+>>>>>>> 9cf73974540395f2af0be88464abd1df182aa9fb
     </task>
     <servers />
   </component>
@@ -83,7 +113,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

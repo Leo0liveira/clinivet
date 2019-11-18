@@ -5,6 +5,11 @@ public class Pedido {
     private String tipo;
     private int dataHora;
 
+    public Pedido(String tipo, int dataHora) {
+        this.tipo = tipo;
+        this.dataHora = dataHora;
+    }
+
     public String getTipo() {
         return tipo;
     }
