@@ -11,6 +11,7 @@ public class GerenciarAnimais extends JFrame {
     private JButton gerenciarEspéciesButton;
     private JButton gerenciarAnimaisButton;
     private JPanel mainPanel;
+    private JButton VOLTARButton;
 
     public GerenciarAnimais() {
         frame = new JFrame("Animais, especies e raças");
@@ -39,6 +40,13 @@ public class GerenciarAnimais extends JFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 RaçaCRUD ra = new RaçaCRUD();
+                frame.dispose();
+            }
+        });
+        VOLTARButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                Funcionario fun = new Funcionario();
                 frame.dispose();
             }
         });
