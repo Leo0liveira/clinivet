@@ -21,7 +21,7 @@ public abstract class FuncionarioDAO extends DAO {
      * */
     private static boolean executeBooleanQuery(StringBuilder sql) throws SQLException {
         try {
-            conn = ConexaoBD.getInstance();
+            conn = getInstance();
             PreparedStatement ps = conn.prepareStatement(sql.toString());
             rs = ps.executeQuery();
         }  catch (Exception e) {
@@ -54,7 +54,7 @@ public abstract class FuncionarioDAO extends DAO {
 
             //Cria instancia da conexão (usando singleton)
             //Executa query com o sql escrito acima
-            conn = ConexaoBD.getInstance();
+            conn = getInstance();
             PreparedStatement ps = conn.prepareStatement(sql.toString());
             ps.setString(1, cpfFuncionario);
             rs = ps.executeQuery();

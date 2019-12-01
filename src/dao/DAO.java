@@ -7,7 +7,7 @@ import java.sql.SQLException;
 /**
  * DAO
  */
-public abstract class DAO {
+public abstract class DAO extends ConexaoBD{
 
     protected static Connection instance = null;
 
@@ -19,13 +19,10 @@ public abstract class DAO {
 
     public abstract Object recuperar();
 
-    protected Connection getInstance() throws SQLException, ClassNotFoundException {
-        if (instance == null || instance.isClosed()) {
-            Class.forName("org.postgresql.Driver");
-            instance = DriverManager.getConnection("jdbc:postgresql://localhost:5432/clinivet", 
-                "postgres", "postgres");
-        }
+    protected static Connection getInstance() throws SQLException, ClassNotFoundException {
+        instance = conecta();
         return instance;
     }
+
 
 }
