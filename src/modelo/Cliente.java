@@ -13,7 +13,7 @@ public class Cliente {
     private int dataHora;
     private int id;
 
-    public Cliente(String nome, char sexo, String endereco, String cidade, String estado, String telefoneResidencial, String telefoneCelular, String email, int dataHora, int id) {
+    public Cliente(String nome, char sexo, String endereco, String cidade, String estado, String telefoneResidencial, String telefoneCelular, String email, String cpf) {
         this.nome = nome;
         this.sexo = sexo;
         this.endereco = endereco;
