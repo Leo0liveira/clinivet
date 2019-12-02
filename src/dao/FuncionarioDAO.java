@@ -1,8 +1,6 @@
 package dao;
 
 import modelo.Funcionario;
-import org.jetbrains.annotations.NotNull;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -26,7 +24,8 @@ public abstract class FuncionarioDAO extends DAO {
             rs = ps.executeQuery();
         }  catch (Exception e) {
             return false;
-        } finally {
+        } 
+        finally {
             if (rs != null) {
                 rs.close();
             }
@@ -42,8 +41,7 @@ public abstract class FuncionarioDAO extends DAO {
     * @param cpfFuncionario String
     * @return
     * */
-    @Override
-    public String recuperar(String cpfFuncionario) throws SQLException {
+    public String recuperar(String cpfFuncionario) throws SQLException, ClassNotFoundException {
 
         String funcionario = null;
         sql.append("SELECT * ");
@@ -83,22 +81,22 @@ public abstract class FuncionarioDAO extends DAO {
      * @param funcionario Funcionario
      * @return
      * */
-    @Override
-    public boolean cadastrar(@NotNull Funcionario funcionario) throws SQLException {
-
-        sql.append("INSERT INTO funcionarios");
+    public static boolean cadastrar(Funcionario funcionario) throws SQLException{
+        sql.append("INSERT INTO funcionario");
+        sql.append("(id, nome, cpf, email, endereco, sexo, telefoneResidencial, telefoneCelular) ");
         sql.append
                 ("VALUES ("+
                 funcionario.getId() + ", " +
-                funcionario.getNome() + ", " +
-                funcionario.getCpf() + ", " +
-                funcionario.getEmail() + ", " +
-                funcionario.getEndereco() + ", " +
-                funcionario.getSexo() + ", " +
-                funcionario.getTelefoneResidencial() + ", " +
-                funcionario.getTelefoneCelular() + ", " +
-                ")");
+                "'" +funcionario.getNome()+ "'" + ", " +
+                "'"+  funcionario.getCpf()+"'" + ", " +
+                "'"+funcionario.getEmail()+"'" + ", " +
+                "'"+funcionario.getEndereco()+"'" + ", " +
+                "'"+ funcionario.getSexo() +"'"+ ", " +
+                "'"+funcionario.getTelefoneResidencial()+"'" + ", " +
+                "'"+funcionario.getTelefoneCelular() +"'"+
+                ");");
 
+        System.out.println(sql);
         return executeBooleanQuery(sql);
     }
 
@@ -109,7 +107,6 @@ public abstract class FuncionarioDAO extends DAO {
      * @param String novoValor
      * @return
      * */
-    @Override
     public boolean alterar(String cpfFuncionario, String coluna, String novoValor) throws SQLException {
 
         sql.append("UPDATE funcionarios ");
@@ -124,7 +121,6 @@ public abstract class FuncionarioDAO extends DAO {
      * @param String cpfFuncionario
      * @return
      * */
-    @Override
     public boolean remover(String cpfFuncionario) throws SQLException {
 
         String funcionario = null;

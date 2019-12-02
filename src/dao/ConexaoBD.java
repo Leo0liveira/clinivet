@@ -15,12 +15,22 @@ public class ConexaoBD {
 	public ResultSet result;
 	public static Connection conn = null;
 	
-	protected static Connection conecta() throws SQLException, ClassNotFoundException {
-		if (conn == null || conn.isClosed()) {
-            Class.forName(driver);
-            conn = DriverManager.getConnection(host, user, password);
-        }
-        return conn;
+	protected static Connection conecta() {
+		
+	    try {
+			Class.forName(driver);
+			System.out.println("teste");
+		    conn = DriverManager.getConnection(host, user, password);
+	        return conn;
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return conn;
+
 	}
 
 }

@@ -1,5 +1,7 @@
 package modelo;
 
+import java.sql.Timestamp;
+
 public class Funcionario {
 
     private String nome;
@@ -10,11 +12,11 @@ public class Funcionario {
     private String telefoneResidencial;
     private String telefoneCelular;
     private String email;
-    private int dataHora;
+    private Timestamp dataHora;
     private int id;
     private String cpf;
 
-    public Funcionario(String nome, char sexo, String endereco, String cidade, String estado, String telefoneResidencial, String telefoneCelular, String email, int dataHora, int id, String cpf) {
+    public Funcionario(String nome, char sexo, String endereco, String cidade, String estado, String telefoneResidencial, String telefoneCelular, String email, Timestamp dataDeHoje, int id, String cpf) {
         this.nome = nome;
         this.sexo = sexo;
         this.endereco = endereco;
@@ -23,7 +25,7 @@ public class Funcionario {
         this.telefoneResidencial = telefoneResidencial;
         this.telefoneCelular = telefoneCelular;
         this.email = email;
-        this.dataHora = dataHora;
+        this.dataHora = dataDeHoje;
         this.id = id;
         this.cpf = cpf;
     }

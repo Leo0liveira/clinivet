@@ -11,7 +11,10 @@ public abstract class DAO extends ConexaoBD{
 
     protected static Connection instance = null;
 
-    public abstract boolean cadastrar();
+    public static boolean cadastrar() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
     public abstract boolean alterar();
 
@@ -19,7 +22,7 @@ public abstract class DAO extends ConexaoBD{
 
     public abstract Object recuperar();
 
-    protected static Connection getInstance() throws SQLException, ClassNotFoundException {
+    protected static Connection getInstance(){
         instance = conecta();
         return instance;
     }
