@@ -23,10 +23,8 @@ public class ConexaoBD {
 		    conn = DriverManager.getConnection(host, user, password);
 	        return conn;
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return conn;

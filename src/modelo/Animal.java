@@ -6,13 +6,22 @@ public class Animal {
     private char sexo;
     private String cor;
     private int id;
+	private int donoId;
 
-    public Animal(String nome, char sexo, String cor, int id) {
+    public Animal(String nome, char sexo, String cor, int donoId) {
         this.nome = nome;
         this.sexo = sexo;
         this.cor = cor;
-        this.id = id;
-    }
+        this.donoId = donoId;
+	}
+	
+	public int getDonoId() {
+		return donoId;
+	}
+
+	public void setDonoId(int donoId) {
+		this.donoId = donoId;
+	}
 
     public int getId() {
         return id;

@@ -11,10 +11,7 @@ public abstract class DAO extends ConexaoBD{
 
     protected static Connection instance = null;
 
-    public static boolean cadastrar() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    public abstract boolean cadastrar();
 
     public abstract boolean alterar();
 
