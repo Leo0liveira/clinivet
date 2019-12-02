@@ -5,8 +5,8 @@ public class Pagamento extends Procedimento {
     private String pagante;
     private double valor;
 
-    public Pagamento(String pagante, double valor, String tipo, int dataHora, int id) {
-        super(tipo, dataHora, id);
+    public Pagamento(String pagante, double valor, String tipo) {
+        super(tipo);
         this.pagante = pagante;
         this.valor = valor;
     }
