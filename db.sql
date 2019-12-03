@@ -189,4 +189,14 @@ CREATE TABLE IF NOT EXISTS clinivetschema.venda (
 ALTER TABLE ONLY clinivetschema.animais
 	ADD CONSTRAINT animais_fk FOREIGN KEY (id_dono) REFERENCES clinivetschema.clientes(id);
 
+-- adicionar FKs:
+-- cliente -> animal
+-- veterinario -> consulta
+-- animal -> consulta
+-- especie ->  animal
+-- raca -> animal
+-- procedimento -> pedido
 
+-- adicionar PKs:
+-- animais_servicos
+-- venda
