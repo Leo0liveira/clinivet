@@ -41,12 +41,12 @@ public abstract class FuncionarioDAO extends DAO {
     * @param cpfFuncionario String
     * @return
     * */
-    public String recuperar(String cpfFuncionario) throws SQLException, ClassNotFoundException {
+    public Funcionario recuperar(String cpfFuncionario) throws SQLException, ClassNotFoundException, NaoEncontradoExeception {
 
-        String funcionario = null;
+        Funcionario funcionario = null;
         sql.append("SELECT * ");
         sql.append("FROM funcionarios");
-        sql.append("WHERE cpf =  " + cpfFuncionario);
+        sql.append("WHERE cpf =  ?");
 
         try {
 
@@ -57,11 +57,27 @@ public abstract class FuncionarioDAO extends DAO {
             ps.setString(1, cpfFuncionario);
             rs = ps.executeQuery();
 
-            funcionario = rs.getString(1);
+            funcionario = new Funcionario();
+            
+            while(rs.next())
+            {
+            	funcionario.setNome(rs.getString("nome"));
+            	funcionario.setCidade(rs.getString("cidade"));
+            	funcionario.setCpf(rs.getString("cpf"));
+            	funcionario.setEmail(rs.getString("email"));
+            	funcionario.setDataHora(rs.getString("datahora"));
+            	funcionario.setEstado(rs.getString("estado"));
+            	funcionario.setSexo(rs.getString("sexo"));
+            	funcionario.setEndereco(rs.getString("endereco"));
+            	funcionario.setId(rs.getInt("id"));
+            	funcionario.setTelefoneCelular(rs.getString("telefonecelular"));
+            	funcionario.setTelefoneResidencial(rs.getString("telefoneresidencial"));
+            }
+            
 
             //Se não houver resultados na query
             if (funcionario == null) {
-                funcionario = "Funcionario nao cadastrado.";
+                throw new NaoEncontradoExeception("Funcionario não encontrado");
             }
 
             // Fecha conexão

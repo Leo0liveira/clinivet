@@ -10,6 +10,10 @@ public class Procedimento {
         this.tipo = tipo;
 
     }
+    
+    public Procedimento()
+    {
+    }
 
 
     public String getTipo() {

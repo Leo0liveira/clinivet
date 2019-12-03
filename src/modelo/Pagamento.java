@@ -4,6 +4,9 @@ public class Pagamento extends Procedimento {
 
     private String pagante;
     private double valor;
+    
+    public Pagamento() {
+	}
 
     public Pagamento(String pagante, double valor, String tipo) {
         super(tipo);
@@ -11,7 +14,8 @@ public class Pagamento extends Procedimento {
         this.valor = valor;
     }
 
-    public String getPagante() {
+
+	public String getPagante() {
         return pagante;
     }
 
