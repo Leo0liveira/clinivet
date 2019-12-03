@@ -10,7 +10,11 @@ public class Raca {
         this.descricao = descricao;
     }
 
-    public String getNome() {
+    public Raca() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public String getNome() {
         return nome;
     }
 

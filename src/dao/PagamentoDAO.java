@@ -41,14 +41,13 @@ public abstract class PagamentoDAO extends DAO {
     * @param cpfFuncionario String
     * @return
     * */
-    public String recuperar(int id) throws SQLException, ClassNotFoundException {
-
+    public Pagamento recuperar(int id) throws SQLException, ClassNotFoundException, NaoEncontradoExeception {
+    	Pagamento pagamento = null;
         sql.append("SELECT * ");
-        sql.append("FROM funcionarios");
-        sql.append("WHERE cpf =  " + id);
+        sql.append("FROM pagamento");
+        sql.append("WHERE id =  " + id);
 
         try {
-
             //Cria instancia da conexão (usando singleton)
             //Executa query com o sql escrito acima
             conn = getInstance();
@@ -56,21 +55,15 @@ public abstract class PagamentoDAO extends DAO {
             ps.setInt(1, id);
             rs = ps.executeQuery();
 
-            Pagamento pagamento = new Pagamento(
-                    rs.getInt(1),
-                    rs.getInt(2),
-                    rs.getInt(3),
-                    rs.getInt(4),
-                    rs.getInt(5),
-                    rs.getInt(6),
-                    rs.getInt(7),
-                    rs.getInt(8),
-                    rs.getInt(9)
+            pagamento = new Pagamento(
+                    rs.getString(1),
+                    rs.getDouble(3),
+                    rs.getString(2)
                 );
 
             //Se não houver resultados na query
             if (pagamento == null) {
-                pagamento = "pagamento nao cadastrado.";
+                throw new NaoEncontradoExeception("Pagamento não encontrado");
             }
 
             // Fecha conexão
@@ -82,7 +75,7 @@ public abstract class PagamentoDAO extends DAO {
                 conn.close();
             }
         }
-        return funcionario;
+        return pagamento;
     }
 
     /*

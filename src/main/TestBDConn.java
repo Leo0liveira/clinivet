@@ -4,19 +4,33 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 
 import dao.FuncionarioDAO;
-import modelo.Funcionario;
+import dao.NaoEncontradoExeception;
+import dao.RacaDAO;
+import modelo.Raca;
 
 public class TestBDConn {
 
 	public static void main(String[] args) {
-		Timestamp dataDeHoje = new Timestamp(System.currentTimeMillis());
-		System.out.println(dataDeHoje);
 		
+		try {
+			System.out.println(RacaDAO.recuperar("pintier"));
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NaoEncontradoExeception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-//		Funcionario func = new Funcionario("igor", 'M', "Rua ufms", "campo grande", 
-//					"Mato Grosso do Sul", "00 00000000", "000000000", "igorbgalvan@hotmail.com", dataDeHoje, 0, "012345678-99");
+//		Timestamp dataDeHoje = new Timestamp(System.currentTimeMillis());
+//		
+//		
+//		Raca func = new Raca("pintier", "A raca do capeta");
 //		try {
-//			FuncionarioDAO.cadastrar(func);
+//			RacaDAO.cadastrar(func);
 //		} catch (SQLException e) {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();

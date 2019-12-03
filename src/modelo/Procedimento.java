@@ -6,10 +6,9 @@ public class Procedimento {
     private int dataHora;
     private int id;
 
-    public Procedimento(String tipo, int dataHora, int id) {
+    public Procedimento(String tipo) {
         this.tipo = tipo;
-        this.dataHora = dataHora;
-        this.id = id;
+
     }
 
 
@@ -19,21 +18,5 @@ public class Procedimento {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
-    }
-
-    public int getDataHora() {
-        return dataHora;
-    }
-
-    public void setDataHora(int dataHora) {
-        this.dataHora = dataHora;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 }
