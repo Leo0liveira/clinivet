@@ -99,10 +99,9 @@ CREATE TABLE IF NOT EXISTS clinivetschema.pagamentos (
 CREATE TABLE IF NOT EXISTS clinivetschema.pedidos (
 	tipo character varying(255) NOT NULL,
 	data_hora timestamp NOT NULL,
-	id SERIAL NOT NULL PRIMARY KEY
+	id SERIAL NOT NULL PRIMARY KEY,
+	id_procedimento integer NOT NULL
 );
-
--- 2 GATILHOS A SEREM CRIADOS
 
 CREATE TABLE IF NOT EXISTS clinivetschema.procedimentos (
 	tipo character varying(255) NOT NULL,
@@ -187,16 +186,28 @@ CREATE TABLE IF NOT EXISTS clinivetschema.venda (
 );
 
 ALTER TABLE ONLY clinivetschema.animais
-	ADD CONSTRAINT animais_fk FOREIGN KEY (id_dono) REFERENCES clinivetschema.clientes(id);
+ADD CONSTRAINT animais_fk FOREIGN KEY (id_dono) REFERENCES clinivetschema.clientes(id);
 
--- adicionar FKs:
--- cliente -> animal
--- veterinario -> consulta
--- animal -> consulta
--- especie ->  animal
--- raca -> animal
--- procedimento -> pedido
+ALTER TABLE ONLY clinivetschema.consulta
+ADD CONSTRAINT consulta_veterinario_fk FOREIGN KEY (id_veterinario) REFERENCES clinivetschema.veterinarios(id);
 
--- adicionar PKs:
--- animais_servicos
--- venda
+ALTER TABLE ONLY clinivetschema.consulta
+ADD CONSTRAINT animais_consulta_fk FOREIGN KEY (id_animal) REFERENCES clinivetschema.consultas(id);
+
+ALTER TABLE ONLY clinivetschema.animais
+ADD CONSTRAINT animais_especie_fk FOREIGN KEY (id_especie) REFERENCES clinivetschema.especie(id);
+
+ALTER TABLE ONLY clinivetschema.animais
+ADD CONSTRAINT animais_raca_fk FOREIGN KEY (id_raca) REFERENCES clinivetschema.racas(id);
+
+ALTER TABLE ONLY clinivetschema.pedidos
+ADD CONSTRAINT pedido_fk FOREIGN KEY (id_procedimento) REFERENCES clinivetschema.procedimentos(id);
+
+ALTER TABLE ONLY clinivetschema.animais_servicos
+ADD PRIMARY KEY (id_animal, numero_servico);
+
+ALTER TABLE ONLY clinivetschema.servicos
+ADD PRIMARY KEY (id_consulta, id_produto);
+
+-- Criar funcoes e triggers
+-- Popular
