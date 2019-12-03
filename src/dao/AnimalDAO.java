@@ -41,7 +41,7 @@ public abstract class AnimalDAO extends DAO {
     * @param id Int
     * @return
     * */
-    public Animal recuperar(int animalId) throws SQLException, ClassNotFoundException {
+    public Animal recuperar(int animalId) throws SQLException, ClassNotFoundException, NaoEncontradoExeception {
 
         Animal animal = null;
         sql.append("SELECT * ");

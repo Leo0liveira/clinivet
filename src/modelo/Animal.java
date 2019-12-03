@@ -3,7 +3,7 @@ package modelo;
 public class Animal {
 
     private String nome;
-    private char sexo;
+    private String sexo;
     private String cor;
     private String raca;
     private int id;
@@ -41,7 +41,7 @@ public class Animal {
         this.nome = nome;
     }
 	
-	public int getRaca() {
+	public String getRaca() {
 		return raca;
 	}
 
@@ -49,11 +49,11 @@ public class Animal {
 		this.raca = raca;
 	}
 
-    public char getSexo() {
+    public String getSexo() {
         return sexo;
     }
 
-    public void setSexo(char sexo) {
+    public void setSexo(String sexo) {
         this.sexo = sexo;
     }
 
