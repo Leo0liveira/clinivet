@@ -9,7 +9,7 @@ public class Animal {
     private int id;
 	private int donoId;
 
-    public Animal(String nome, char sexo, String cor, String raca, int donoId) {
+    public Animal(String nome, String sexo, String cor, String raca, int donoId) {
         this.nome = nome;
         this.sexo = sexo;
         this.cor = cor;

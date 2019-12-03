@@ -41,12 +41,12 @@ public abstract class AnimalDAO extends DAO {
     * @param id Int
     * @return
     * */
-    public String recuperar(int animalId) throws SQLException, ClassNotFoundException {
+    public Animal recuperar(int animalId) throws SQLException, ClassNotFoundException {
 
-        String animal = null;
+        Animal animal = null;
         sql.append("SELECT * ");
         sql.append("FROM animais");
-        sql.append("WHERE id =  " + animalId);
+        sql.append("WHERE id =  ?");
 
         try {
 
@@ -54,21 +54,26 @@ public abstract class AnimalDAO extends DAO {
             //Executa query com o sql escrito acima
             conn = getInstance();
             PreparedStatement ps = conn.prepareStatement(sql.toString());
-            rs = ps.executeQuery();
             ps.setInt(1, animalId);
+            rs = ps.executeQuery();
 
-            Animal animal = new Animal(
-                rs.getString(1),
-                rs.getString(2),
-                rs.getString(3),
-                //rs.getString(4), espécie
-                rs.getString(5),
-                rs.getInt(6)
-            );
+            while(rs.next())
+            {
+                animal = new Animal(
+                    rs.getString("nome"),
+                    rs.getString("sexo"),
+                    rs.getString("cor"),
+                    //rs.getString(4), espécie
+                    rs.getString("raca"),
+                    rs.getInt("donoId")
+                );
+            }
+
+
 
             //Se não houver resultados na query
             if (animal == null) {
-                animal = "Animal nao cadastrado.";
+                throw new NaoEncontradoExeception("Animal nao cadastrado.");
             }
 
             // Fecha conexão

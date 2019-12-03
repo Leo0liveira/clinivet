@@ -10,10 +10,14 @@ public class Cliente {
     private String telefoneResidencial;
     private String telefoneCelular;
     private String email;
-    private int dataHora;
+    private String cpf;
     private int id;
 
-    public Cliente(String nome, char sexo, String endereco, String cidade, String estado, String telefoneResidencial, String telefoneCelular, String email, String cpf) {
+    public Cliente() {
+        
+    }
+
+    public Cliente(String nome, String sexo, String endereco, String cidade, String estado, String telefoneResidencial, String telefoneCelular, String email, String cpf) {
         this.nome = nome;
         this.sexo = sexo;
         this.endereco = endereco;
@@ -22,8 +26,7 @@ public class Cliente {
         this.telefoneResidencial = telefoneResidencial;
         this.telefoneCelular = telefoneCelular;
         this.email = email;
-        this.dataHora = dataHora;
-        this.id = id;
+        this.cpf = cpf;
     }
 
     public int getId() {
@@ -40,6 +43,14 @@ public class Cliente {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getCpf() {
+        return nome;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public char getSexo() {
