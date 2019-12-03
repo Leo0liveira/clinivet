@@ -3,11 +3,11 @@ package visao;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.*;
+
 import modelo.Funcionario;
 import visao.interfaces.*;
 
-public class TelaLogin extends JFrame {
+public class TelaLogin extends JFrame{
     private JFrame rootFrame;
     private JPanel rootPanel;
     private JPasswordField passwordField1;
@@ -19,7 +19,7 @@ public class TelaLogin extends JFrame {
         rootFrame.setContentPane(rootPanel);
         rootFrame.pack();
         rootFrame.setVisible(true);
-        rootFrame.setSize(500, 190);
+        rootFrame.setSize(500,190);
         rootFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         button1.addActionListener(new ActionListener() {
             @Override
@@ -31,5 +31,4 @@ public class TelaLogin extends JFrame {
             }
         });
     }
-
 }

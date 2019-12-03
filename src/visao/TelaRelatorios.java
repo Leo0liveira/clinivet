@@ -1,7 +1,6 @@
 package visao;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,7 +8,6 @@ public class TelaRelatorios extends JFrame {
     private JPanel rootPanel;
     private JButton relatorioAnimais;
     private JButton relatorioConsultas;
-    private JButton voltarButton;
     private JFrame rootFrame;
 
     public TelaRelatorios() {
@@ -17,7 +15,7 @@ public class TelaRelatorios extends JFrame {
         rootFrame.setContentPane(rootPanel);
         rootFrame.pack();
         rootFrame.setVisible(true);
-        rootFrame.setSize(500, 200);
+        rootFrame.setSize(500, 150);
         rootFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         relatorioAnimais.addActionListener(new ActionListener() {
             @Override
@@ -30,13 +28,5 @@ public class TelaRelatorios extends JFrame {
 
             }
         });
-        voltarButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                TelaADM t = new TelaADM();
-                rootFrame.dispose();
-            }
-        });
     }
-
 }
