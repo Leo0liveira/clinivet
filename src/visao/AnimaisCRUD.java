@@ -4,8 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 
 public class AnimaisCRUD extends JFrame {
 
@@ -48,7 +46,7 @@ public class AnimaisCRUD extends JFrame {
     private JTextField tfprop_animal;
     private JButton ir_altButton;
 
-    public AnimaisCRUD() {
+    public AnimaisCRUD(String caller) {
 
         frame = new JFrame("AnimaisCRUD");
         frame.setContentPane(mainPanel);
@@ -81,14 +79,13 @@ public class AnimaisCRUD extends JFrame {
                 if (!altPanel.isVisible())
                     frame.setSize(frame.getWidth(), frame.getHeight() + 200);
                 altPanel.setVisible(true);
-                alt_error.setVisible(true);
             }
         });
         //retorna a tela Gerenciar
         voltarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                GerenciarAnimais g = new GerenciarAnimais();
+                GerenciarAnimais g = new GerenciarAnimais(caller);
                 frame.dispose();
             }
         });
@@ -126,4 +123,5 @@ public class AnimaisCRUD extends JFrame {
             }
         });
     }
+
 }

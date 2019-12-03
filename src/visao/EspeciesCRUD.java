@@ -1,6 +1,7 @@
 package visao;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -25,7 +26,7 @@ public class EspeciesCRUD extends JFrame {
     private JPanel alt_error;
     private JTextField tfcod;
 
-    public EspeciesCRUD() {
+    public EspeciesCRUD(String caller) {
         frame = new JFrame("Especies");
         frame.setContentPane(mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -68,7 +69,7 @@ public class EspeciesCRUD extends JFrame {
         voltarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                GerenciarAnimais g = new GerenciarAnimais();
+                GerenciarAnimais g = new GerenciarAnimais(caller);
                 frame.dispose();
             }
         });
@@ -83,7 +84,7 @@ public class EspeciesCRUD extends JFrame {
         alterarEspécieButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-               //todo
+                //todo
             }
         });
 

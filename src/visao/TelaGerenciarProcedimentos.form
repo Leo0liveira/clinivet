@@ -189,7 +189,7 @@
               <text value="ALTERAR PROCEDIMENTO"/>
             </properties>
           </component>
-          <component id="dc18" class="javax.swing.JLabel" binding="lblNovoCodigo">
+          <component id="dc18" class="javax.swing.JLabel">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -197,7 +197,7 @@
               <text value="Novo código"/>
             </properties>
           </component>
-          <component id="ff3ab" class="javax.swing.JLabel" binding="lblNovaDescricao">
+          <component id="ff3ab" class="javax.swing.JLabel">
             <constraints>
               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -205,7 +205,7 @@
               <text value="Nova descrição"/>
             </properties>
           </component>
-          <component id="6a86e" class="javax.swing.JLabel" binding="lblNovoPreco">
+          <component id="6a86e" class="javax.swing.JLabel">
             <constraints>
               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>

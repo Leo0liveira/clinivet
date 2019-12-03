@@ -1,11 +1,11 @@
 package visao;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.HierarchyListener;
 
-public class RaçaCRUD extends JFrame{
+public class RaçaCRUD extends JFrame {
 
     private JFrame frame;
     private JPanel mainPanel;
@@ -26,7 +26,7 @@ public class RaçaCRUD extends JFrame{
     private JTextArea tfdesc_raca;
     private JButton adicionarRaçaButton;
 
-    public RaçaCRUD(){
+    public RaçaCRUD(String caller) {
         frame = new JFrame("RaçaCRUD");
         frame.setContentPane(mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -46,7 +46,7 @@ public class RaçaCRUD extends JFrame{
         voltarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                GerenciarAnimais g = new GerenciarAnimais();
+                GerenciarAnimais g = new GerenciarAnimais(caller);
                 frame.dispose();
             }
         });
@@ -54,8 +54,8 @@ public class RaçaCRUD extends JFrame{
         ir_removeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                if(!removePanel.isVisible())
-                    frame.setSize(frame.getWidth(), frame.getHeight()+75);
+                if (!removePanel.isVisible())
+                    frame.setSize(frame.getWidth(), frame.getHeight() + 75);
                 removePanel.setVisible(true);
             }
         });
@@ -63,8 +63,8 @@ public class RaçaCRUD extends JFrame{
         ir_altButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                if(!altPanel.isVisible())
-                    frame.setSize(frame.getWidth(), frame.getHeight()+75);
+                if (!altPanel.isVisible())
+                    frame.setSize(frame.getWidth(), frame.getHeight() + 75);
                 altPanel.setVisible(true);
             }
         });
@@ -90,4 +90,5 @@ public class RaçaCRUD extends JFrame{
             }
         });
     }
+
 }

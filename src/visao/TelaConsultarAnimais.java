@@ -1,6 +1,7 @@
 package visao;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -27,7 +28,7 @@ public class TelaConsultarAnimais extends JFrame {
         frame.setContentPane(consultarAnimaisPanel);
         frame.pack();
         frame.setVisible(true);
-        frame.setSize(300,180);
+        frame.setSize(300, 180);
         frame.setLocationRelativeTo(null);
 
 
@@ -39,7 +40,8 @@ public class TelaConsultarAnimais extends JFrame {
             }
         });
     }
-    public static void main (String[] args) throws ClassNotFoundException, UnsupportedLookAndFeelException,
+
+    public static void main(String[] args) throws ClassNotFoundException, UnsupportedLookAndFeelException,
             InstantiationException, IllegalAccessException {
         UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         JFrame frame = new TelaConsultarAnimais("Consultar animais");

@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ConsultaProcedimentosClinica extends JFrame{
+public class ConsultaProcedimentosClinica extends JFrame {
     JFrame frame;
     private JPanel TablePanel1;
     private JTable table1;
@@ -17,7 +17,7 @@ public class ConsultaProcedimentosClinica extends JFrame{
     private JScrollPane sc;
 
 
-    public ConsultaProcedimentosClinica(){
+    public ConsultaProcedimentosClinica() {
         frame = new JFrame("ConsultaProcedimentosClinica");
         frame.setContentPane(TablePanel1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

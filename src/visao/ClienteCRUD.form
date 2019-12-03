@@ -127,7 +127,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="fdc5b" class="javax.swing.JTextField" binding="campoEndereço">
+      <component id="fdc5b" class="javax.swing.JTextField" binding="campoEndereco">
         <constraints>
           <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -279,7 +279,7 @@
             </constraints>
             <properties/>
           </component>
-          <component id="72b5" class="javax.swing.JTextField" binding="campoALTendereço">
+          <component id="72b5" class="javax.swing.JTextField" binding="campoALTendereco">
             <constraints>
               <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -397,7 +397,7 @@
             </constraints>
             <properties/>
           </component>
-          <component id="f59d2" class="javax.swing.JTextField" binding="campoREMOVEendereço">
+          <component id="f59d2" class="javax.swing.JTextField" binding="campoREMOVEendereco">
             <constraints>
               <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
