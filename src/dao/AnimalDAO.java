@@ -41,7 +41,7 @@ public abstract class AnimalDAO extends DAO {
     * @param id Int
     * @return
     * */
-    public Animal recuperar(int animalId) throws SQLException, ClassNotFoundException {
+    public Animal recuperar(int animalId) throws SQLException, ClassNotFoundException, NaoEncontradoExeception {
 
         Animal animal = null;
         sql.append("SELECT * ");
@@ -63,7 +63,6 @@ public abstract class AnimalDAO extends DAO {
                     rs.getString("nome"),
                     rs.getString("sexo"),
                     rs.getString("cor"),
-                    //rs.getString(4), espécie
                     rs.getString("raca"),
                     rs.getInt("donoId")
                 );
