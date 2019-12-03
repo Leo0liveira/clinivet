@@ -11,6 +11,10 @@ public class Procedimento {
         this.dataHora = dataHora;
         this.id = id;
     }
+    
+    public Procedimento()
+    {
+    }
 
 
     public String getTipo() {

@@ -37,7 +37,7 @@ public abstract class PagamentoDAO extends DAO {
     }
 
     /*
-    * recuperaFuncionario: retorna funcioario com id requerido.
+    * recuperaPagamento: retorna Pagamento com id requerido.
     * @param cpfFuncionario String
     * @return
     * */
@@ -45,7 +45,7 @@ public abstract class PagamentoDAO extends DAO {
     	Pagamento pagamento = null;
         sql.append("SELECT * ");
         sql.append("FROM pagamento");
-        sql.append("WHERE id =  " + id);
+        sql.append("WHERE id = ?");
 
         try {
             //Cria instancia da conexão (usando singleton)
@@ -55,16 +55,18 @@ public abstract class PagamentoDAO extends DAO {
             ps.setInt(1, id);
             rs = ps.executeQuery();
 
-            pagamento = new Pagamento(
-                    rs.getString(1),
-                    rs.getDouble(3),
-                    rs.getString(2)
-                );
+            pagamento = new Pagamento();
+            
+            while(rs.next())
+            {
+            	pagamento.setPagante(rs.getString("pagante"));
+            	pagamento.setTipo(rs.getString("tipo"));
+            	pagamento.setValor(rs.getDouble("valor"));
+            }
 
             //Se não houver resultados na query
-            if (pagamento == null) {
+            if (pagamento == null) 
                 throw new NaoEncontradoExeception("Pagamento não encontrado");
-            }
 
             // Fecha conexão
         } finally {
@@ -79,55 +81,49 @@ public abstract class PagamentoDAO extends DAO {
     }
 
     /*
-     * cadastraFuncionario: insere um usuario no banco de dados.
+     * cadastraPagamento: insere um Pagamento no banco de dados.
      * @param funcionario Funcionario
      * @return
      * */
-    public static boolean cadastrar(Funcionario funcionario) throws SQLException{
+    public static boolean cadastrar(Pagamento pagamento) throws SQLException{
         sql.append("INSERT INTO funcionario");
         sql.append("(id, nome, cpf, email, endereco, sexo, telefoneResidencial, telefoneCelular) ");
         sql.append
                 ("VALUES ("+
-                funcionario.getId() + ", " +
-                "'" +funcionario.getNome()+ "'" + ", " +
-                "'"+  funcionario.getCpf()+"'" + ", " +
-                "'"+funcionario.getEmail()+"'" + ", " +
-                "'"+funcionario.getEndereco()+"'" + ", " +
-                "'"+ funcionario.getSexo() +"'"+ ", " +
-                "'"+funcionario.getTelefoneResidencial()+"'" + ", " +
-                "'"+funcionario.getTelefoneCelular() +"'"+
+                		pagamento.getPagante() + ", " +
+                "'" +pagamento.getValor()+ "'" + ", " +
+                "'"+  pagamento.getTipo()+"'"+
                 ");");
 
-        System.out.println(sql);
         return executeBooleanQuery(sql);
     }
 
     /*
-     * alteraFuncionario: altera um campo de um determinado funcionario.
-     * @param String cpfFuncionario
+     * alteraPagamento: altera um campo de um determinado Pagamento.
+     * @param int id
      * @param String coluna
      * @param String novoValor
      * @return
      * */
-    public boolean alterar(String cpfFuncionario, String coluna, String novoValor) throws SQLException {
+    public boolean alterar(int id, String coluna, String novoValor) throws SQLException {
 
-        sql.append("UPDATE funcionarios ");
+        sql.append("UPDATE pagamento ");
         sql.append("SET " + coluna + " = " + novoValor);
-        sql.append("WHERE cpf = " + cpfFuncionario);
+        sql.append("WHERE id = " + id);
 
         return executeBooleanQuery(sql);
     }
 
     /*
-     * removeFuncionario: remove funcionario do banco de dados.
+     * removePagamento: remove pagamento do banco de dados.
      * @param String cpfFuncionario
      * @return
      * */
-    public boolean remover(String cpfFuncionario) throws SQLException {
+    public boolean remover(int id) throws SQLException {
 
         String funcionario = null;
-        sql.append("DELETE FROM funcionarios ");
-        sql.append("WHERE cpf = " + cpfFuncionario);
+        sql.append("DELETE FROM pagamento ");
+        sql.append("WHERE id = " + id);
 
         return executeBooleanQuery(sql);
 

@@ -5,18 +5,20 @@ import java.sql.Timestamp;
 public class Funcionario {
 
     private String nome;
-    private char sexo;
+    private String sexo;
     private String endereco;
     private String cidade;
     private String estado;
     private String telefoneResidencial;
     private String telefoneCelular;
     private String email;
-    private Timestamp dataHora;
+    private String dataHora;
     private int id;
     private String cpf;
 
-    public Funcionario(String nome, char sexo, String endereco, String cidade, String estado, String telefoneResidencial, String telefoneCelular, String email, Timestamp dataDeHoje, int id, String cpf) {
+    public Funcionario(String nome, String sexo, String endereco, String cidade, 
+    		String estado, String telefoneResidencial, String telefoneCelular, 
+    		String email, String dataDeHoje, int id, String cpf) {
         this.nome = nome;
         this.sexo = sexo;
         this.endereco = endereco;
@@ -57,11 +59,11 @@ public class Funcionario {
         this.nome = nome;
     }
 
-    public char getSexo() {
+    public String getSexo() {
         return sexo;
     }
 
-    public void setSexo(char sexo) {
+    public void setSexo(String sexo) {
         this.sexo = sexo;
     }
 
@@ -113,11 +115,11 @@ public class Funcionario {
         this.email = email;
     }
 
-    public int getDataHora() {
+    public String getDataHora() {
         return dataHora;
     }
 
-    public void setDataHora(int dataHora) {
+    public void setDataHora(String dataHora) {
         this.dataHora = dataHora;
     }
 }
