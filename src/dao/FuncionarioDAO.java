@@ -98,18 +98,19 @@ public abstract class FuncionarioDAO extends DAO {
      * @return
      * */
     public static boolean cadastrar(Funcionario funcionario) throws SQLException{
-        sql.append("INSERT INTO funcionario");
-        sql.append("(id, nome, cpf, email, endereco, sexo, telefoneResidencial, telefoneCelular) ");
+        sql.append("INSERT INTO funcionarios");
+        sql.append("(nome, sexo, endereco, cidade, estado, telefoneResidencial, telefoneCelular, email, cpf) ");
         sql.append
                 ("VALUES ("+
-                funcionario.getId() + ", " +
                 "'" +funcionario.getNome()+ "'" + ", " +
-                "'"+  funcionario.getCpf()+"'" + ", " +
-                "'"+funcionario.getEmail()+"'" + ", " +
-                "'"+funcionario.getEndereco()+"'" + ", " +
-                "'"+ funcionario.getSexo() +"'"+ ", " +
-                "'"+funcionario.getTelefoneResidencial()+"'" + ", " +
+                "'" +funcionario.getSexo()+ "'" + ", " +
+                "'"+  funcionario.getEndereco()+"'" + ", " +
+                "'"+funcionario.getCidade()+"'" + ", " +
+                "'"+funcionario.getEstado()+"'" + ", " +
+                "'"+ funcionario.getTelefoneResidencial() +"'"+ ", " +
                 "'"+funcionario.getTelefoneCelular() +"'"+
+                "'"+funcionario.getEmail()+"'" + ", " +
+                "'"+funcionario.getCpf()+"'" +
                 ");");
 
         System.out.println(sql);

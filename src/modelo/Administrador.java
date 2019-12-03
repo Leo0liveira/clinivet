@@ -10,7 +10,11 @@ public class Administrador extends Funcionario {
     	super(nome, sexo, endereco, cidade, estado, telefoneResidencial, telefoneCelular, email, dataDeHoje, id, cpf);
     }
 
-    public void removerFuncionario(int id) {
+    public Administrador() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public void removerFuncionario(int id) {
         //TODO: implementar
     }
 
