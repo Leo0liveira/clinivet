@@ -56,10 +56,11 @@ public abstract class RacaDAO extends DAO {
             ps.setString(1, racaNome);
             rs = ps.executeQuery();
             raca = new Raca();
+            
             while(rs.next())
             {
-            		raca.setNome(rs.getString("nome"));
-            		raca.setDescricao(rs.getNString("descricao"));
+        		raca.setNome(rs.getString("nome"));
+        		raca.setDescricao(rs.getString("descricao"));
             }
 
             //Se não houver resultados na query

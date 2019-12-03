@@ -13,7 +13,9 @@ public class TestBDConn {
 	public static void main(String[] args) {
 		
 		try {
-			System.out.println(RacaDAO.recuperar("pintier"));
+			Raca raca = RacaDAO.recuperar("pintier");
+			System.out.println(raca.getNome() + "\n" + raca.getDescricao());
+			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
