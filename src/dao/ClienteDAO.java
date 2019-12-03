@@ -41,7 +41,7 @@ public abstract class ClienteDAO extends DAO {
     * @param id Int
     * @return
     * */
-    public static Cliente recuperar(int clienteId) throws SQLException, ClassNotFoundException {
+    public static Cliente recuperar(int clienteId) throws SQLException, ClassNotFoundException, NaoEncontradoExeception {
 
         Cliente cliente = null;
         sql.append("SELECT * ");

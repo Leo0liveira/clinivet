@@ -3,7 +3,7 @@ package modelo;
 public class Cliente {
 
     private String nome;
-    private char sexo;
+    private String sexo;
     private String endereco;
     private String cidade;
     private String estado;
@@ -53,11 +53,11 @@ public class Cliente {
         this.cpf = cpf;
     }
 
-    public char getSexo() {
+    public String getSexo() {
         return sexo;
     }
 
-    public void setSexo(char sexo) {
+    public void setSexo(String sexo) {
         this.sexo = sexo;
     }
 
@@ -107,14 +107,6 @@ public class Cliente {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public int getDataHora() {
-        return dataHora;
-    }
-
-    public void setDataHora(int dataHora) {
-        this.dataHora = dataHora;
     }
 
 }
