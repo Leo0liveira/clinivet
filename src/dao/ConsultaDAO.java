@@ -74,6 +74,8 @@ public abstract class ConsultaDAO extends DAO {
             }
 
             // Fecha conexão
+        } catch (NaoEncontradoExeception naoEncontradoExeception) {
+            naoEncontradoExeception.printStackTrace();
         } finally {
             if (rs != null) {
                 rs.close();

@@ -93,8 +93,8 @@ public abstract class ServicoDAO extends DAO {
         sql.append("(numero, tipo) ");
         sql.append
                 ("VALUES ("+
-                "'" +raca.getNome()+ "'" + ", " +
-                "'"+  raca.getDescricao()+"'"+
+                "'" +servico.getNome()+ "'" + ", " +
+                "'"+  servico.getCodigo()+"'"+
                 ");");
 
         return executeBooleanQuery(sql);

@@ -16,6 +16,13 @@ public class Procedimento {
     {
     }
 
+    public Procedimento(String tipo) {
+    }
+
+    public Procedimento(String pagante, double valor, String tipo) {
+
+    }
+
 
     public String getTipo() {
         return tipo;

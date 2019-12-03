@@ -71,6 +71,8 @@ public abstract class PedidoDAO extends DAO {
             }
 
             // Fecha conexão
+        } catch (NaoEncontradoExeception naoEncontradoExeception) {
+            naoEncontradoExeception.printStackTrace();
         } finally {
             if (rs != null) {
                 rs.close();

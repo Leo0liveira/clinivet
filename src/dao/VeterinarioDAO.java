@@ -130,4 +130,23 @@ public class VeterinarioDAO extends DAO {
 
     }
 
+    @Override
+    public boolean cadastrar() {
+        return false;
+    }
+
+    @Override
+    public boolean alterar() {
+        return false;
+    }
+
+    @Override
+    public boolean remover() {
+        return false;
+    }
+
+    @Override
+    public Object recuperar() {
+        return null;
+    }
 }
