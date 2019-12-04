@@ -15,9 +15,12 @@ public class TestBDConn {
 	public static void main(String[] args) {
 		
     	ControleFuncionario c = new ControleFuncionario();
-    	Funcionario f = c.buscaFuncionario(11112222);
     	
-    	System.out.println(f);
+    	System.out.println(c.adicionaFuncionario("1", "1", "1", "1", "1", "1", "1", "1", "1", "1"));
+    	
+//    	Funcionario f = new Funcionario(0, "1",);
+//    	
+//    	System.out.println(f.getNome());
     	
 		
 //		Timestamp dataDeHoje = new Timestamp(System.currentTimeMillis());

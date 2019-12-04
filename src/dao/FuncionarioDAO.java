@@ -6,6 +6,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.postgresql.util.PSQLException;
+
+import org.postgresql.util.PSQLException;
+
 public abstract class FuncionarioDAO extends DAO {
 
     static Connection conn = null;
@@ -22,9 +26,13 @@ public abstract class FuncionarioDAO extends DAO {
             conn = getInstance();
             PreparedStatement ps = conn.prepareStatement(sql.toString());
             rs = ps.executeQuery();
-        }  catch (Exception e) {
-            return false;
+            
+        }  catch (PSQLException e) {
+            return true;
         } 
+          catch (Exception e){
+        	  return false;
+        }
         finally {
             if (rs != null) {
                 rs.close();
@@ -42,10 +50,10 @@ public abstract class FuncionarioDAO extends DAO {
     * @return
     * */
     public static ResultSet recuperar(int matricula) throws SQLException, ClassNotFoundException, NaoEncontradoExeception {
-
+    	
         sql.append("SELECT * ");
-        sql.append("FROM clinivetschema.funcionarios");
-        sql.append("WHERE cpf =  ?");
+        sql.append("FROM funcionarios ");
+        sql.append("WHERE matricula =  ?");
 
 
             //Cria instancia da conexão (usando singleton)
@@ -68,7 +76,7 @@ public abstract class FuncionarioDAO extends DAO {
      * @return
      * */
     public static boolean cadastrar(Funcionario funcionario) throws SQLException{
-        sql.append("INSERT INTO funcionarios");
+        sql.append("INSERT INTO funcionarios ");
         sql.append("(nome, endereco, cidade, estado, telefone_residencial, telefone_celular, email, cpf, tipo_permissao) ");
         sql.append
                 ("VALUES ("+
@@ -77,7 +85,7 @@ public abstract class FuncionarioDAO extends DAO {
                 "'" +funcionario.getCidade()+"'" + ", " +
                 "'" +funcionario.getEstado()+"'" + ", " +
                 "'" +funcionario.getTelefone_residencial() +"'"+ ", " +
-                "'" +funcionario.getTelefone_celular() +"'"+
+                "'" +funcionario.getTelefone_celular() +"',"+
                 "'" +funcionario.getEmail()+"'" + ", " +
                 "'" +funcionario.getCpf()+"'" + ", " +
                 "'" +funcionario.getTipo_permissao()+"'" +

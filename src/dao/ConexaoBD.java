@@ -9,7 +9,7 @@ import java.sql.Statement;
 public class ConexaoBD {
 	private static String user = "postgres";
 	private static String password = "postgres";
-	private static String host = "jdbc:postgresql://localhost:5432/clinivet";
+	private static String host = "jdbc:postgresql://localhost:5432/clinivet?currentSchema=clinivetschema";
 	public static String driver = "org.postgresql.Driver";
 	public Statement stetement;
 	public ResultSet result;
