@@ -16,6 +16,11 @@ CREATE TABLE clinivetschema.administradores (
 	data_contratacao timestamp DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE clinivetschema.login (
+	cpf character varying(255) NOT NULL PRIMARY KEY,
+	senha character varying(255) NOT NULL
+);
+
 CREATE TABLE clinivetschema.funcionarios (
 	nome character varying(255) NOT NULL,
 	endereco character varying(255)  NOT NULL,
