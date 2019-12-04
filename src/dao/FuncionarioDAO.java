@@ -104,15 +104,18 @@ public abstract class FuncionarioDAO extends DAO {
      * */
     public static boolean alterar(Funcionario funcionario) throws SQLException {
     	StringBuilder sql = new StringBuilder();
+    	boolean flag =false;
     	try {
     		
 			ResultSet rs = recuperar(funcionario.getMatricula());
 			while(rs.next())
-				if(rs.getString("nome") == null)
-					return false;
+				flag = true;
 		} catch (ClassNotFoundException | NaoEncontradoExeception e) {
 			return false;
 		}
+    	if(!flag)
+    		return false;
+    	
         sql.append("UPDATE funcionarios ");
         sql.append("SET nome = '" + funcionario.getNome()+ "'," +
         "endereco = '" + funcionario.getEndereco()+ "',"+
@@ -133,17 +136,18 @@ public abstract class FuncionarioDAO extends DAO {
      * @return
      * */
     public static boolean remover(int matricula) throws SQLException {
-		try {
+    	StringBuilder sql = new StringBuilder();
+    	boolean flag =false;
+    	try {
+    		
 			ResultSet rs = recuperar(matricula);
-			while(rs.next()) {
-				if(rs.getString("nome") == null)
-					return false;
-			}
+			while(rs.next())
+				flag = true;
 		} catch (ClassNotFoundException | NaoEncontradoExeception e) {
 			return false;
 		}
-		
-    	StringBuilder sql = new StringBuilder();
+    	if(!flag)
+    		return false;
         sql.append("DELETE FROM funcionarios ");
         sql.append("WHERE matricula = " + matricula + ";");
 
