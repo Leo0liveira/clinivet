@@ -5,35 +5,34 @@ import modelo.Animal;
 
 public class ControleAnimal {
 
-    public boolean adicionaAnimal(String nome, int proprietario, Date nascimento, Especie especie, Raca raca, String sexo, String cor)
+    public boolean adicionaAnimal(String nome, int proprietario, String nascimento, int especie, int raca, String sexo, String cor)
     {
-        //removi o 'int codigo' já que o codigo vai ser criado pelo proprio banco quando adicionar.
-
         AnimalDAO animalDAO = new AnimalDAO();
-        Animal animal = new Animal();
+        Animal animal = new Animal("", nome, proprietario, nascimento, especie, raca, sexo, cor);
 
-        animal.setNome(nome);
-        animal.setSexo(sexo);
-        animal.setCor(cor);
-        animal.setRaca(raca);
-        animal.setDonoId(proprietario); //mudado para INT porque guarda o id do proprietario
-
-        animalDAO.cadastrar(animal);
+        if(animalDAO.cadastrar(animal))
+        {
+            System.out.println("Cadastrado com sucesso"); //mensagem de sucesso pra view
+        }
+        else 
+        {
+            System.out.println("Erro ao cadastrar"); //mensagem de erro pra view
+        }
     }
 
-    public boolean alteraAnimal(int codigo, String nome, int proprietario, Date nascimento, Especie especie, Raca raca, String sexo, String cor)
+    public boolean alteraAnimal(int codigo, String nome, int proprietario, String nascimento, int especie, int raca, String sexo, String cor)
     {
         AnimalDAO animalDAO = new AnimalDAO();
-        Animal animal = new Animal();
+        Animal animal = new Animal(codigo, nome, proprietario, nascimento, especie, raca, sexo, cor);
 
-        animal.setId(codigo);
-        animal.setNome(nome);
-        animal.setSexo(sexo);
-        animal.setCor(cor);
-        animal.setRaca(raca);
-        animal.setDonoId(proprietario); //mudado para INT porque guarda o id do proprietario
-
-        animalDAO.alterar(animal);
+        if(animalDAO.alterar(animal))
+        {
+            System.out.println("Alterado com sucesso"); //mensagem de sucesso pra view
+        }
+        else 
+        {
+            System.out.println("Erro ao alterar"); //mensagem de erro pra view
+        }
     }
 
     public boolean removeAnimal(int codigo)
@@ -42,11 +41,11 @@ public class ControleAnimal {
 
         if(animalDAO.remover(codigo)) 
         {
-            System.out.println("Removido com sucesso");
+            System.out.println("Removido com sucesso"); //mensagem de sucesso pra view
         } 
         else
         {
-            System.out.println("Erro ao remover");
+            System.out.println("Erro ao remover"); //mensagem de erro pra view
         }
     }
 
