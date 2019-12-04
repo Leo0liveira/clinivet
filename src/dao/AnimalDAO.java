@@ -1,6 +1,8 @@
 package dao;
 
 import modelo.Animal;
+import modelo.Funcionario;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,9 +24,13 @@ public abstract class AnimalDAO extends DAO {
             conn = getInstance();
             PreparedStatement ps = conn.prepareStatement(sql.toString());
             rs = ps.executeQuery();
-        }  catch (Exception e) {
-            return false;
+            
+        }  catch (PSQLException e) {
+            return true;
         } 
+          catch (Exception e){
+        	  return false;
+        }
         finally {
             if (rs != null) {
                 rs.close();
@@ -44,23 +50,22 @@ public abstract class AnimalDAO extends DAO {
   
     public static ResultSet recuperar(int animalId) throws SQLException, ClassNotFoundException, NaoEncontradoExeception {
 
+    	StringBuilder sql = new StringBuilder();
         sql.append("SELECT * ");
         sql.append("FROM animais");
-        sql.append("WHERE id =  ?");
+        sql.append("WHERE codigo =  ?");
 
         //Cria instancia da conexão (usando singleton)
         //Executa query com o sql escrito acima
         conn = getInstance();
         PreparedStatement ps = conn.prepareStatement(sql.toString());
         ps.setInt(1, animalId);
-        ResultSet rs = ps.executeQuery();
-        
-        if (rs != null) {
-            rs.close();
-        }
-        if (conn != null) 
+        rs = ps.executeQuery();
+
+        if (conn != null) {
             conn.close();
-       return rs;
+        }
+    return rs;
    
     }
 
@@ -70,6 +75,7 @@ public abstract class AnimalDAO extends DAO {
      * @return
      * */
     public static boolean cadastrar(Animal animal) throws SQLException {
+    	StringBuilder sql = new StringBuilder();
         sql.append("INSERT INTO animais");
         sql.append("(nome, sexo, cor, raca, donoId) ");
         sql.append("VALUES ("+
@@ -91,6 +97,18 @@ public abstract class AnimalDAO extends DAO {
      * @return
      * */
     public static boolean alterar(Animal animal) throws SQLException {
+    	StringBuilder sql = new StringBuilder();
+    	boolean flag =false;
+    	try {
+    		
+			ResultSet rs = recuperar(animal.getCodigo());
+			while(rs.next())
+				flag = true;
+		} catch (ClassNotFoundException | NaoEncontradoExeception e) {
+			return false;
+		}
+    	if(!flag)
+    		return false;
 
         sql.append("UPDATE animais SET ");
         sql.append("nome = '" + animal.getNome() + "', ");
@@ -109,14 +127,23 @@ public abstract class AnimalDAO extends DAO {
      * @return
      * */
     public static boolean remover(int animalId) throws SQLException {
+    	StringBuilder sql = new StringBuilder();
+    	boolean flag =false;
+    	try {
+    		
+			ResultSet rs = recuperar(animalId);
+			while(rs.next())
+				flag = true;
+		} catch (ClassNotFoundException | NaoEncontradoExeception e) {
+			return false;
+		}
+    	if(!flag)
+    		return false;
 
         sql.append("DELETE FROM animais ");
-        sql.append("WHERE id = " + animalId);
+        sql.append("WHERE codigo = " + animalId);
 
         return executeBooleanQuery(sql);
     }
-
-
-
 
 }
