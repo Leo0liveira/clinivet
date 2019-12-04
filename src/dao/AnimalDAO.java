@@ -1,7 +1,6 @@
 package dao;
 
 import modelo.Animal;
-import modelo.Funcionario;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
