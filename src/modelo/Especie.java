@@ -2,20 +2,20 @@ package modelo;
 
 public class Especie {
 
-    public Especie(String nome, String descricao) {
-        this.nome = nome;
+    private int codigo;
+    private String descricao;
+
+    public Especie(int codigo, String descricao) {
+        this.codigo = codigo;
         this.descricao = descricao;
     }
 
-    private String nome;
-    private String descricao;
-
-    public String getNome() {
-        return nome;
+    public int getCodigo() {
+        return codigo;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
     public String getDescricao() {
@@ -25,5 +25,5 @@ public class Especie {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-
+    
 }
