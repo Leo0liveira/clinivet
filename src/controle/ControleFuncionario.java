@@ -30,11 +30,11 @@ public class ControleFuncionario {
         
     }
     
-    public boolean alteraFuncionario(int id, String nome, String endereco, String cidade, 
+    public boolean alteraFuncionario(int matricula, String nome, String endereco, String cidade, 
     		String estado, String telefone_residencial, String telefone_celular, 
     		String email, String data_contratacao, String cpf, String tipo_permissao)
     {
-    	Funcionario funcionario = new Funcionario(id, nome, endereco, cidade, estado, telefone_residencial, telefone_celular, email, data_contratacao, cpf, tipo_permissao);
+    	Funcionario funcionario = new Funcionario(matricula, nome, endereco, cidade, estado, telefone_residencial, telefone_celular, email, data_contratacao, cpf, tipo_permissao);
     	
         try {
 			if(FuncionarioDAO.alterar(funcionario))
@@ -46,10 +46,10 @@ public class ControleFuncionario {
 			return false;
 		}
     }
-    public boolean removeFuncionario(int ID)
+    public boolean removeFuncionario(int matricula)
     {
     	try {
-			if(RacaDAO.remover(ID))
+			if(FuncionarioDAO.remover(matricula))
 				return true;
 			else
 				return false;
@@ -58,15 +58,23 @@ public class ControleFuncionario {
 			return false;
 		}
     }
-    public Raca buscaFuncionario(int id)
+    public Funcionario buscaFuncionario(int matricula)
     {
-        Raca raca = null;
+    	Funcionario funcionario = null;
+    	ResultSet rs;
         try {
 
-            ResultSet rs = RacaDAO.recuperar(id);
+        	rs = FuncionarioDAO.recuperar(matricula);
             while(rs.next())
             {
-                raca = new Raca(rs.getInt("id"), rs.getString("descricao"));
+            	funcionario = new Funcionario(rs.getInt("matricula"), rs.getString("nome"), rs.getString("endereco"), 
+            			rs.getString("cidade"), rs.getString("estado"), rs.getString("telefone_residencial"), rs.getString("telefone_celular"), 
+            			rs.getString("email"), rs.getString("data_contratacao"), rs.getString("cpf"), rs.getString("tipo_permissao"));
+            	
+                //Se não houver resultados na query
+                if (funcionario == null) {
+                    return null;
+                }
             }
 
         } catch (SQLException e) {
@@ -78,8 +86,12 @@ public class ControleFuncionario {
         catch (ClassNotFoundException e) {
            return null;
         }
+        finally {
+            if (rs != null) {
+                rs.close();
+            }
 
-        return raca;
+        return funcionario;
         
     }
 }

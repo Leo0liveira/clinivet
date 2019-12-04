@@ -41,7 +41,7 @@ public abstract class FuncionarioDAO extends DAO {
     * @param cpfFuncionario String
     * @return
     * */
-    public Funcionario recuperar(String cpfFuncionario) throws SQLException, ClassNotFoundException, NaoEncontradoExeception {
+    public Funcionario recuperar(int matricula) throws SQLException, ClassNotFoundException, NaoEncontradoExeception {
 
         Funcionario funcionario = null;
         sql.append("SELECT * ");
@@ -54,31 +54,9 @@ public abstract class FuncionarioDAO extends DAO {
             //Executa query com o sql escrito acima
             conn = getInstance();
             PreparedStatement ps = conn.prepareStatement(sql.toString());
-            ps.setString(1, cpfFuncionario);
+            ps.setString(1, matricula);
             rs = ps.executeQuery();
 
-            funcionario = new Funcionario();
-            
-            while(rs.next())
-            {
-            	funcionario.setNome(rs.getString("nome"));
-            	funcionario.setCidade(rs.getString("cidade"));
-            	funcionario.setCpf(rs.getString("cpf"));
-            	funcionario.setEmail(rs.getString("email"));
-            	funcionario.setDataHora(rs.getString("datahora"));
-            	funcionario.setEstado(rs.getString("estado"));
-            	funcionario.setSexo(rs.getString("sexo"));
-            	funcionario.setEndereco(rs.getString("endereco"));
-            	funcionario.setId(rs.getInt("id"));
-            	funcionario.setTelefoneCelular(rs.getString("telefonecelular"));
-            	funcionario.setTelefoneResidencial(rs.getString("telefoneresidencial"));
-            }
-            
-
-            //Se não houver resultados na query
-            if (funcionario == null) {
-                throw new NaoEncontradoExeception("Funcionario não encontrado");
-            }
 
             // Fecha conexão
         } finally {
@@ -124,11 +102,18 @@ public abstract class FuncionarioDAO extends DAO {
      * @param String novoValor
      * @return
      * */
-    public boolean alterar(Funcionario funcionario) throws SQLException {
-
+    public static boolean alterar(Funcionario funcionario) throws SQLException {
         sql.append("UPDATE funcionarios ");
-        sql.append("SET descricao = ''" + raca.getDescricao()+ "''");
-        sql.append("WHERE codigo = " + raca.getID());
+        sql.append("SET nome = '" + funcionario.getNome()+ "'," +
+        "SET endereco = '" + funcionario.getEndereco()+ "',"+
+        "cidade = '" + funcionario.getEndereco()+ "',"+
+        "estado = '" + funcionario.getEstado()+ "',"+
+        "telefone_residencial = ''" + funcionario.getTelefone_residencial()+ "',"+
+        "telefone_celular = '" + funcionario.getTelefone_celular()+ "',"+
+        "data_contratacao = '" + funcionario.getEndereco()+ "',"+
+        "tipo_permissao = '" + funcionario.getEndereco()+ "' ");
+        sql.append("WHERE codigo = " + funcionario.getMatricula());
+        
 
         return executeBooleanQuery(sql);
     }
@@ -138,11 +123,11 @@ public abstract class FuncionarioDAO extends DAO {
      * @param String cpfFuncionario
      * @return
      * */
-    public boolean remover(String cpfFuncionario) throws SQLException {
+    public static boolean remover(int matricula) throws SQLException {
 
         String funcionario = null;
         sql.append("DELETE FROM funcionarios ");
-        sql.append("WHERE cpf = " + cpfFuncionario);
+        sql.append("WHERE cpf = " + matricula);
 
         return executeBooleanQuery(sql);
 
