@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cbecff7c-26cc-4731-807e-e85b4aaebc65" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/AdministradorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/AdministradorDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/ConsultaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/ConsultaDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/PedidoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/PedidoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/ServicoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/ServicoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/VeterinarioDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/VeterinarioDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modelo/Procedimento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/Procedimento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modelo/Servico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/Servico.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modelo/Veterinario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/Veterinario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/visao/GerenciarAnimais.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visao/GerenciarAnimais.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/visao/interfaces/IProcedimentosCRUD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/visao/interfaces/IProcedimentosCRUD.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,6 +34,13 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1574030102700" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -97,6 +91,7 @@
       <workItem from="1575406967081" duration="2112000" />
       <workItem from="1575409212738" duration="599000" />
       <workItem from="1575409850069" duration="1285000" />
+      <workItem from="1575423097584" duration="2599000" />
     </task>
     <servers />
   </component>
