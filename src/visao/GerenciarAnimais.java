@@ -57,7 +57,4 @@ public class GerenciarAnimais extends JFrame {
         });
     }
 
-    public GerenciarAnimais() {
-
-    }
 }
