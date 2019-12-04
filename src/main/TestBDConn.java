@@ -2,6 +2,7 @@ package main;
 
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.Scanner;
 
 import controle.ControleAnimal;
 import controle.ControleFuncionario;
@@ -16,13 +17,48 @@ public class TestBDConn {
 
 	public static void main(String[] args) {
 		
-    	ControleFuncionario c = new ControleFuncionario();
-    	ControleLogin cl = new ControleLogin();
-    	ControleAnimal ca = new ControleAnimal();
+		
+		Scanner input = new Scanner(System.in);
+		System.out.println("Escolha uma opcao: ");
+		int charAux = input.nextInt();
+
+		while(aux != 0)
+		{
+			
+			
+			
+			
+			
+			System.out.println('Escolha uma opcao: ');
+			int charAux = input.nextInt();
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+//		
+//    	ControleFuncionario c = new ControleFuncionario();
+//    	ControleLogin cl = new ControleLogin();
+//    	ControleAnimal ca = new ControleAnimal();
+    	
+    	
+    	
     	
 //    	System.out.println(c.buscaFuncionario(10));
-    	System.out.println(ca.removeAnimal(2));
-    	System.out.println(ca.buscaAnimal(2));
+//    	System.out.println(ca.removeAnimal(2));
+//    	System.out.println(ca.buscaAnimal(2));
     	
 //    	System.out.println(ca.alteraAnimal(, "martinezCotoco", 2157850, "1012-10-10 00:00:00", 2, 2457, "M", "azul"));
 //    	System.out.println(ca.buscaAnimal(2).getNome());
