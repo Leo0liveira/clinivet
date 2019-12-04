@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface IServicos {
 
-    public boolean AgendarConsulta(Date data, String Horario, String CPF, String NomeVet, String Descricao, String FormaDePagamento);
+    public boolean AgendarConsulta(Date data,String Horario, String CPF, String NomeVet, String Descricao, String FormaDePagamento);
 
-    public boolean AgendarProcedimento(Date data, String Horario, String CPF, String NomeVet, String TipoDeProcedimento, String FormaDePagamento);
+    public boolean AgendarProcedimento(Date data,String Horario, String CPF, String NomeVet, String TipoDeProcedimento, String FormaDePagamento);
 
 
     // retorna lista de todos os animais agrupados por especie
