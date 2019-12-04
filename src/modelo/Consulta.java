@@ -2,6 +2,7 @@ package modelo;
 
 import java.sql.Date;
 
+
 public class Consulta extends Procedimento{
 
     private int idAnimal;
