@@ -44,7 +44,7 @@ public class TelaLogin extends JFrame {
                     JOptionPane.showMessageDialog(rootFrame, "olá, " + f.getNome() + " seja Bem Vindo");
                     rootFrame.dispose();
                 } else {
-                    JOptionPane.showMessageDialog(rootPanel, "erro ao efetura login, por favor temte novamente");
+                    JOptionPane.showMessageDialog(rootPanel, "erro ao efetuar login, por favor tente novamente");
                 }
 
 
