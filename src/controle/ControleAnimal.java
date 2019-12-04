@@ -50,6 +50,7 @@ public class ControleAnimal {
     public Animal buscaAnimal(int codigo) {
         Animal animal = null;
         ResultSet rs;
+
         try {
             rs = AnimalDAO.recuperar(Codigo);
             while (rs.next()) {
@@ -58,6 +59,7 @@ public class ControleAnimal {
         } catch (ClassNotFoundException | SQLException | NaoEncontradoExeception e) {
             return null;
         }
+
         if (animal == null)
             return null;
 
