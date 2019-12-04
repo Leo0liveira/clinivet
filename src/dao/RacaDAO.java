@@ -12,11 +12,7 @@ public abstract class RacaDAO extends DAO {
     static ResultSet rs = null;
     static StringBuilder sql = new StringBuilder();
 
-    /*
-     * executeBooleanQuery: retorna true se a operacao for realizada com sucesso, false caso contrario.
-     * @param sql StringBuilder
-     * @return
-     * */
+
     private static boolean executeBooleanQuery(StringBuilder sql) throws SQLException {
         try {
             conn = getInstance();
@@ -36,11 +32,7 @@ public abstract class RacaDAO extends DAO {
         return true;
     }
 
-    /*
-    * recuperaFuncionario: retorna raca com nome requerido.
-    * @param cpfFuncionario String
-    * @return
-    * */
+    
     public static ResultSet recuperar(int ID) throws SQLException, ClassNotFoundException, NaoEncontradoExeception {
         sql.append("SELECT * ");
         sql.append("FROM racas ");
@@ -54,11 +46,7 @@ public abstract class RacaDAO extends DAO {
         return ps.executeQuery();
     }
 
-    /*
-     * cadastraFuncionario: insere um usuario no banco de dados.
-     * @param raca raca
-     * @return
-     * */
+ 
     public static boolean cadastrar(Raca raca) throws SQLException{
         sql.append("INSERT INTO racas");
         sql.append("(descricao) ");
@@ -70,13 +58,7 @@ public abstract class RacaDAO extends DAO {
         return executeBooleanQuery(sql);
     }
 
-    /*
-     * alteraFuncionario: altera um campo de um determinado raca.
-     * @param String cpfFuncionario
-     * @param String coluna
-     * @param String novoValor
-     * @return
-     * */
+
     public static boolean alterar(Raca raca) throws SQLException {
 
         sql.append("UPDATE racas ");
@@ -86,13 +68,8 @@ public abstract class RacaDAO extends DAO {
         return executeBooleanQuery(sql);
     }
 
-    /*
-     * removeFuncionario: remove raca do banco de dados.
-     * @param String cpfFuncionario
-     * @return
-     * */
     public static boolean remover(int ID) throws SQLException {
-        sql.append("DELETE FROM raca ");
+        sql.append("DELETE FROM racas ");
         sql.append("WHERE codigo = " + ID);
 
         return executeBooleanQuery(sql);
