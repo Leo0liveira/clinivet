@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.*;
+
+import controle.ControleAutenticacao;
 import modelo.Funcionario;
 import visao.interfaces.*;
 
@@ -24,10 +26,28 @@ public class TelaLogin extends JFrame {
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //Funcionario f = autentica (textField1.getText(), passwordField1.getPassword());
+                //TODO substituir nome da classe do controler
+                ControleAutenticacao ca = new ControleAutenticacao();
+                Funcionario f = ca.autentica (textField1.getText(), passwordField1.getPassword());
 
-                //TODO remover aspas do f.getNome()
-                JOptionPane.showMessageDialog(rootFrame, "ola, " + "f.getNome()" + " seja Bem Vindo");
+
+                if (f.getClass().getTypeName() == "modelo.Administrador"){
+                    TelaADM telaADM = new TelaADM();
+                    JOptionPane.showMessageDialog(rootFrame, "olá, " + f.getNome() + " seja Bem Vindo");
+                    rootFrame.dispose();
+                } else if (f.getClass().getTypeName() == "modelo.Funcionario"){
+                    TelaFuncionario tf = new TelaFuncionario();
+                    JOptionPane.showMessageDialog(rootFrame, "olá, " + f.getNome() + " seja Bem Vindo");
+                    rootFrame.dispose();
+                } else if (f.getClass().getTypeName() == "modelo.Veterinario"){
+                    TelaVeterinario tv = new TelaVeterinario("Veterinário");
+                    JOptionPane.showMessageDialog(rootFrame, "olá, " + f.getNome() + " seja Bem Vindo");
+                    rootFrame.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(rootPanel, "erro ao efetura login, por favor temte novamente");
+                }
+
+
             }
         });
     }
