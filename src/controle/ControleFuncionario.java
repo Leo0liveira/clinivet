@@ -5,7 +5,6 @@ import java.sql.SQLException;
 
 import dao.FuncionarioDAO;
 import dao.NaoEncontradoExeception;
-import jdk.jfr.DataAmount;
 import modelo.Funcionario;
 
 public class ControleFuncionario {
