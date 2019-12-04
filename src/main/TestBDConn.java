@@ -3,29 +3,20 @@ package main;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 
+import controle.ControleFuncionario;
 import dao.FuncionarioDAO;
 import dao.NaoEncontradoExeception;
 import dao.RacaDAO;
+import modelo.Funcionario;
 import modelo.Raca;
 
 public class TestBDConn {
 
 	public static void main(String[] args) {
 		
-		try {
-			Raca raca = RacaDAO.recuperar("pintier");
-			System.out.println(raca.getNome() + "\n" + raca.getDescricao());
-			
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (NaoEncontradoExeception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+    	ControleFuncionario funcionario = new ControleFuncionario();
+    	
+    	funcionario.alteraFuncionario(0, "1", "1", "1", "1", "1", "1","1", "1", "1", "1");
 		
 //		Timestamp dataDeHoje = new Timestamp(System.currentTimeMillis());
 //		
