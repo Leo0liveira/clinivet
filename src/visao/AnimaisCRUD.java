@@ -2,7 +2,6 @@ package visao;
 
 import controle.ControleAnimal;
 import dao.NaoEncontradoExeception;
-import modelo.Animal;
 
 import javax.swing.*;
 import java.awt.*;
@@ -85,24 +84,14 @@ public class AnimaisCRUD extends JFrame {
         irButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                if (ca.buscaAnimal(Integer.parseInt(tfalt_cod_animal.getText())) != null) {
-                    alt_error.setVisible(true);
-                    return;
-                } else {
-                    Animal a = ca.buscaAnimal(Integer.parseInt(tfalt_cod_animal.getText()));
-                    altPanel.setVisible(true);
-                    tfalt_nome_animal.setText(a.getNome());
-                    tfalt_prop_animal.setText(Integer.toString(a.getDonoId()));
-                    tfraca_animal.setText(Integer.toString(a.getRaca()));
-                    tfalt_especie_animal.setText(Integer.toString(a.getEspecie()));
-                    tfalt_sexo_animal.setText(a.getSexo());
-                    tfalt_cor_animal.setText(a.getCor());
-                    tfalt_nasc_animal.setText(a.getNascimento());
+                    if (ca.buscaAnimal(Integer.parseInt(tfalt_cod_animal.getText())) != null) {
+                        alt_error.setVisible(true);
+                        return;
+                    }
 
-                    if (!altPanel.isVisible())
-                        frame.setSize(frame.getWidth(), frame.getHeight() + 200);
-                    altPanel.setVisible(true);
-                }
+                if (!altPanel.isVisible())
+                    frame.setSize(frame.getWidth(), frame.getHeight() + 200);
+                altPanel.setVisible(true);
             }
         });
         //retorna a tela Gerenciar
@@ -117,68 +106,58 @@ public class AnimaisCRUD extends JFrame {
         ir_removeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                if (ca.buscaAnimal(Integer.parseInt(tfrem_cod_animal.getText())) != null) {
-                    remove_error.setVisible(true);
-                    return;
-                } else {
-                    Animal a = ca.buscaAnimal(Integer.parseInt(tfrem_cod_animal.getText()));
-                    removePanel.setVisible(true);
-                    tfrem_nome_animal.setText(a.getNome());
-                    tfrem_prop_animal.setText(Integer.toString(a.getDonoId()));
-                    tfrem_raca_animal.setText(Integer.toString(a.getRaca()));
-                    tfrem_especie_animal.setText(Integer.toString(a.getEspecie()));
-                    tfrem_sexo_animal.setText(a.getSexo());
-                    tfrem_cor_animal.setText(a.getCor());
-                    tfrem_nasc_animal.setText(a.getNascimento());
+                    if (ca.buscaAnimal(Integer.parseInt(tfalt_cod_animal.getText())) != null) {
+                        remove_error.setVisible(true);
+                        return;
+                    }
 
-                    if (!removePanel.isVisible())
-                        frame.setSize(frame.getWidth(), frame.getHeight() + 200);
-                    removePanel.setVisible(true);
-                }
+                if (!removePanel.isVisible())
+                    frame.setSize(frame.getWidth(), frame.getHeight() + 200);
+                removePanel.setVisible(true);
             }
         });
 
         adicionarAnimalButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                ca.adicionaAnimal(
-                        tfnome_animal.getText(),
-                        Integer.parseInt(tfprop_animal.getText()),
-                        tfnasc_animal.getText(),
-                        Integer.parseInt(tfespecie_animal.getText()),
-                        Integer.parseInt(tfraca_animal.getText()),
-                        tfsexo_animal.getText(),
-                        tfcor_animal.getText()
-                );
+                    ca.adicionaAnimal(
+                            tfnome_animal.getText(),
+                            Integer.parseInt(tfprop_animal.getText()),
+                            tfnasc_animal.getText(),
+                            Integer.parseInt(tfespecie_animal.getText()),
+                            Integer.parseInt(tfraca_animal.getText()),
+                            tfsexo_animal.getText(),
+                            tfcor_animal.getText()
+                    );
             }
         });
 
         alterarAnimalButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                if (ca.alteraAnimal(
-                        Integer.parseInt(tfalt_cod_animal.getText()),
-                        tfnome_animal.getText(),
-                        Integer.parseInt(tfprop_animal.getText()),
-                        tfnasc_animal.getText(),
-                        Integer.parseInt(tfespecie_animal.getText()),
-                        Integer.parseInt(tfraca_animal.getText()),
-                        tfsexo_animal.getText(),
-                        tfcor_animal.getText())) {
+                    if (ca.alteraAnimal(
+                            Integer.parseInt(tfalt_cod_animal.getText()),
+                            tfnome_animal.getText(),
+                            Integer.parseInt(tfprop_animal.getText()),
+                            tfnasc_animal.getText(),
+                            Integer.parseInt(tfespecie_animal.getText()),
+                            Integer.parseInt(tfraca_animal.getText()),
+                            tfsexo_animal.getText(),
+                            tfcor_animal.getText())) {
 
-                    return;
-                } else {
-                    alt_error_2.setVisible(true);
-                }
+                        return;
+                    }else{
+                        alt_error_2.setVisible(true);
+                    }
             }
         });
 
         removerAnimalButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                if (!ca.removeAnimal(Integer.parseInt(tfrem_cod_animal.getText()))) {
-                    remove_error_2.setVisible(true);
-                }
+                    if (!ca.removeAnimal(Integer.parseInt(tfrem_cod_animal.getText()))) {
+                        remove_error_2.setVisible(true);
+                    }
             }
         });
 
