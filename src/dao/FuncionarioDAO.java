@@ -41,33 +41,25 @@ public abstract class FuncionarioDAO extends DAO {
     * @param cpfFuncionario String
     * @return
     * */
-    public Funcionario recuperar(int matricula) throws SQLException, ClassNotFoundException, NaoEncontradoExeception {
+    public static ResultSet recuperar(int matricula) throws SQLException, ClassNotFoundException, NaoEncontradoExeception {
 
-        Funcionario funcionario = null;
         sql.append("SELECT * ");
         sql.append("FROM funcionarios");
         sql.append("WHERE cpf =  ?");
 
-        try {
 
             //Cria instancia da conexão (usando singleton)
             //Executa query com o sql escrito acima
             conn = getInstance();
             PreparedStatement ps = conn.prepareStatement(sql.toString());
-            ps.setString(1, matricula);
+            ps.setInt(1, matricula);
             rs = ps.executeQuery();
 
-
-            // Fecha conexão
-        } finally {
-            if (rs != null) {
-                rs.close();
-            }
             if (conn != null) {
                 conn.close();
             }
-        }
-        return funcionario;
+            
+        return rs;
     }
 
     /*
@@ -125,7 +117,6 @@ public abstract class FuncionarioDAO extends DAO {
      * */
     public static boolean remover(int matricula) throws SQLException {
 
-        String funcionario = null;
         sql.append("DELETE FROM funcionarios ");
         sql.append("WHERE cpf = " + matricula);
 

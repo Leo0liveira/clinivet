@@ -58,6 +58,7 @@ public class ControleFuncionario {
 			return false;
 		}
     }
+    
     public Funcionario buscaFuncionario(int matricula)
     {
     	Funcionario funcionario = null;
@@ -72,10 +73,11 @@ public class ControleFuncionario {
             			rs.getString("email"), rs.getString("data_contratacao"), rs.getString("cpf"), rs.getString("tipo_permissao"));
             	
                 //Se não houver resultados na query
-                if (funcionario == null) {
-                    return null;
-                }
             }
+            if (funcionario == null) {
+                return null;
+            }
+            return funcionario;
 
         } catch (SQLException e) {
            return null;
@@ -86,12 +88,6 @@ public class ControleFuncionario {
         catch (ClassNotFoundException e) {
            return null;
         }
-        finally {
-            if (rs != null) {
-                rs.close();
-            }
-
-        return funcionario;
-        
     }
 }
+        
