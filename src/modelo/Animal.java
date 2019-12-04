@@ -46,7 +46,7 @@ public class Animal {
         return donoId;
     }
 
-    public void seDonoId(int donoId) {
+    public void setDonoId(int donoId) {
         this.donoId = donoId;
     }
 
