@@ -3,21 +3,23 @@ package controle;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import dao.FuncionarioDAO;
 import dao.NaoEncontradoExeception;
-import dao.RacaDAO;
+import jdk.jfr.DataAmount;
 import modelo.Funcionario;
 
 public class ControleFuncionario {
 	
-	public boolean adicionaFuncionario(String nome, String sexo, String endereco, String cidade, 
+	public boolean adicionaFuncionario(String nome, String endereco, String cidade, 
     		String estado, String telefone_residencial, String telefone_celular, 
     		String email, String data_contratacao, String cpf, String tipo_permissao)
     {
         // id auto-incremental
-		Funcionario funcionario = new Funcionario(0, descricao);
+		
+		Funcionario funcionario = new Funcionario(0, nome, endereco, cidade, estado, telefone_residencial, telefone_celular, email, data_contratacao, cpf, tipo_permissao);
 
         try {
-			if(RacaDAO.cadastrar(raca))
+			if(FuncionarioDAO.cadastrar(funcionario))
 			    return true;
 			else
 			    return false;
@@ -28,9 +30,11 @@ public class ControleFuncionario {
         
     }
     
-    public boolean alteraFuncionario(int id, String descricao)
+    public boolean alteraFuncionario(int id, String nome, String endereco, String cidade, 
+    		String estado, String telefone_residencial, String telefone_celular, 
+    		String email, String data_contratacao, String cpf, String tipo_permissao)
     {
-    	Raca raca = new Raca(id, descricao);
+    	Funcionario funcionario = new Funcionario(0, nome, endereco, cidade, estado, telefone_residencial, telefone_celular, email, data_contratacao, cpf, tipo_permissao);
     	
         try {
 			if(RacaDAO.alterar(raca))
