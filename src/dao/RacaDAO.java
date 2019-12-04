@@ -41,7 +41,7 @@ public abstract class RacaDAO extends DAO {
     * @param cpfFuncionario String
     * @return
     * */
-    public static Raca recuperar(String racaNome) throws SQLException, ClassNotFoundException, NaoEncontradoExeception {
+    public static Raca recuperar(int ID) throws SQLException, ClassNotFoundException, NaoEncontradoExeception {
         Raca raca = null;
         sql.append("SELECT * ");
         sql.append("FROM raca ");
@@ -53,13 +53,13 @@ public abstract class RacaDAO extends DAO {
             //Executa query com o sql escrito acima
             conn = getInstance();
             PreparedStatement ps = conn.prepareStatement(sql.toString());
-            ps.setString(1, racaNome);
+            ps.setInt(1, ID);
             rs = ps.executeQuery();
             raca = new Raca();
             
             while(rs.next())
             {
-        		raca.setNome(rs.getString("nome"));
+        		raca.setNome(rs.getString("ID"));
         		raca.setDescricao(rs.getString("descricao"));
             }
 
