@@ -44,7 +44,7 @@ public abstract class EspecieDAO extends DAO {
     public static ResultSet recuperar(int ID) throws SQLException, ClassNotFoundException, NaoEncontradoExeception {
         sql.append("SELECT * ");
         sql.append("FROM especies ");
-        sql.append("WHERE id = ?");
+        sql.append("WHERE codigo = ?");
 
         //Cria instancia da conexão (usando singleton)
         //Executa query com o sql escrito acima
@@ -79,7 +79,7 @@ public abstract class EspecieDAO extends DAO {
 
         sql.append("UPDATE especies ");
         sql.append("SET descricao = ''" + especie.getDescricao()+ "''");
-        sql.append("WHERE id = " + especie.getCodigo());
+        sql.append("WHERE codigo = " + especie.getCodigo());
 
         return executeBooleanQuery(sql);
     }
@@ -91,7 +91,7 @@ public abstract class EspecieDAO extends DAO {
      * */
     public static boolean remover(int ID) throws SQLException {
         sql.append("DELETE FROM especies ");
-        sql.append("WHERE id = " + ID);
+        sql.append("WHERE codigo = " + ID);
 
         return executeBooleanQuery(sql);
 
