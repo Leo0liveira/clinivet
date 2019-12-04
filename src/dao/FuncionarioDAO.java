@@ -124,11 +124,11 @@ public abstract class FuncionarioDAO extends DAO {
      * @param String novoValor
      * @return
      * */
-    public boolean alterar(String cpfFuncionario, String coluna, String novoValor) throws SQLException {
+    public boolean alterar(Funcionario funcionario) throws SQLException {
 
         sql.append("UPDATE funcionarios ");
-        sql.append("SET " + coluna + " = " + novoValor);
-        sql.append("WHERE cpf = " + cpfFuncionario);
+        sql.append("SET descricao = ''" + raca.getDescricao()+ "''");
+        sql.append("WHERE codigo = " + raca.getID());
 
         return executeBooleanQuery(sql);
     }
