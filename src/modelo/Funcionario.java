@@ -31,6 +31,10 @@ public class Funcionario {
         this.tipo_permissao = tipo_permissao;
         this.cpf = cpf;
     }
+    
+    public Funcionario() {
+    	
+    }
 
 	public int getMatricula() {
 		return matricula;
