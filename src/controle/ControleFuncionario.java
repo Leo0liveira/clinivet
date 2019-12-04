@@ -6,19 +6,21 @@ import java.sql.SQLException;
 import dao.FuncionarioDAO;
 import dao.NaoEncontradoExeception;
 import modelo.Funcionario;
+import modelo.Login;
 
 public class ControleFuncionario {
 	
 	public boolean adicionaFuncionario(String nome, String endereco, String cidade, 
     		String estado, String telefone_residencial, String telefone_celular, 
-    		String email, String data_contratacao, String cpf, String tipo_permissao)
+    		String email, String data_contratacao, String cpf, String tipo_permissao, String password)
     {
         // id auto-incremental
 		
 		Funcionario funcionario = new Funcionario(0, nome, endereco, cidade, estado, telefone_residencial, telefone_celular, email, data_contratacao, cpf, tipo_permissao);
+		Login login = new Login(cpf, password);
 
         try {
-			if(FuncionarioDAO.cadastrar(funcionario))
+			if(FuncionarioDAO.cadastrar(funcionario, login))
 			    return true;
 			else
 			    return false;

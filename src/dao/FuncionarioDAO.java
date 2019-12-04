@@ -1,6 +1,8 @@
 package dao;
 
 import modelo.Funcionario;
+import modelo.Login;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -74,8 +76,9 @@ public abstract class FuncionarioDAO extends DAO {
      * @param funcionario Funcionario
      * @return
      * */
-    public static boolean cadastrar(Funcionario funcionario) throws SQLException{
+    public static boolean cadastrar(Funcionario funcionario, Login login) throws SQLException{
     	StringBuilder sql = new StringBuilder();
+    	
         sql.append("INSERT INTO funcionarios ");
         sql.append("(nome, endereco, cidade, estado, telefone_residencial, telefone_celular, email, cpf, tipo_permissao) ");
         sql.append
@@ -91,8 +94,22 @@ public abstract class FuncionarioDAO extends DAO {
                 "'" +funcionario.getTipo_permissao()+"'" +
                 ");"
                 );
-
+        cadastrarLogin(login);
         return executeBooleanQuery(sql);
+    }
+    
+    public static boolean cadastrarLogin(Login login) throws SQLException{
+    	StringBuilder sql1 = new StringBuilder();
+        sql1.append("INSERT INTO login ");
+        sql1.append("(cpf, password) ");
+        sql1.append
+                ("VALUES ("+
+                "'" +login.getCpf()+ "'" + ", " +
+                "'" +login.getPassword()+"'" +
+                ");"
+                );
+
+        return executeBooleanQuery(sql1);
     }
 
     /*
