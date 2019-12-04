@@ -7,6 +7,7 @@ import java.util.Scanner;
 import controle.ControleAnimal;
 import controle.ControleFuncionario;
 import controle.ControleLogin;
+import controle.ControleRaca;
 import dao.FuncionarioDAO;
 import dao.NaoEncontradoExeception;
 import dao.RacaDAO;
@@ -17,30 +18,9 @@ public class TestBDConn {
 
 	public static void main(String[] args) {
 		
+		ControleRaca cr = new ControleRaca();
 		
-		Scanner input = new Scanner(System.in);
-		System.out.println("Escolha uma opcao: ");
-		int charAux = input.nextInt();
-
-		while(aux != 0)
-		{
-			
-			
-			
-			
-			
-			System.out.println('Escolha uma opcao: ');
-			int charAux = input.nextInt();
-		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		System.out.println(cr.adicionaRaca("martinez cotoco"));
 		
 		
 		

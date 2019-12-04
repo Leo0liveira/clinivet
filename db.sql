@@ -110,7 +110,7 @@ CREATE TABLE clinivetschema.servicos (
 );
 
 CREATE TABLE clinivetschema.animais_servicos (
-	numero_servico integer NOT NULL,
+	numero_servico SERIAL NOT NULL,
 	id_animal integer NOT NULL,
 	data_hora timestamp NOT NULL
 );
@@ -169,12 +169,12 @@ CREATE TABLE clinivetschema.relatorios (
 
 CREATE TABLE clinivetschema.racas (
 	descricao character varying(255),
-	codigo integer NOT NULL PRIMARY KEY
+	codigo SERIAL NOT NULL PRIMARY KEY
 );
 
 CREATE TABLE clinivetschema.especies (
 	descricao character varying(255),
-	codigo integer NOT NULL PRIMARY KEY
+	codigo SERIAL NOT NULL PRIMARY KEY
 );
 
 CREATE TABLE clinivetschema.produtos (
