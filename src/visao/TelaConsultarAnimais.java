@@ -23,6 +23,9 @@ public class TelaConsultarAnimais extends JFrame {
 
     public TelaConsultarAnimais(String title) {
         super(title);
+
+        ControleConsulta c = new ControleConsulta();
+
         frame = new JFrame("Consultar animal");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setContentPane(consultarAnimaisPanel);
@@ -37,6 +40,18 @@ public class TelaConsultarAnimais extends JFrame {
             public void actionPerformed(ActionEvent actionEvent) {
                 JFrame f = new TelaVeterinario("Veterinário");
                 frame.dispose();
+            }
+        });
+            btnSalvar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) { 
+                try {
+                    c.salvarDados(txtIdAnimal.getText(), txtIdVeterinário.getText()
+                    textField1.getText(), txtData.getText(), txtHorario.getText(), "pagamento"
+                    );
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }

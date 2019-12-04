@@ -1,9 +1,15 @@
+  
 package visao;
+
+import controle.ControleAnimal;
+import dao.NaoEncontradoExeception;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Date;
+import java.sql.SQLException;
 
 public class TelaGerenciarProcedimentos extends JFrame {
     private static JFrame frame;
@@ -35,6 +41,8 @@ public class TelaGerenciarProcedimentos extends JFrame {
     private JPanel removerPanel;
 
     public TelaGerenciarProcedimentos(String s) {
+      ControleProcedimento p = new ControleProcedimento()
+
         frame = new JFrame("Gerenciar procedimentos");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setContentPane(gerenciarProcPanel);
@@ -48,6 +56,20 @@ public class TelaGerenciarProcedimentos extends JFrame {
         btnIr.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                    try {
+                    if (p.buscaProcedimento(Integer.parseInt(txtCodigoAlterar.getText())) != null) {
+                        alt_error.setVisible(true);
+                        return;
+                    }
+
+                } catch (NaoEncontradoExeception naoEncontradoExeception) {
+                    naoEncontradoExeception.printStackTrace();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+
                 if (!alterarPanel.isVisible())
                     frame.setSize(frame.getWidth(), frame.getHeight() + 70);
                     alterarPanel.setVisible(true);
@@ -57,6 +79,20 @@ public class TelaGerenciarProcedimentos extends JFrame {
         btnIr2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                try {
+                    if (p.busProcedimento(Integer.parseInt(txtRemover.getText())) != null) {
+                        remove_error.setVisible(true);
+                        return;
+                    }
+
+                } catch (NaoEncontradoExeception naoEncontradoExeception) {
+                    naoEncontradoExeception.printStackTrace();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+
                 if (!removerPanel.isVisible())
                     frame.setSize(frame.getWidth(), frame.getHeight() + 100);
                 removerPanel.setVisible(true);
@@ -73,6 +109,49 @@ public class TelaGerenciarProcedimentos extends JFrame {
                 frame.dispose();
             }
         });
+        ADICIONARPROCEDIMENTOButton.addActionListener(new ActionListener(){
+              @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                try {
+                    p.adcionaProcedimento(txtCodigo.getText(), txtDescricao.getText(), txtPreco.getText())
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        btnAlterar.addActionListener(new ActionListener(){
+              @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                try {
+                    if (p.alteraProcedimento(
+                            Integer.parseInt(txtNovoCodigo.getText()),
+                            txtNovaDescricao.getText(),
+                            txtNovoPreco.getText()) {
+
+                        return;
+                    }else{
+                        alt_error_2.setVisible(true);
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        btnRemover.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                try {
+                    if (!p.removeProcedimento(Integer.parseInt(txtRemover.getText()))) {
+                        remove_error_2.setVisible(true);
+                    }
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
     }
 
 }
