@@ -10,10 +10,6 @@ public class ControleAnimal {
     public AnimalDAO daoAnimal;
     private ResultSet resultSet;
 
-    public ControleAnimal(){
-        animal = new Animal();
-        daoAnimal = new AnimalDAO();
-    }
     public boolean adicionaAnimal(String nome, int proprietario, String nascimento, int especie, int raca, String sexo, String cor)
     {
         Animal animal = new Animal("", nome, proprietario, nascimento, especie, raca, sexo, cor);
@@ -27,7 +23,6 @@ public class ControleAnimal {
             return false;
         }
     }
-
 
     public boolean alteraAnimal(int codigo, String nome, int proprietario, String nascimento, int especie, int raca, String sexo, String cor)
     {
@@ -55,7 +50,8 @@ public class ControleAnimal {
         }
     }
 
-        public boolean recuperar(Animal animal) {
+    public boolean recuperar(Animal animal)
+        {
             try{
                 resultSet = (ResultSet) daoAnimal.recuperar(Integer.valueOf(animal.getCodigo()));
                 animal.setCodigo(resultSet.getInt(1));
@@ -71,9 +67,4 @@ public class ControleAnimal {
                 e.printStackTrace();
             }
         }
-        }
-
-
-    }
-
 }
