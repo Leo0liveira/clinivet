@@ -44,8 +44,8 @@ public abstract class RacaDAO extends DAO {
     public static Raca recuperar(int ID) throws SQLException, ClassNotFoundException, NaoEncontradoExeception {
         Raca raca = null;
         sql.append("SELECT * ");
-        sql.append("FROM raca ");
-        sql.append("WHERE nome = ?");
+        sql.append("FROM racas ");
+        sql.append("WHERE id = ?");
 
         try {
 
@@ -59,7 +59,7 @@ public abstract class RacaDAO extends DAO {
             
             while(rs.next())
             {
-        		raca.setNome(rs.getString("ID"));
+        		raca.setID(rs.getString("ID"));
         		raca.setDescricao(rs.getString("descricao"));
             }
 
@@ -86,12 +86,11 @@ public abstract class RacaDAO extends DAO {
      * @return
      * */
     public static boolean cadastrar(Raca raca) throws SQLException{
-        sql.append("INSERT INTO raca");
-        sql.append("(nome, descricao) ");
+        sql.append("INSERT INTO racas");
+        sql.append("(descricao) ");
         sql.append
                 ("VALUES ("+
-                "'" +raca.getNome()+ "'" + ", " +
-                "'"+  raca.getDescricao()+"'"+
+                "'"+  raca.getDescricao() +"'"+
                 ");");
 
         return executeBooleanQuery(sql);
@@ -104,11 +103,11 @@ public abstract class RacaDAO extends DAO {
      * @param String novoValor
      * @return
      * */
-    public boolean alterar(String nomeRaca, String coluna, String novoValor) throws SQLException {
+    public boolean alterar(Raca raca) throws SQLException {
 
-        sql.append("UPDATE raca ");
-        sql.append("SET " + coluna + " = " + novoValor);
-        sql.append("WHERE nome = " + nomeRaca);
+        sql.append("UPDATE racas ");
+        sql.append("SET descricao = ''" + raca.getDescricao()+ "''");
+        sql.append("WHERE id = " + raca.getID());
 
         return executeBooleanQuery(sql);
     }
@@ -118,9 +117,9 @@ public abstract class RacaDAO extends DAO {
      * @param String cpfFuncionario
      * @return
      * */
-    public boolean remover(String racaNome) throws SQLException {
+    public boolean remover(int ID) throws SQLException {
         sql.append("DELETE FROM raca ");
-        sql.append("WHERE nome = " + racaNome);
+        sql.append("WHERE id = " + ID);
 
         return executeBooleanQuery(sql);
 

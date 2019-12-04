@@ -5,17 +5,18 @@ public class Raca {
     private String descricao;
     private int ID;
 
-    public Raca(int ID, String descricao) {
-        this.ID = ID; 
-        this.descricao = descricao;
-    }
 
     public Raca() {
 		// TODO Auto-generated constructor stub
 	}
 
+    public Raca(String descricao, int ID) {
+        this.descricao = descricao;
+        this.ID = ID;
+    }
+
     public String getDescricao() {
-        return descricao;
+        return this.descricao;
     }
 
     public void setDescricao(String descricao) {
@@ -23,10 +24,11 @@ public class Raca {
     }
 
     public int getID() {
-        return ID;
+        return this.ID;
     }
 
-    public void setDescricao(int ID) {
+    public void setID(int ID) {
         this.ID = ID;
     }
+
 }
