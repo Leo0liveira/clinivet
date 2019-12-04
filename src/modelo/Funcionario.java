@@ -5,7 +5,6 @@ public class Funcionario {
 
 	private int matricula;
     private String nome;
-    private String sexo;
     private String endereco;
     private String cidade;
     private String estado;
@@ -16,13 +15,12 @@ public class Funcionario {
     private String tipo_permissao;
     private String cpf;
 
-    public Funcionario(int matricula, String nome, String sexo, String endereco, String cidade, 
+    public Funcionario(int matricula, String nome, String endereco, String cidade, 
     		String estado, String telefone_residencial, String telefone_celular, 
     		String email, String data_contratacao, String cpf, String tipo_permissao) {
     	
     	this.matricula = matricula;
         this.nome = nome;
-        this.sexo = sexo;
         this.endereco = endereco;
         this.cidade = cidade;
         this.estado = estado;
