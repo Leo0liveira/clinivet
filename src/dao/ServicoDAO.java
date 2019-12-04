@@ -2,6 +2,7 @@ package dao;
 
 import modelo.Servico;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -57,10 +58,11 @@ public abstract class ServicoDAO extends DAO {
             rs = ps.executeQuery();
 
             while(rs.next())
+            	
             {
                 servico = new Servico(
                     rs.getString("tipo"),
-                    rs.getInt("data_hora"),
+                    rs.getDate("data_hora"),
                     rs.getInt("numero"),
                     rs.getString("nome")
                 );

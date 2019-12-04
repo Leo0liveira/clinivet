@@ -6,6 +6,7 @@ public class Veterinario extends Funcionario {
                        String telefoneCelular, String email, String dataHora, int id, String cpf) {
         super(id, sexo, endereco, cidade, estado, telefoneResidencial, telefoneCelular, email, dataHora, nome, cpf);
     }
+    
 
 
 }

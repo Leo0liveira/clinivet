@@ -95,6 +95,8 @@ public class VeterinarioDAO extends DAO {
                 funcionario.getTelefoneResidencial() + ", " +
                 funcionario.getTelefoneCelular() + ", " +
                 ")");
+        
+        
 
         return executeBooleanQuery(sql);
     }
