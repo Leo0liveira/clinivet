@@ -1,5 +1,8 @@
 package visao;
 
+import controle.ControleEspecie;
+import modelo.Especie;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -25,8 +28,14 @@ public class EspeciesCRUD extends JFrame {
     private JPanel remove_error;
     private JPanel alt_error;
     private JTextField tfcod;
+    private JPanel alt_error_2;
+    private JPanel remove_error_2;
+    private JPanel add_error;
 
     public EspeciesCRUD(String caller) {
+
+        ControleEspecie ce = new ControleEspecie();
+
         frame = new JFrame("Especies");
         frame.setContentPane(mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -38,8 +47,11 @@ public class EspeciesCRUD extends JFrame {
         //Definições
         altPanel.setVisible(false);
         removePanel.setVisible(false);
+        add_error.setVisible(false);
         alt_error.setVisible(false);
+        alt_error_2.setVisible(false);
         remove_error.setVisible(false);
+        remove_error_2.setVisible(false);
         tfrem_especie.setEditable(false);
 
 
@@ -49,20 +61,37 @@ public class EspeciesCRUD extends JFrame {
         alt_irButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                //todo busca
-                if (!altPanel.isVisible())
-                    frame.setSize(frame.getWidth(), frame.getHeight() + 25);
-                altPanel.setVisible(true);
+                if(ce.buscaEspecie(Integer.parseInt(tfalt_cod.getText())) == null){
+                    alt_error.setVisible(true);
+                }else{
+                    Especie e = ce.buscaEspecie(Integer.parseInt(tfalt_cod.getText()));
+                    altPanel.setVisible(true);
+                    tfalt_cod.setText(Integer.toString(e.getCodigo()));
+                    tfalt_especie.setText(e.getDescricao());
+
+                    if (!altPanel.isVisible())
+                        frame.setSize(frame.getWidth(), frame.getHeight() + 25);
+                    altPanel.setVisible(true);
+                }
+
             }
         });
         //busca especie para remoção
         remove_irButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                //todo
-                if (!removePanel.isVisible())
-                    frame.setSize(frame.getWidth(), frame.getHeight() + 25);
-                removePanel.setVisible(true);
+                if(ce.buscaEspecie(Integer.parseInt(tfrem_cod.getText())) == null){
+                    remove_error.setVisible(true);
+                }else {
+                    Especie e = ce.buscaEspecie(Integer.parseInt(tfrem_cod.getText()));
+                    removePanel.setVisible(true);
+                    tfrem_cod.setText(Integer.toString(e.getCodigo()));
+                    tfrem_especie.setText(e.getDescricao());
+
+                    if (!removePanel.isVisible())
+                        frame.setSize(frame.getWidth(), frame.getHeight() + 25);
+                    removePanel.setVisible(true);
+                }
             }
         });
         //retorna a tela Gerenciar
@@ -77,21 +106,26 @@ public class EspeciesCRUD extends JFrame {
         adicionarEspécieButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                //todo
+                if(!ce.adicionaEspecie(tfespecie.getText()))
+                    add_error.setVisible(true);
             }
         });
 
         alterarEspécieButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                //todo
+                if(!ce.alteraEspecie(Integer.parseInt(tfalt_cod.getText()), tfalt_especie.getText())) {
+                    alt_error_2.setVisible(true);
+                }
             }
         });
 
         removerEspécieButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                //todo
+                if(!ce.removeEspecie(Integer.parseInt(tfrem_cod.getText()))) {
+                    remove_error_2.setVisible(true);
+                }
             }
         });
     }
