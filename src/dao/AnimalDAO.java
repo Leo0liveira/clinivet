@@ -1,12 +1,13 @@
 package dao;
 
 import modelo.Animal;
-import modelo.Funcionario;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import org.postgresql.util.PSQLException;
 
 public abstract class AnimalDAO extends DAO {
 
