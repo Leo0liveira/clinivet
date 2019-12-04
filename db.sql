@@ -182,6 +182,11 @@ CREATE TABLE clinivetschema.vendas (
 	id_produto integer NOT NULL
 );
 
+CREATE TABLE clinivetschema.matricula (
+	cpf integer NOT NULL PRIMARY KEY,
+	senha character varying(255) NOT NULL
+);
+
 ALTER TABLE ONLY clinivetschema.animais
 ADD CONSTRAINT animais_fk FOREIGN KEY (id_dono)
 REFERENCES clinivetschema.clientes(cpf);
