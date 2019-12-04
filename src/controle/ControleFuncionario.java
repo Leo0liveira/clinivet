@@ -34,10 +34,10 @@ public class ControleFuncionario {
     		String estado, String telefone_residencial, String telefone_celular, 
     		String email, String data_contratacao, String cpf, String tipo_permissao)
     {
-    	Funcionario funcionario = new Funcionario(0, nome, endereco, cidade, estado, telefone_residencial, telefone_celular, email, data_contratacao, cpf, tipo_permissao);
+    	Funcionario funcionario = new Funcionario(id, nome, endereco, cidade, estado, telefone_residencial, telefone_celular, email, data_contratacao, cpf, tipo_permissao);
     	
         try {
-			if(RacaDAO.alterar(raca))
+			if(FuncionarioDAO.alterar(funcionario))
 				return true;
 			else
 				return false;
