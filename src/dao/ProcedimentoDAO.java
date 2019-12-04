@@ -1,7 +1,8 @@
 package dao;
 
-public class ProcedimentoDAO {
+public abstract class ProcedimentoDAO extends DAO {
 
-    //TODO: CRUD
+  
 
 }
+

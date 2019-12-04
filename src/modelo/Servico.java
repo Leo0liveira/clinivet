@@ -7,7 +7,7 @@ public class Servico extends Procedimento {
     private String nome;
     private Integer codigo;
 
-    public Integer getCodigo() {
+    public int getCodigo() {
         return codigo;
     }
 

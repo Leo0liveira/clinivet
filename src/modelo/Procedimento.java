@@ -8,7 +8,7 @@ public class Procedimento {
     private Double preco;
     private int codigo;
 
-    public Procedimento(String descricao, Double preco, int codigo) {
+    public Procedimento(String descricao, Date dataHora, int codigo) {
         this.descricao = descricao;
         this.preco = preco;
         this.codigo= codigo;
@@ -35,11 +35,11 @@ public class Procedimento {
         this.descricao = descricao;
     }
 
-    public int getId() {
+    public int getCodigo() {
         return codigo;
     }
 
-    public void setId(int codigo) {
+    public void setCodigo(int codigo) {
         this.codigo =codigo;
     }
 

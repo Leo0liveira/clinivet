@@ -10,7 +10,7 @@ import modelo.Procedimento;
 
 public class ControleProcedimento {
 	public boolean adicionaProcedimento(int codigo, String descricao, double preco) {
-		Procedimento procedimento = new Procedimento(tipo, dataHora, id);
+		Procedimento procedimento = new Procedimento(codigo, descricao, preco);
 
         try {
 			if(ProcedimentoDAO.cadastrar(procedimento))
@@ -32,6 +32,4 @@ public class ControleProcedimento {
     }
     
     public Procedimento buscaProcedimento(int codigo) {
-    	
     }
-}
