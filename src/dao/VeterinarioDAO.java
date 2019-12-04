@@ -86,16 +86,14 @@ public class VeterinarioDAO extends DAO {
         sql.append("INSERT INTO funcionarios");
         sql.append
                 ("VALUES ("+
-                funcionario.getId() + ", " +
+                funcionario.getMatricula() + ", " +
                 funcionario.getNome() + ", " +
                 funcionario.getCpf() + ", " +
                 funcionario.getEmail() + ", " +
                 funcionario.getEndereco() + ", " +
-                funcionario.getSexo() + ", " +
-                funcionario.getTelefoneResidencial() + ", " +
-                funcionario.getTelefoneCelular() + ", " +
+                funcionario.getTelefone_residencial() + ", " +
+                funcionario.getTelefone_celular() + ", " +
                 ")");
-        
         
 
         return executeBooleanQuery(sql);
