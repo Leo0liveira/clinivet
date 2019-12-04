@@ -51,6 +51,9 @@ public class FuncionarioCRUD {
     private JPanel remove_error_2;
     private JPanel mainPanel;
     private JPanel remove_panel;
+    private JTextField tfaltsenha;
+    private JTextField tfaddsenha;
+    private JTextField tfremsenha;
 
     public FuncionarioCRUD() {
         frame = new JFrame("RaçaCRUD");
@@ -67,6 +70,15 @@ public class FuncionarioCRUD {
         remove_panel.setVisible(false);
         remove_error.setVisible(false);
         remove_error_2.setVisible(false);
+        addpermbox.addItem("Funcionário");
+        addpermbox.addItem("Administrador");
+        addpermbox.addItem("Veterinário");
+        altpermbox.addItem("Funcionário");
+        altpermbox.addItem("Administrador");
+        altpermbox.addItem("Veterinário");
+        rempermbox.addItem("Funcionário");
+        rempermbox.addItem("Administrador");
+        rempermbox.addItem("Veterinário");
 
         //botoes
 
