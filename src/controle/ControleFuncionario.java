@@ -61,9 +61,10 @@ public class ControleFuncionario {
     public Funcionario buscaFuncionario(int matricula)
     {
     	Funcionario funcionario = null;
+    	ResultSet rs;
         try {
 
-        	ResultSet rs = FuncionarioDAO.recuperar(matricula);
+        	rs = FuncionarioDAO.recuperar(matricula);
             while(rs.next())
             {
             	funcionario = new Funcionario(rs.getInt("matricula"), rs.getString("nome"), rs.getString("endereco"), 
@@ -85,6 +86,10 @@ public class ControleFuncionario {
         catch (ClassNotFoundException e) {
            return null;
         }
+        finally {
+            if (rs != null) {
+                rs.close();
+            }
 
         return funcionario;
         
