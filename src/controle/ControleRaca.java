@@ -7,7 +7,7 @@ import dao.NaoEncontradoExeception;
 import dao.RacaDAO;
 import modelo.Raca;
 
-public class controlerRaca
+public class ControleRaca
 {
 
     public boolean adicionaRaca(String descricao)

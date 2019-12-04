@@ -2,7 +2,7 @@ package modelo;
 
 import java.sql.Date;
 
-public class Consulta extends Procedimento{
+public class Consulta extends Procedimento {
     private int idAnimal;
     private int idVeterinario;
     private String horario;
@@ -14,7 +14,6 @@ public class Consulta extends Procedimento{
         this.idVeterinario = idVeterinario;
         this.horario = horario;
         this.pagamentoForma = pagamentoForma;
-        
     }
 
     public int getIdAnimal() {
