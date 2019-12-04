@@ -5,9 +5,10 @@ import modelo.Animal;
 
 public class ControleAnimal {
 
+    AnimalDAO animalDAO = new AnimalDAO();
+
     public boolean adicionaAnimal(String nome, int proprietario, String nascimento, int especie, int raca, String sexo, String cor)
     {
-        AnimalDAO animalDAO = new AnimalDAO();
         Animal animal = new Animal("", nome, proprietario, nascimento, especie, raca, sexo, cor);
 
         if(animalDAO.cadastrar(animal))
@@ -22,7 +23,6 @@ public class ControleAnimal {
 
     public boolean alteraAnimal(int codigo, String nome, int proprietario, String nascimento, int especie, int raca, String sexo, String cor)
     {
-        AnimalDAO animalDAO = new AnimalDAO();
         Animal animal = new Animal(codigo, nome, proprietario, nascimento, especie, raca, sexo, cor);
 
         if(animalDAO.alterar(animal))
@@ -37,8 +37,6 @@ public class ControleAnimal {
 
     public boolean removeAnimal(int codigo)
     {
-        AnimalDAO animalDAO = new AnimalDAO();
-
         if(animalDAO.remover(codigo)) 
         {
             System.out.println("Removido com sucesso"); //mensagem de sucesso pra view
@@ -51,8 +49,6 @@ public class ControleAnimal {
 
     public Animal buscaAnimal(int codigo)
     {
-        AnimalDAO animalDAO = new AnimalDAO();
-
         return animalDAO.recuperar(codigo);
     }
 }

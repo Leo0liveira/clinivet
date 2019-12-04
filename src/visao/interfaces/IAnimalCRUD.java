@@ -8,8 +8,8 @@ import java.util.Date;
 
 public interface IAnimalCRUD {
 
-    public boolean adicionaAnimal(int codigo, String nome, String proprietario, Date nascimento, Especie especie, Raca raca, String sexo, String cor);
-    public boolean alteraAnimal(int codigo, String nome, String proprietario, Date nascimento, Especie especie, Raca raca, String sexo, String cor);
+    public boolean adicionaAnimal(String nome, int proprietario, String nascimento, int especie, int raca, String sexo, String cor);
+    public boolean alteraAnimal(int codigo, String nome, int proprietario, String nascimento, int especie, int raca, String sexo, String cor);
     public boolean removeAnimal(int codigo);
     public Animal buscaAnimal(int codigo);
 }

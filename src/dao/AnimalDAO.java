@@ -67,9 +67,7 @@ public abstract class AnimalDAO extends DAO {
                     rs.getInt("donoId")
                 );
             }
-
-
-
+            
             //Se não houver resultados na query
             if (animal == null) {
                 throw new NaoEncontradoExeception("Animal nao cadastrado.");
@@ -95,8 +93,7 @@ public abstract class AnimalDAO extends DAO {
     public boolean cadastrar(Animal animal) throws SQLException {
         sql.append("INSERT INTO animais");
         sql.append("(nome, sexo, cor, raca, donoId) ");
-        sql.append
-                ("VALUES ("+
+        sql.append("VALUES ("+
                 "'"+animal.getNome()+ "'" + ", " +
                 "'"+animal.getSexo()+"'" + ", " +
                 "'"+animal.getCor()+"'" + ", " +
@@ -138,7 +135,6 @@ public abstract class AnimalDAO extends DAO {
         sql.append("WHERE id = " + animalId);
 
         return executeBooleanQuery(sql);
-
     }
 
 }
