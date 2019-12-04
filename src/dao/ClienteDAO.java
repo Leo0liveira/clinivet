@@ -99,7 +99,19 @@ public abstract class ClienteDAO extends DAO {
      * @return
      */
     public static boolean alterar(Cliente cliente) throws SQLException {
-
+    	StringBuilder sql = new StringBuilder();
+    	boolean flag =false;
+    	try {
+    		
+			ResultSet rs = recuperar(cliente.getCPF());
+			while(rs.next())
+				flag = true;
+		} catch (ClassNotFoundException | NaoEncontradoExeception e) {
+			return false;
+		}
+    	if(!flag)
+    		return false;
+    	
         sql.append("UPDATE clientes SET ");
         sql.append("CPF = '" + cliente.getCPF() + "',");
         sql.append("Nome = '" + cliente.getNome() + "',");
@@ -122,7 +134,19 @@ public abstract class ClienteDAO extends DAO {
      * @return
      */
     public static boolean remover(String cpf) throws SQLException {
-
+    	StringBuilder sql = new StringBuilder();
+    	boolean flag =false;
+    	try {
+    		
+			ResultSet rs = recuperar(cpf);
+			while(rs.next())
+				flag = true;
+		} catch (ClassNotFoundException | NaoEncontradoExeception e) {
+			return false;
+		}
+    	if(!flag)
+    		return false;
+    	
         sql.append("DELETE FROM clientes ");
         sql.append("WHERE cpf = '" + cpf + "'");
 
