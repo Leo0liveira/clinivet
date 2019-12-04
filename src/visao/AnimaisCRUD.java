@@ -1,9 +1,14 @@
 package visao;
 
+import controle.ControleAnimal;
+import dao.NaoEncontradoExeception;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Date;
+import java.sql.SQLException;
 
 public class AnimaisCRUD extends JFrame {
 
@@ -13,7 +18,6 @@ public class AnimaisCRUD extends JFrame {
     private JButton adicionarAnimalButton;
     private JButton alterarAnimalButton;
     private JButton removerAnimalButton;
-    private JTextField tfcod_animal;
     private JTextField tfnome_animal;
     private JButton irButton;
     private JPanel altPanel;
@@ -44,9 +48,13 @@ public class AnimaisCRUD extends JFrame {
     private JTextField tfrem_sexo_animal;
     private JTextField tfrem_cor_animal;
     private JTextField tfprop_animal;
+    private JPanel alt_error_2;
+    private JLabel remove_error_2;
     private JButton ir_altButton;
 
     public AnimaisCRUD(String caller) {
+
+        ControleAnimal ca = new ControleAnimal();
 
         frame = new JFrame("AnimaisCRUD");
         frame.setContentPane(mainPanel);
@@ -60,6 +68,8 @@ public class AnimaisCRUD extends JFrame {
         removePanel.setVisible(false);
         alt_error.setVisible(false);
         remove_error.setVisible(false);
+        alt_error_2.setVisible(false);
+        remove_error_2.setVisible(false);
         tfrem_nome_animal.setEditable(false);
         tfrem_prop_animal.setEditable(false);
         tfrem_nasc_animal.setEditable(false);
@@ -74,7 +84,19 @@ public class AnimaisCRUD extends JFrame {
         irButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                //todo busca
+                try {
+                    if (ca.buscaAnimal(Integer.parseInt(tfalt_cod_animal.getText())) != null) {
+                        alt_error.setVisible(true);
+                        return;
+                    }
+
+                } catch (NaoEncontradoExeception naoEncontradoExeception) {
+                    naoEncontradoExeception.printStackTrace();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
 
                 if (!altPanel.isVisible())
                     frame.setSize(frame.getWidth(), frame.getHeight() + 200);
@@ -89,12 +111,23 @@ public class AnimaisCRUD extends JFrame {
                 frame.dispose();
             }
         });
-
         //busca um animal para remoção
         ir_removeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                //todo busca
+                try {
+                    if (ca.buscaAnimal(Integer.parseInt(tfalt_cod_animal.getText())) != null) {
+                        remove_error.setVisible(true);
+                        return;
+                    }
+
+                } catch (NaoEncontradoExeception naoEncontradoExeception) {
+                    naoEncontradoExeception.printStackTrace();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
 
                 if (!removePanel.isVisible())
                     frame.setSize(frame.getWidth(), frame.getHeight() + 200);
@@ -105,23 +138,59 @@ public class AnimaisCRUD extends JFrame {
         adicionarAnimalButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                //todo add
+                try {
+                    ca.adicionaAnimal(
+                            tfnome_animal.getText(),
+                            Integer.parseInt(tfprop_animal.getText()),
+                            Date.valueOf(tfnasc_animal.getText()),
+                            Integer.parseInt(tfespecie_animal.getText()),
+                            Integer.parseInt(tfraca_animal.getText()),
+                            tfsexo_animal.getText(),
+                            tfcor_animal.getText()
+                    );
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
         alterarAnimalButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                //todo alt
+                try {
+                    if (ca.alteraAnimal(
+                            Integer.parseInt(tfalt_cod_animal.getText()),
+                            tfnome_animal.getText(),
+                            Integer.parseInt(tfprop_animal.getText()),
+                            Date.valueOf(tfnasc_animal.getText()),
+                            Integer.parseInt(tfespecie_animal.getText()),
+                            Integer.parseInt(tfraca_animal.getText()),
+                            tfsexo_animal.getText(),
+                            tfcor_animal.getText())) {
+
+                        return;
+                    }else{
+                        alt_error_2.setVisible(true);
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
         removerAnimalButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                //todo remove
+                try {
+                    if (!ca.removeAnimal(Integer.parseInt(tfrem_cod_animal.getText()))) {
+                        remove_error_2.setVisible(true);
+                    }
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         });
-    }
 
+    }
 }
