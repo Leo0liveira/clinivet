@@ -44,7 +44,7 @@ public abstract class FuncionarioDAO extends DAO {
     public static ResultSet recuperar(int matricula) throws SQLException, ClassNotFoundException, NaoEncontradoExeception {
 
         sql.append("SELECT * ");
-        sql.append("FROM funcionarios");
+        sql.append("FROM clinivetschema.funcionarios");
         sql.append("WHERE cpf =  ?");
 
 

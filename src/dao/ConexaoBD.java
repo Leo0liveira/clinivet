@@ -19,7 +19,6 @@ public class ConexaoBD {
 		
 	    try {
 			Class.forName(driver);
-			System.out.println("teste");
 		    conn = DriverManager.getConnection(host, user, password);
 	        return conn;
 		} catch (ClassNotFoundException e) {
