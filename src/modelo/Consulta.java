@@ -1,11 +1,13 @@
 package modelo;
 
+import java.sql.Date;
+
 public class Consulta extends Procedimento{
 
     private int idAnimal;
     private int idVeterinario;
 
-    public Consulta(int idAnimal, int idVeterinario, String tipo, int dataHora, int id) {
+    public Consulta(int idAnimal, int idVeterinario, String tipo, Date dataHora, int id) {
         super(tipo, dataHora, id);
         this.idAnimal = idAnimal;
         this.idVeterinario = idVeterinario;
