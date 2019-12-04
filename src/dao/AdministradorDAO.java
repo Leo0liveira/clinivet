@@ -49,7 +49,7 @@ public abstract class AdministradorDAO extends DAO {
 	 */
 	public Funcionario recuperar(String cpfAdmin) throws SQLException, ClassNotFoundException, NaoEncontradoExeception {
 
-		Administrador administrador = null;
+		Funcionario administrador = null;
 		sql.append("SELECT * ");
 		sql.append("FROM administradores");
 		sql.append("WHERE cpf =  ?");
@@ -63,26 +63,25 @@ public abstract class AdministradorDAO extends DAO {
 			ps.setString(1, cpfAdmin);
 			rs = ps.executeQuery();
 
-			administrador = new Administrador();
+			administrador = new Funcionario();
 
 			while (rs.next()) {
 				administrador.setNome(rs.getString("nome"));
 				administrador.setCidade(rs.getString("cidade"));
 				administrador.setCpf(rs.getString("cpf"));
 				administrador.setEmail(rs.getString("email"));
-				administrador.setDataHora(rs.getString("datahora"));
+				administrador.setData_contratacao(rs.getString("datahora"));
 				administrador.setEstado(rs.getString("estado"));
-				administrador.setSexo(rs.getString("sexo"));
 				administrador.setEndereco(rs.getString("endereco"));
-				administrador.setId(rs.getInt("id"));
-				administrador.setTelefoneCelular(rs.getString("telefonecelular"));
-				administrador.setTelefoneResidencial(rs.getString("telefoneresidencial"));
+				administrador.setMatricula(rs.getInt("id"));
+				administrador.setTelefone_celular(rs.getString("telefonecelular"));
+				administrador.setTelefone_residencial(rs.getString("telefoneresidencial"));
 			}
-
+			
 
 			//Se não houver resultados na query
 			if (administrador == null) {
-				throw new NaoEncontradoExeception("Administraor não encontrado");
+				throw new NaoEncontradoExeception("Administraor n�o encontrado");
 			}
 
 			// Fecha conexão
@@ -110,12 +109,11 @@ public abstract class AdministradorDAO extends DAO {
 		sql.append
 				("VALUES (" +
 						"'" + funcionario.getNome() + "'" + ", " +
-						"'" + funcionario.getSexo() + "'" + ", " +
 						"'" + funcionario.getEndereco() + "'" + ", " +
 						"'" + funcionario.getCidade() + "'" + ", " +
 						"'" + funcionario.getEstado() + "'" + ", " +
-						"'" + funcionario.getTelefoneResidencial() + "'" + ", " +
-						"'" + funcionario.getTelefoneCelular() + "'" +
+						"'" + funcionario.getTelefone_residencial() + "'" + ", " +
+						"'" + funcionario.getTelefone_celular() + "'" +
 						"'" + funcionario.getEmail() + "'" + ", " +
 						"'" + funcionario.getCpf() + "'" +
 						");");
