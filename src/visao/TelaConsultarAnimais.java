@@ -1,4 +1,5 @@
 package visao;
+import controle.ControleConsulta;
 
 import javax.swing.*;
 import java.awt.*;

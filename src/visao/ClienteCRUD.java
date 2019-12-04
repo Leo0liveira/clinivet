@@ -66,6 +66,10 @@ public class ClienteCRUD extends JFrame {
 
         alteraPanel.setVisible(false);
         removePanel.setVisible(false);
+        searchPanel1.setVisible(false);
+        searchPanel2.setVisible(false);
+        errorPanel1.setVisible(false);
+        error2.setVisible(false);
 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
@@ -76,6 +80,7 @@ public class ClienteCRUD extends JFrame {
         campoREMOVEestado.setEditable(false);
         campoREMOVEdocumento.setEditable(false);
         campoREMOVEemail.setEditable(false);
+        incluePanel.setVisible(false);
 
         ControleCliente cc = new ControleCliente();
 
