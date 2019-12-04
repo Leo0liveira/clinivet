@@ -52,6 +52,8 @@ public class controlerRaca
         catch (ClassNotFoundException e) {
            return null;
         }
+
+        return raca;
         
     }
 }
