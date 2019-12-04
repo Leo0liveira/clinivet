@@ -6,11 +6,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.postgresql.util.PSQLException;
+
 public abstract class RacaDAO extends DAO {
 
     static Connection conn = null;
     static ResultSet rs = null;
-    static StringBuilder sql = new StringBuilder();
+
 
 
     private static boolean executeBooleanQuery(StringBuilder sql) throws SQLException {
@@ -18,9 +20,13 @@ public abstract class RacaDAO extends DAO {
             conn = getInstance();
             PreparedStatement ps = conn.prepareStatement(sql.toString());
             rs = ps.executeQuery();
-        }  catch (Exception e) {
-            return false;
+            
+        }  catch (PSQLException e) {
+            return true;
         } 
+          catch (Exception e){
+        	  return false;
+        }
         finally {
             if (rs != null) {
                 rs.close();
@@ -34,6 +40,8 @@ public abstract class RacaDAO extends DAO {
 
     
     public static ResultSet recuperar(int ID) throws SQLException, ClassNotFoundException, NaoEncontradoExeception {
+    	
+    	StringBuilder sql = new StringBuilder();
         sql.append("SELECT * ");
         sql.append("FROM racas ");
         sql.append("WHERE codigo = ?");
@@ -48,6 +56,7 @@ public abstract class RacaDAO extends DAO {
 
  
     public static boolean cadastrar(Raca raca) throws SQLException{
+    	StringBuilder sql = new StringBuilder();
         sql.append("INSERT INTO racas");
         sql.append("(descricao) ");
         sql.append
@@ -60,15 +69,39 @@ public abstract class RacaDAO extends DAO {
 
 
     public static boolean alterar(Raca raca) throws SQLException {
+    	StringBuilder sql = new StringBuilder();
+    	boolean flag =false;
+    	try {
+    		
+			ResultSet rs = recuperar(raca.getID());
+			while(rs.next())
+				flag = true;
+		} catch (ClassNotFoundException | NaoEncontradoExeception e) {
+			return false;
+		}
+    	if(!flag)
+    		return false;
 
         sql.append("UPDATE racas ");
-        sql.append("SET descricao = ''" + raca.getDescricao()+ "'");
-        sql.append("WHERE codigo = " + raca.getID());
+        sql.append("SET descricao = '" + raca.getDescricao()+ "' ");
+        sql.append("WHERE codigo = " + raca.getID()+ ";");
 
         return executeBooleanQuery(sql);
     }
 
     public static boolean remover(int ID) throws SQLException {
+    	StringBuilder sql = new StringBuilder();
+    	boolean flag =false;
+    	try {
+    		
+			ResultSet rs = recuperar(ID);
+			while(rs.next())
+				flag = true;
+		} catch (ClassNotFoundException | NaoEncontradoExeception e) {
+			return false;
+		}
+    	if(!flag)
+    		return false;
         sql.append("DELETE FROM racas ");
         sql.append("WHERE codigo = " + ID);
 

@@ -61,8 +61,12 @@ public class ControleRaca
             ResultSet rs = RacaDAO.recuperar(id);
             while(rs.next())
             {
-                raca = new Raca(rs.getInt("id"), rs.getString("descricao"));
+                raca = new Raca(rs.getInt("codigo"), rs.getString("descricao"));
             }
+            
+            if(raca == null)
+            	return null;
+            return raca;
 
         } catch (SQLException e) {
            return null;
@@ -74,7 +78,6 @@ public class ControleRaca
            return null;
         }
 
-        return raca;
         
     }
 }

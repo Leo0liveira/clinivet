@@ -20,7 +20,14 @@ public class TestBDConn {
 		
 		ControleRaca cr = new ControleRaca();
 		
-		System.out.println(cr.adicionaRaca("martinez cotoco"));
+		System.out.println(cr.buscaRaca(6));
+//		System.out.println(cr.adicionaRaca("martinez cotoco"));
+		System.out.println(cr.buscaRaca(6).getDescricao());
+		System.out.println(cr.alteraRaca(6, "jao doido"));
+		System.out.println(cr.buscaRaca(6).getDescricao());
+//		System.out.println(cr.removeRaca(6));
+//		System.out.println(cr.buscaRaca(6));
+
 		
 		
 		
