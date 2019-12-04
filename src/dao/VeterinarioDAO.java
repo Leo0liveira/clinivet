@@ -1,17 +1,22 @@
 package dao;
 
 import modelo.Funcionario;
+import modelo.Login;
+import modelo.Veterinario;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.postgresql.util.PSQLException;
 
-public class VeterinarioDAO extends DAO {
+import org.postgresql.util.PSQLException;
+
+public abstract class VeterinarioDAO extends DAO {
 
     static Connection conn = null;
     static ResultSet rs = null;
-    static StringBuilder sql = new StringBuilder();
 
     /*
      * executeBooleanQuery: retorna true se a operacao for realizada com sucesso, false caso contrario.
@@ -23,9 +28,14 @@ public class VeterinarioDAO extends DAO {
             conn = getInstance();
             PreparedStatement ps = conn.prepareStatement(sql.toString());
             rs = ps.executeQuery();
-        }  catch (Exception e) {
-            return false;
-        } finally {
+            
+        }  catch (PSQLException e) {
+            return true;
+        } 
+          catch (Exception e){
+        	  return false;
+        }
+        finally {
             if (rs != null) {
                 rs.close();
             }
@@ -41,39 +51,25 @@ public class VeterinarioDAO extends DAO {
     * @param cpfFuncionario String
     * @return
     * */
-    public String recuperar(String cpfFuncionario) throws SQLException, ClassNotFoundException {
+    public static ResultSet recuperar(int matricula) throws SQLException, ClassNotFoundException, NaoEncontradoExeception {
 
-        String funcionario = null;
+    	StringBuilder sql = new StringBuilder();
         sql.append("SELECT * ");
-        sql.append("FROM funcionarios");
-        sql.append("WHERE cpf =  " + cpfFuncionario);
+        sql.append("FROM veterinarios ");
+        sql.append("WHERE matricula =  ?");
 
-        try {
 
             //Cria instancia da conexão (usando singleton)
             //Executa query com o sql escrito acima
             conn = getInstance();
             PreparedStatement ps = conn.prepareStatement(sql.toString());
-            ps.setString(1, cpfFuncionario);
+            ps.setInt(1, matricula);
             rs = ps.executeQuery();
 
-            funcionario = rs.getString(1);
-
-            //Se não houver resultados na query
-            if (funcionario == null) {
-                funcionario = "Funcionario nao cadastrado.";
-            }
-
-            // Fecha conexão
-        } finally {
-            if (rs != null) {
-                rs.close();
-            }
             if (conn != null) {
                 conn.close();
             }
-        }
-        return funcionario;
+        return rs;
     }
 
     /*
@@ -81,22 +77,41 @@ public class VeterinarioDAO extends DAO {
      * @param funcionario Funcionario
      * @return
      * */
-    public boolean cadastrar(Funcionario funcionario) throws SQLException {
-
-        sql.append("INSERT INTO funcionarios");
+    public static boolean cadastrar(Veterinario veterinario, Login login) throws SQLException{
+    	StringBuilder sql = new StringBuilder();
+    	
+        sql.append("INSERT INTO veterinarios ");
+        sql.append("(nome, endereco, cidade, estado, telefone_residencial, telefone_celular, email, cpf, crmv, tipo_permissao) ");
         sql.append
                 ("VALUES ("+
-                funcionario.getMatricula() + ", " +
-                funcionario.getNome() + ", " +
-                funcionario.getCpf() + ", " +
-                funcionario.getEmail() + ", " +
-                funcionario.getEndereco() + ", " +
-                funcionario.getTelefone_residencial() + ", " +
-                funcionario.getTelefone_celular() + ", " +
-                ")");
-        
-
+                "'" +veterinario.getNome()+ "'" + ", " +
+                "'" +veterinario.getEndereco()+ "'" + ", " +
+                "'" +veterinario.getCidade()+"'" + ", " +
+                "'" +veterinario.getEstado()+"'" + ", " +
+                "'" +veterinario.getTelefone_residencial() +"'"+ ", " +
+                "'" +veterinario.getTelefone_celular() +"',"+
+                "'" +veterinario.getEmail()+"'" + ", " +
+                "'" +veterinario.getCpf()+"'" + ", " +
+                "'" +veterinario.getCrmv()+"'" + ", " +
+                "'" +veterinario.getTipo_permissao()+"'" +
+                ");"
+                );
+        cadastrarLogin(login);
         return executeBooleanQuery(sql);
+    }
+    
+    public static boolean cadastrarLogin(Login login) throws SQLException{
+    	StringBuilder sql1 = new StringBuilder();
+        sql1.append("INSERT INTO login ");
+        sql1.append("(cpf, senha) ");
+        sql1.append
+                ("VALUES ("+
+                "'" +login.getCpf()+ "'" + ", " +
+                "'" +login.getPassword()+"'" +
+                ");"
+                );
+
+        return executeBooleanQuery(sql1);
     }
 
     /*
@@ -106,11 +121,30 @@ public class VeterinarioDAO extends DAO {
      * @param String novoValor
      * @return
      * */
-    public boolean alterar(String cpfFuncionario, String coluna, String novoValor) throws SQLException {
-
-        sql.append("UPDATE funcionarios ");
-        sql.append("SET " + coluna + " = " + novoValor);
-        sql.append("WHERE cpf = " + cpfFuncionario);
+    public static boolean alterar(Veterinario veterinario) throws SQLException {
+    	StringBuilder sql = new StringBuilder();
+    	boolean flag =false;
+    	try {
+    		
+			ResultSet rs = recuperar(veterinario.getMatricula());
+			while(rs.next())
+				flag = true;
+		} catch (ClassNotFoundException | NaoEncontradoExeception e) {
+			return false;
+		}
+    	if(!flag)
+    		return false;
+    	
+        sql.append("UPDATE veterinarios ");
+        sql.append("SET nome = '" + veterinario.getNome()+ "'," +
+        "endereco = '" + veterinario.getEndereco()+ "',"+
+        "cidade = '" + veterinario.getEndereco()+ "',"+
+        "estado = '" + veterinario.getEstado()+ "',"+
+        "telefone_residencial = '" + veterinario.getTelefone_residencial()+ "',"+
+        "telefone_celular = '" + veterinario.getTelefone_celular()+ "',"+
+        "tipo_permissao = '" + veterinario.getEndereco()+ "' ");
+        sql.append("WHERE matricula = " + veterinario.getMatricula() + ";");
+        
 
         return executeBooleanQuery(sql);
     }
@@ -120,33 +154,24 @@ public class VeterinarioDAO extends DAO {
      * @param String cpfFuncionario
      * @return
      * */
-    public boolean remover(String cpfFuncionario) throws SQLException {
-
-        String funcionario = null;
-        sql.append("DELETE FROM funcionarios ");
-        sql.append("WHERE cpf = " + cpfFuncionario);
+    public static boolean remover(int matricula) throws SQLException {
+    	StringBuilder sql = new StringBuilder();
+    	boolean flag =false;
+    	try {
+    		
+			ResultSet rs = recuperar(matricula);
+			while(rs.next())
+				flag = true;
+		} catch (ClassNotFoundException | NaoEncontradoExeception e) {
+			return false;
+		}
+    	if(!flag)
+    		return false;
+        sql.append("DELETE FROM veterinarios ");
+        sql.append("WHERE matricula = " + matricula + ";");
 
         return executeBooleanQuery(sql);
 
     }
 
-    @Override
-    public boolean cadastrar() {
-        return false;
-    }
-
-    @Override
-    public boolean alterar() {
-        return false;
-    }
-
-    @Override
-    public boolean remover() {
-        return false;
-    }
-
-    @Override
-    public Object recuperar() {
-        return null;
-    }
 }

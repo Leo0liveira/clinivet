@@ -8,6 +8,7 @@ import controle.ControleAnimal;
 import controle.ControleFuncionario;
 import controle.ControleLogin;
 import controle.ControleRaca;
+import controle.ControleVeterinario;
 import dao.FuncionarioDAO;
 import dao.NaoEncontradoExeception;
 import dao.RacaDAO;
@@ -17,16 +18,24 @@ import modelo.Raca;
 public class TestBDConn {
 
 	public static void main(String[] args) {
+		ControleVeterinario cv = new ControleVeterinario();
 		
-		ControleRaca cr = new ControleRaca();
+//		System.out.println(cv.adicionaVeterinario("1", "1", "1", "1", "1", "1", "1", "1", "1", 1, "1", "1"));
+		System.out.println(cv.buscaVeterinario(1).getNome());
+		System.out.println(cv.alteraVeterinario(1, "igor", "1", "1", "1", "1", "1", "1", "1", "1", 1, "1"));
+		System.out.println(cv.buscaVeterinario(1).getNome());
+		System.out.println(cv.removeVeterinario(1));
+		System.out.println(cv.buscaVeterinario(1));
 		
-		System.out.println(cr.buscaRaca(6));
-//		System.out.println(cr.adicionaRaca("martinez cotoco"));
-		System.out.println(cr.buscaRaca(6).getDescricao());
-		System.out.println(cr.alteraRaca(6, "jao doido"));
-		System.out.println(cr.buscaRaca(6).getDescricao());
-//		System.out.println(cr.removeRaca(6));
+//		ControleRaca cr = new ControleRaca();
+//		
 //		System.out.println(cr.buscaRaca(6));
+////		System.out.println(cr.adicionaRaca("martinez cotoco"));
+//		System.out.println(cr.buscaRaca(6).getDescricao());
+//		System.out.println(cr.alteraRaca(6, "jao doido"));
+//		System.out.println(cr.buscaRaca(6).getDescricao());
+////		System.out.println(cr.removeRaca(6));
+////		System.out.println(cr.buscaRaca(6));
 
 		
 		

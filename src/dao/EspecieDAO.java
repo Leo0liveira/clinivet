@@ -10,7 +10,6 @@ public abstract class EspecieDAO extends DAO {
 
     static Connection conn = null;
     static ResultSet rs = null;
-    static StringBuilder sql = new StringBuilder();
 
     /*
      * executeBooleanQuery: retorna true se a operacao for realizada com sucesso, false caso contrario.
@@ -42,6 +41,7 @@ public abstract class EspecieDAO extends DAO {
     * @return
     * */
     public static ResultSet recuperar(int ID) throws SQLException, ClassNotFoundException, NaoEncontradoExeception {
+        static StringBuilder sql = new StringBuilder();
         sql.append("SELECT * ");
         sql.append("FROM especies ");
         sql.append("WHERE codigo = ?");
@@ -60,6 +60,7 @@ public abstract class EspecieDAO extends DAO {
      * @return
      * */
     public static boolean cadastrar(Especie especie) throws SQLException{
+        static StringBuilder sql = new StringBuilder();
         sql.append("INSERT INTO especies");
         sql.append("(descricao) ");
         sql.append("VALUES ("+
@@ -76,6 +77,18 @@ public abstract class EspecieDAO extends DAO {
      * @return
      * */
     public static boolean alterar(Especie especie) throws SQLException {
+    	StringBuilder sql = new StringBuilder();
+    	boolean flag =false;
+    	try {
+    		
+			ResultSet rs = recuperar(especie.getDescricao());
+			while(rs.next())
+				flag = true;
+		} catch (ClassNotFoundException | NaoEncontradoExeception e) {
+			return false;
+		}
+    	if(!flag)
+    		return false;
 
         sql.append("UPDATE especies ");
         sql.append("SET descricao = ''" + especie.getDescricao()+ "''");
@@ -90,6 +103,18 @@ public abstract class EspecieDAO extends DAO {
      * @return
      * */
     public static boolean remover(int ID) throws SQLException {
+    	StringBuilder sql = new StringBuilder();
+    	boolean flag =false;
+    	try {
+    		
+			ResultSet rs = recuperar(ID);
+			while(rs.next())
+				flag = true;
+		} catch (ClassNotFoundException | NaoEncontradoExeception e) {
+			return false;
+		}
+    	if(!flag)
+    		return false;
         sql.append("DELETE FROM especies ");
         sql.append("WHERE codigo = " + ID);
 
