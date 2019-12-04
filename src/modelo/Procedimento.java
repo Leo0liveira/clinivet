@@ -4,49 +4,50 @@ import java.sql.Date;
 
 public class Procedimento {
 
-    private String tipo;
-    private Date dataHora;
-    private int id;
+    private String descricao;
+    private Double preco;
+    private int codigo;
 
-    public Procedimento(String tipo, Date dataHora, int id) {
-        this.tipo = tipo;
-        this.dataHora = dataHora;
-        this.id = id;
+    public Procedimento(String descricao, Double preco, int codigo) {
+        this.descricao = descricao;
+        this.preco = preco;
+        this.codigo= codigo;
     }
     
-    public Procedimento()
-    {
+    public Procedimento(){
     }
 
-    public Procedimento(String tipo) {
+    public Procedimento(String descricao) {
     }
 
-    public Procedimento(String pagante, double valor, String tipo) {
-
+    public Procedimento(int codigo, String descricao, double preco) {
+    	this.codigo = codigo;
+    	this.descricao = descricao;
+    	this.preco = preco;
     }
 
 
     public String getTipo() {
-        return tipo;
+        return descricao;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setTipo(String descricao) {
+        this.descricao = descricao;
     }
 
     public int getId() {
-        return id;
+        return codigo;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int codigo) {
+        this.codigo =codigo;
     }
 
-    public Date getDataHora() {
-        return dataHora;
+    public Double getPreco() {
+        return preco;
     }
 
-    public void setDataHora(Date dataHora) {
-        this.dataHora = dataHora;
+    public void setPreco(Double preco) {
+        this.preco = preco;
     }
 }
