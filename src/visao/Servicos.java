@@ -1,7 +1,6 @@
 package visao;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -62,7 +61,19 @@ public class Servicos extends JFrame {
         IMPRIMIRRELATÓRIODECONSULTASButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                ConsultaProcedimentosClinica c = new ConsultaProcedimentosClinica();
+                RelatorioConsultaProcedimentosClinica c = new RelatorioConsultaProcedimentosClinica();
+            }
+        });
+        IMPRIMIRRELATÓRIODOANIMALButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                RelatorioConsultasPorAnimal c = new RelatorioConsultasPorAnimal();
+            }
+        });
+        IMPRIMIRRELATÓRIODERAÇASButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                RelatorioPorRaca r = new RelatorioPorRaca();
             }
         });
     }

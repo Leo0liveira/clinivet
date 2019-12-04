@@ -42,7 +42,7 @@ public class TelaADM extends JFrame {
         gerenciarFuncionatios.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                TelaGenFuncionario x = new TelaGenFuncionario();
+                FuncionarioCRUD x = new FuncionarioCRUD();
                 rootFrame.dispose();
             }
         });

@@ -1,7 +1,9 @@
 package visao;
 
+import controle.ControleCliente;
+import modelo.Cliente;
+
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -43,7 +45,15 @@ public class ClienteCRUD extends JFrame {
     private JTextField campoREMOVEdocumento;
     private JTextField campoREMOVEemail;
     private JPanel errorPanel1;
-    private JLabel errorPanel2;
+    private JLabel errormsg1;
+    private JPanel searchPanel1;
+    private JLabel searchmsg1;
+    private JPanel incluePanel;
+    private JLabel incluemsg;
+    private JPanel searchPanel2;
+    private JLabel searchmsg2;
+    private JLabel errormsg2;
+    private JPanel error2;
 
 
     public ClienteCRUD(String caller) {
@@ -56,6 +66,10 @@ public class ClienteCRUD extends JFrame {
 
         alteraPanel.setVisible(false);
         removePanel.setVisible(false);
+        searchPanel1.setVisible(false);
+        searchPanel2.setVisible(false);
+        errorPanel1.setVisible(false);
+        error2.setVisible(false);
 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
@@ -67,24 +81,50 @@ public class ClienteCRUD extends JFrame {
         campoREMOVEdocumento.setEditable(false);
         campoREMOVEemail.setEditable(false);
 
+        ControleCliente cc = new ControleCliente();
+
         IRButton.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+
+                if (cc.busca(campoCPF.getText()) != null) {
+                    Cliente c = cc.busca(campoCPF.getText());
+                    campoALTnome.setText(c.getNome());
+                    campoALTendereco.setText(c.getEndereco());
+                    campoALTcidade.setText(c.getCidade());
+                    campoALTestado.setText(c.getEstado());
+                    campoALTtelefone.setText(c.getTelefone());
+                    campoALTdocumento.setText(c.getDocumento());
+                    campoALTemail.setText(c.getEmail());
+                }
+
                 if (!alteraPanel.isVisible())
                     frameCliente.setSize(frameCliente.getWidth(), frameCliente.getHeight() + 150);
                 alteraPanel.setVisible(true);
-                errorPanel1.setVisible(false);
+                searchPanel1.setVisible(false);
             }
         });
         IRButton1.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+
+                if (cc.busca(campoCPF.getText()) != null) {
+                    Cliente c = cc.busca(campoCPF.getText());
+                    campoREMOVEnome.setText(c.getNome());
+                    campoREMOVEendereco.setText(c.getEndereco());
+                    campoREMOVEcidade.setText(c.getCidade());
+                    campoREMOVEestado.setText(c.getEstado());
+                    campoREMOVEtelefone.setText(c.getTelefone());
+                    campoREMOVEdocumento.setText(c.getDocumento());
+                    campoREMOVEemail.setText(c.getEmail());
+                }
+
                 if (!removePanel.isVisible())
                     frameCliente.setSize(frameCliente.getWidth(), frameCliente.getHeight() + 160);
 
-                errorPanel2.setVisible(false);
+                searchPanel2.setVisible(false);
                 removePanel.setVisible(true);
             }
         });
@@ -92,9 +132,9 @@ public class ClienteCRUD extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                if(caller == "admin") {
+                if (caller == "admin") {
                     TelaADM t = new TelaADM();
-                }else {
+                } else {
                     TelaFuncionario fun = new TelaFuncionario();
                 }
                 frameCliente.dispose();
@@ -103,15 +143,41 @@ public class ClienteCRUD extends JFrame {
         INCLUIRCLIENTEButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                campoCPF.getText();
-                campoNome.getText();
-                campoEndereco.getText();
-                campoCidade.getText();
-                campoEstado.getText();
-                campoTelefone.getText();
-                campoDocumento.getText();
-                campoEMAIL.getText();
-                JOptionPane.showMessageDialog(frameCliente, "Cliente Incluso.");
+                if (!cc.IncluiCliente(
+                        campoCPF.getText(),
+                        campoNome.getText(),
+                        campoEndereco.getText(),
+                        campoCidade.getText(),
+                        campoEstado.getText(),
+                        campoTelefone.getText(),
+                        campoDocumento.getText(),
+                        campoEMAIL.getText()))
+
+                    incluePanel.setVisible(true);
+
+            }
+        });
+        ALTERARCLIENTEButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                if (!cc.AlteraCliente(
+                        campoCPF.getText(),
+                        campoNome.getText(),
+                        campoEndereco.getText(),
+                        campoCidade.getText(),
+                        campoEstado.getText(),
+                        campoTelefone.getText(),
+                        campoDocumento.getText(),
+                        campoEMAIL.getText()))
+
+                    errorPanel1.setVisible(true);
+            }
+        });
+        REMOVERCLIENTEButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                if (!cc.RemoveCliente(campoCPF.getText()))
+                    error2.setVisible(true);
             }
         });
     }

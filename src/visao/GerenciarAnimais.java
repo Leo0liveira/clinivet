@@ -39,7 +39,7 @@ public class GerenciarAnimais extends JFrame {
         gerenciarRaçasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                RaçaCRUD ra = new RaçaCRUD(s);
+                RacaCRUD ra = new RacaCRUD(s);
                 frame.dispose();
             }
         });

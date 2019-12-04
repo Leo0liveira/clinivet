@@ -50,14 +50,14 @@ public class Serviços extends JFrame {
         VOLTARButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                Funcionario f = new Funcionario();
+                TelaFuncionario f = new TelaFuncionario();
                 frameServico.dispose();
             }
         });
         IMPRIMIRRELATÓRIODECONSULTASButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                ConsultaProcedimentosClinica c = new ConsultaProcedimentosClinica();
+                RelatorioConsultaProcedimentosClinica c = new RelatorioConsultaProcedimentosClinica();
             }
         });
     }
