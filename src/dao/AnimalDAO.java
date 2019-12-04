@@ -115,4 +115,23 @@ public class AnimalDAO extends DAO {
         return executeBooleanQuery(sql);
     }
 
+
+	@Override
+	public boolean alterar() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean remover() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Object recuperar() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

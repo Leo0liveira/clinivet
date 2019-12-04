@@ -4,17 +4,17 @@ public class Animal {
 
     private int codigo;
     private String nome;
-    private int proprietario;
+    private int donoId;
     private String nascimento;
     private int especie;
     private int raca;
     private String sexo;
     private String cor;
 
-    public Animal(int codigo, String nome, int proprietario, String nascimento, int especie, int raca, String sexo, String cor) {
+    public Animal(int codigo, String nome, int donoId, String nascimento, int especie, int raca, String sexo, String cor) {
         this.codigo = codigo;
         this.nome = nome;
-        this.proprietario = proprietario;
+        this.donoId = donoId;
         this.nascimento = nascimento;
         this.especie = especie;
         this.raca = raca;
@@ -42,12 +42,12 @@ public class Animal {
         this.nome = nome;
     }
 
-    public int getProprietario() {
-        return proprietario;
+    public int getDonoId() {
+        return donoId;
     }
 
-    public void setProprietario(int proprietario) {
-        this.proprietario = proprietario;
+    public void seDonoId(int donoId) {
+        this.donoId = donoId;
     }
 
     public String getNascimento() {
