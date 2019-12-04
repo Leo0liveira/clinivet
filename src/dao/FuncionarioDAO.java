@@ -14,7 +14,6 @@ public abstract class FuncionarioDAO extends DAO {
 
     static Connection conn = null;
     static ResultSet rs = null;
-    static StringBuilder sql = new StringBuilder();
 
     /*
      * executeBooleanQuery: retorna true se a operacao for realizada com sucesso, false caso contrario.
@@ -50,7 +49,8 @@ public abstract class FuncionarioDAO extends DAO {
     * @return
     * */
     public static ResultSet recuperar(int matricula) throws SQLException, ClassNotFoundException, NaoEncontradoExeception {
-    	
+
+    	StringBuilder sql = new StringBuilder();
         sql.append("SELECT * ");
         sql.append("FROM funcionarios ");
         sql.append("WHERE matricula =  ?");
@@ -66,7 +66,6 @@ public abstract class FuncionarioDAO extends DAO {
             if (conn != null) {
                 conn.close();
             }
-            
         return rs;
     }
 
@@ -76,6 +75,7 @@ public abstract class FuncionarioDAO extends DAO {
      * @return
      * */
     public static boolean cadastrar(Funcionario funcionario) throws SQLException{
+    	StringBuilder sql = new StringBuilder();
         sql.append("INSERT INTO funcionarios ");
         sql.append("(nome, endereco, cidade, estado, telefone_residencial, telefone_celular, email, cpf, tipo_permissao) ");
         sql.append
@@ -103,16 +103,25 @@ public abstract class FuncionarioDAO extends DAO {
      * @return
      * */
     public static boolean alterar(Funcionario funcionario) throws SQLException {
+    	StringBuilder sql = new StringBuilder();
+    	try {
+    		
+			ResultSet rs = recuperar(funcionario.getMatricula());
+			while(rs.next())
+				if(rs.getString("nome") == null)
+					return false;
+		} catch (ClassNotFoundException | NaoEncontradoExeception e) {
+			return false;
+		}
         sql.append("UPDATE funcionarios ");
         sql.append("SET nome = '" + funcionario.getNome()+ "'," +
-        "SET endereco = '" + funcionario.getEndereco()+ "',"+
+        "endereco = '" + funcionario.getEndereco()+ "',"+
         "cidade = '" + funcionario.getEndereco()+ "',"+
         "estado = '" + funcionario.getEstado()+ "',"+
-        "telefone_residencial = ''" + funcionario.getTelefone_residencial()+ "',"+
+        "telefone_residencial = '" + funcionario.getTelefone_residencial()+ "',"+
         "telefone_celular = '" + funcionario.getTelefone_celular()+ "',"+
-        "data_contratacao = '" + funcionario.getEndereco()+ "',"+
         "tipo_permissao = '" + funcionario.getEndereco()+ "' ");
-        sql.append("WHERE codigo = " + funcionario.getMatricula());
+        sql.append("WHERE matricula = " + funcionario.getMatricula() + ";");
         
 
         return executeBooleanQuery(sql);
@@ -124,9 +133,19 @@ public abstract class FuncionarioDAO extends DAO {
      * @return
      * */
     public static boolean remover(int matricula) throws SQLException {
-
+		try {
+			ResultSet rs = recuperar(matricula);
+			while(rs.next()) {
+				if(rs.getString("nome") == null)
+					return false;
+			}
+		} catch (ClassNotFoundException | NaoEncontradoExeception e) {
+			return false;
+		}
+		
+    	StringBuilder sql = new StringBuilder();
         sql.append("DELETE FROM funcionarios ");
-        sql.append("WHERE cpf = " + matricula);
+        sql.append("WHERE matricula = " + matricula + ";");
 
         return executeBooleanQuery(sql);
 
