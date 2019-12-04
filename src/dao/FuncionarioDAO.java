@@ -99,21 +99,21 @@ public abstract class FuncionarioDAO extends DAO {
      * */
     public static boolean cadastrar(Funcionario funcionario) throws SQLException{
         sql.append("INSERT INTO funcionarios");
-        sql.append("(nome, sexo, endereco, cidade, estado, telefoneResidencial, telefoneCelular, email, cpf) ");
+        sql.append("(nome, endereco, cidade, estado, telefone_residencial, telefone_celular, email, cpf, tipo_permissao) ");
         sql.append
                 ("VALUES ("+
                 "'" +funcionario.getNome()+ "'" + ", " +
-                "'" +funcionario.getSexo()+ "'" + ", " +
-                "'"+  funcionario.getEndereco()+"'" + ", " +
-                "'"+funcionario.getCidade()+"'" + ", " +
-                "'"+funcionario.getEstado()+"'" + ", " +
-                "'"+ funcionario.getTelefoneResidencial() +"'"+ ", " +
-                "'"+funcionario.getTelefoneCelular() +"'"+
-                "'"+funcionario.getEmail()+"'" + ", " +
-                "'"+funcionario.getCpf()+"'" +
-                ");");
+                "'" +funcionario.getEndereco()+ "'" + ", " +
+                "'" +funcionario.getCidade()+"'" + ", " +
+                "'" +funcionario.getEstado()+"'" + ", " +
+                "'" +funcionario.getTelefone_residencial() +"'"+ ", " +
+                "'" +funcionario.getTelefone_celular() +"'"+
+                "'" +funcionario.getEmail()+"'" + ", " +
+                "'" +funcionario.getCpf()+"'" + ", " +
+                "'" +funcionario.getTipo_permissao()+"'" +
+                ");"
+                );
 
-        System.out.println(sql);
         return executeBooleanQuery(sql);
     }
 

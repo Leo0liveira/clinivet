@@ -48,14 +48,6 @@ public class Funcionario {
 		this.nome = nome;
 	}
 
-	public String getSexo() {
-		return sexo;
-	}
-
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
-	}
-
 	public String getEndereco() {
 		return endereco;
 	}
