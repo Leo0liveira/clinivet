@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="515430d0-8822-4e1e-a207-7f368d6080f3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/clinivet.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controle/ControleAnimal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controle/ControleAnimal.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -45,7 +41,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575428680676</updated>
-      <workItem from="1575428686320" duration="1124000" />
+      <workItem from="1575428686320" duration="1369000" />
     </task>
     <servers />
   </component>
