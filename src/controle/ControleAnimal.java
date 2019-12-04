@@ -13,11 +13,11 @@ public class ControleAnimal {
 
         if(animalDAO.cadastrar(animal))
         {
-            System.out.println("Cadastrado com sucesso"); //mensagem de sucesso pra view
+            return true;
         }
         else 
         {
-            System.out.println("Erro ao cadastrar"); //mensagem de erro pra view
+            return false;
         }
     }
 
@@ -27,11 +27,11 @@ public class ControleAnimal {
 
         if(animalDAO.alterar(animal))
         {
-            System.out.println("Alterado com sucesso"); //mensagem de sucesso pra view
+            return true;
         }
         else 
         {
-            System.out.println("Erro ao alterar"); //mensagem de erro pra view
+            return false;
         }
     }
 
@@ -39,11 +39,11 @@ public class ControleAnimal {
     {
         if(animalDAO.remover(codigo)) 
         {
-            System.out.println("Removido com sucesso"); //mensagem de sucesso pra view
-        } 
-        else
+            return true;
+        }
+        else 
         {
-            System.out.println("Erro ao remover"); //mensagem de erro pra view
+            return false;
         }
     }
 

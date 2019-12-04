@@ -2,31 +2,28 @@ package modelo;
 
 public class Cliente {
 
-    private String nome;
-    private String sexo;
-    private String endereco;
-    private String cidade;
-    private String estado;
-    private String telefoneResidencial;
-    private String telefoneCelular;
-    private String email;
-    private String cpf;
-    private int id;
+    private String CPF; 
+    private String Nome;
+    private String Endereço;
+    private String Cidade;
+    private String Estado;
+    private String Telefone;
+    private String Documento;
+    private String Email;
 
     public Cliente() {
         
     }
 
-    public Cliente(String nome, String sexo, String endereco, String cidade, String estado, String telefoneResidencial, String telefoneCelular, String email, String cpf) {
-        this.nome = nome;
-        this.sexo = sexo;
-        this.endereco = endereco;
-        this.cidade = cidade;
-        this.estado = estado;
-        this.telefoneResidencial = telefoneResidencial;
-        this.telefoneCelular = telefoneCelular;
-        this.email = email;
-        this.cpf = cpf;
+    public Cliente(String CPF, String Nome, String Endereço, String Cidade, String Estado, String Telefone, String Documento, String Email) {
+        this.CPF = CPF;
+        this.Nome = Nome;
+        this.Endereço = Endereço;
+        this.Cidade = Cidade;
+        this.Estado = Estado;
+        this.Telefone = Telefone;
+        this.Documento = Documento;
+        this.Email = Email;
     }
 
     public int getId() {

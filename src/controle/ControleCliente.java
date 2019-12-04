@@ -7,9 +7,9 @@ public class ControleCliente {
 
     ClienteDAO clienteDAO = new ClienteDAO();
 
-    public boolean adicionaCliente(String CPF, String Nome, String Endereço, String Cidade, String Estado, String Telefone, String Documento, String Email)
+    public boolean IncluiCliente(String CPF, String Nome, String Endereço, String Cidade, String Estado, String Telefone, String Documento, String Email)
     {
-        Cliente cliente = new Cliente("", nome, proprietario, nascimento, especie, raca, sexo, cor);
+        Cliente cliente = new Cliente(CPF, Nome, Endereço, Cidade, Estado, Telefone, Documento, Email);
 
         if(clienteDAO.cadastrar(cliente))
         {
