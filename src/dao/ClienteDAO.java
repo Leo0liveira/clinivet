@@ -57,7 +57,6 @@ public abstract class ClienteDAO extends DAO {
         PreparedStatement ps = conn.prepareStatement(sql.toString());
         ps.setString(1, CPF);
         return ps.executeQuery();
-
     }
 
     /*
@@ -125,7 +124,6 @@ public abstract class ClienteDAO extends DAO {
         sql.append("WHERE cpf = '" + cpf + "'");
 
         return executeBooleanQuery(sql);
-
     }
 
 }
