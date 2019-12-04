@@ -1,17 +1,27 @@
 package main;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import controle.ControleFuncionario;
+import dao.LoginDAO;
+import dao.NaoEncontradoExeception;
 
 public class MainFuncionario {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ClassNotFoundException, SQLException, NaoEncontradoExeception {
 		ControleFuncionario c = new ControleFuncionario();
+		ResultSet rs = LoginDAO.recuperar("1", "1");
 		
-		c.adicionaFuncionario(nome, endereco, cidade, estado, telefone_residencial, telefone_celular, email, data_contratacao, cpf, tipo_permissao, password)
-		c.buscaFuncionario(matricula);
-		c.alteraFuncionario(matricula, nome, endereco, cidade, estado, telefone_residencial, telefone_celular, email, data_contratacao, cpf, tipo_permissao);
-		c.buscaFuncionario(matricula);
-		c.removeFuncionario(matricula)
-		c.buscaFuncionario(matricula);
+		
+		rs.next();
+
+		String nome = rs.getString("cpf");
+		String senha = rs.getString("senha");
+		
+		if(nome != null && senha != null) {
+			System.out.println("Autenticado");
+		}
+		
 	}
 
 }

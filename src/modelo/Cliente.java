@@ -2,16 +2,16 @@ package modelo;
 
 public class Cliente {
 
-    private String CPF; 
+    private int CPF; 
     private String Nome;
     private String Endereco;
     private String Cidade;
     private String Estado;
     private String Telefone;
-    private String Documento;
+    private int Documento;
     private String Email;
 
-    public Cliente(String CPF, String Nome, String Endereco, String Cidade, String Estado, String Telefone, String Documento, String Email) {
+    public Cliente(int CPF, String Nome, String Endereco, String Cidade, String Estado, String Telefone, int Documento, String Email) {
         this.CPF = CPF;
         this.Nome = Nome;
         this.Endereco = Endereco;
@@ -22,68 +22,69 @@ public class Cliente {
         this.Email = Email;
     }
 
-    public String getCPF() {
-        return CPF;
-    }
+	public int getCPF() {
+		return CPF;
+	}
 
-    public void setCPF(String cPF) {
-        CPF = cPF;
-    }
+	public void setCPF(int cPF) {
+		CPF = cPF;
+	}
 
-    public String getNome() {
-        return Nome;
-    }
+	public String getNome() {
+		return Nome;
+	}
 
-    public void setNome(String nome) {
-        Nome = nome;
-    }
+	public void setNome(String nome) {
+		Nome = nome;
+	}
 
-    public String getEndereco() {
-        return Endereco;
-    }
+	public String getEndereco() {
+		return Endereco;
+	}
 
-    public void setEndereco(String endereco) {
-        Endereco = endereco;
-    }
+	public void setEndereco(String endereco) {
+		Endereco = endereco;
+	}
 
-    public String getCidade() {
-        return Cidade;
-    }
+	public String getCidade() {
+		return Cidade;
+	}
 
-    public void setCidade(String cidade) {
-        Cidade = cidade;
-    }
+	public void setCidade(String cidade) {
+		Cidade = cidade;
+	}
 
-    public String getEstado() {
-        return Estado;
-    }
+	public String getEstado() {
+		return Estado;
+	}
 
-    public void setEstado(String estado) {
-        Estado = estado;
-    }
+	public void setEstado(String estado) {
+		Estado = estado;
+	}
 
-    public String getTelefone() {
-        return Telefone;
-    }
+	public String getTelefone() {
+		return Telefone;
+	}
 
-    public void setTelefone(String telefone) {
-        Telefone = telefone;
-    }
+	public void setTelefone(String telefone) {
+		Telefone = telefone;
+	}
 
-    public String getDocumento() {
-        return Documento;
-    }
+	public int getDocumento() {
+		return Documento;
+	}
 
-    public void setDocumento(String documento) {
-        Documento = documento;
-    }
+	public void setDocumento(int documento) {
+		Documento = documento;
+	}
 
-    public String getEmail() {
-        return Email;
-    }
+	public String getEmail() {
+		return Email;
+	}
 
-    public void setEmail(String email) {
-        Email = email;
-    }
+	public void setEmail(String email) {
+		Email = email;
+	}
+
 
 }

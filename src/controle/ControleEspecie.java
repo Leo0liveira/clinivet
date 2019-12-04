@@ -9,10 +9,10 @@ import modelo.Especie;
 
 public class ControleEspecie {
 
-	public boolean adicionaEspecie(String especieNome)
+	public boolean adicionaEspecie(String descricao)
 	{
 		// id auto-incremental
-		Especie especie = new Especie(0, especieNome);
+		Especie especie = new Especie(0, descricao);
 
 		try {
 			if(EspecieDAO.cadastrar(especie))
@@ -63,7 +63,7 @@ public class ControleEspecie {
             ResultSet rs = EspecieDAO.recuperar(codigo);
             while(rs.next())
             {
-                especie = new Especie(rs.getInt("codigo"), rs.getString("especie"));
+                especie = new Especie(rs.getInt("codigo"), rs.getString("descricao"));
             }
 
         } catch (SQLException e) {

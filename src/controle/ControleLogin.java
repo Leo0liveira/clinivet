@@ -11,13 +11,13 @@ import modelo.Login;
 
 public class ControleLogin {
 
-	public Login autentica(String cpf)
+	public Login autentica(String cpf, String senha)
     {
     	Login login = null;
     	ResultSet rs;
         try {
 
-        	rs = LoginDAO.recuperar(cpf);
+        	rs = LoginDAO.recuperar(cpf, senha);
             while(rs.next())
             {
             	login = new Login(rs.getString("cpf"), rs.getString("senha"));

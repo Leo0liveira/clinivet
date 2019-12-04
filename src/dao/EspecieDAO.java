@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.postgresql.util.PSQLException;
+
 public abstract class EspecieDAO extends DAO {
 
     static Connection conn = null;
@@ -21,9 +23,13 @@ public abstract class EspecieDAO extends DAO {
             conn = getInstance();
             PreparedStatement ps = conn.prepareStatement(sql.toString());
             rs = ps.executeQuery();
-        }  catch (Exception e) {
-            return false;
+            
+        }  catch (PSQLException e) {
+            return true;
         } 
+          catch (Exception e){
+        	  return false;
+        }
         finally {
             if (rs != null) {
                 rs.close();
@@ -41,10 +47,10 @@ public abstract class EspecieDAO extends DAO {
     * @return
     * */
     public static ResultSet recuperar(int ID) throws SQLException, ClassNotFoundException, NaoEncontradoExeception {
-        static StringBuilder sql = new StringBuilder();
+        StringBuilder sql = new StringBuilder();
         sql.append("SELECT * ");
         sql.append("FROM especies ");
-        sql.append("WHERE codigo = ?");
+        sql.append("WHERE codigo = ? ;");
 
         //Cria instancia da conexão (usando singleton)
         //Executa query com o sql escrito acima
@@ -60,7 +66,7 @@ public abstract class EspecieDAO extends DAO {
      * @return
      * */
     public static boolean cadastrar(Especie especie) throws SQLException{
-        static StringBuilder sql = new StringBuilder();
+        StringBuilder sql = new StringBuilder();
         sql.append("INSERT INTO especies");
         sql.append("(descricao) ");
         sql.append("VALUES ("+
@@ -81,7 +87,7 @@ public abstract class EspecieDAO extends DAO {
     	boolean flag =false;
     	try {
     		
-			ResultSet rs = recuperar(especie.getDescricao());
+			ResultSet rs = recuperar(especie.getCodigo());
 			while(rs.next())
 				flag = true;
 		} catch (ClassNotFoundException | NaoEncontradoExeception e) {
@@ -91,7 +97,7 @@ public abstract class EspecieDAO extends DAO {
     		return false;
 
         sql.append("UPDATE especies ");
-        sql.append("SET descricao = ''" + especie.getDescricao()+ "''");
+        sql.append("SET descricao = '" + especie.getDescricao()+ "'");
         sql.append("WHERE codigo = " + especie.getCodigo());
 
         return executeBooleanQuery(sql);

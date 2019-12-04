@@ -10,7 +10,7 @@ import modelo.Cliente;
 public class ControleCliente {
 
 
-    public boolean IncluiCliente(String CPF, String Nome, String Endereco, String Cidade, String Estado, String Telefone, String Documento, String Email) {
+    public boolean IncluiCliente(int CPF, String Nome, String Endereco, String Cidade, String Estado, String Telefone, int Documento, String Email) {
         Cliente cliente = new Cliente(CPF, Nome, Endereco, Cidade, Estado, Telefone, Documento, Email);
 
         try {
@@ -25,7 +25,7 @@ public class ControleCliente {
 		}
     }
 
-    public boolean AlteraCliente(String CPF, String Nome, String Endereco, String Cidade, String Estado, String Telefone, String Documento, String Email) {
+    public boolean AlteraCliente(int CPF, String Nome, String Endereco, String Cidade, String Estado, String Telefone, int Documento, String Email) {
         Cliente cliente = new Cliente(CPF, Nome, Endereco, Cidade, Estado, Telefone, Documento, Email);
 
         try {
@@ -40,7 +40,7 @@ public class ControleCliente {
 		}
     }
 
-    public boolean RemoveCliente(String CPF) {
+    public boolean RemoveCliente(int CPF) {
         try {
 			if (ClienteDAO.remover(CPF)) {
 			    return true;
@@ -53,16 +53,16 @@ public class ControleCliente {
 		}
     }
 
-    public Cliente busca(String CPF) {
+    public Cliente busca(int CPF) {
         
         Cliente cliente = null;
         ResultSet rs;
 		try {
 			rs = ClienteDAO.recuperar(CPF);
 	        while (rs.next()) {
-	            cliente = new Cliente(rs.getString("CPF"), rs.getString("Nome"), 
-	            rs.getString("Endereço"), rs.getString("Cidade"), rs.getString("Estado"), 
-	            rs.getString("Telefone"), rs.getString("Documento"), rs.getString("Email"));
+	            cliente = new Cliente(rs.getInt("cpf"), rs.getString("nome"), 
+	            rs.getString("endereco"), rs.getString("cidade"), rs.getString("estado"), 
+	            rs.getString("telefone"), rs.getInt("documento"), rs.getString("email"));
 	        }
 	        
 		} catch (ClassNotFoundException | SQLException | NaoEncontradoExeception e) {

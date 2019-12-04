@@ -35,12 +35,12 @@ public abstract class LoginDAO extends DAO{
         return true;
     }
 	
-    public static ResultSet recuperar(String cpf) throws SQLException, ClassNotFoundException, NaoEncontradoExeception {
+    public static ResultSet recuperar(String cpf, String senha) throws SQLException, ClassNotFoundException, NaoEncontradoExeception {
 
     	StringBuilder sql = new StringBuilder();
         sql.append("SELECT * ");
         sql.append("FROM login ");
-        sql.append("WHERE cpf =  ?");
+        sql.append("WHERE cpf =  ? AND senha = ?");
 
 
             //Cria instancia da conexão (usando singleton)
@@ -48,6 +48,7 @@ public abstract class LoginDAO extends DAO{
             conn = getInstance();
             PreparedStatement ps = conn.prepareStatement(sql.toString());
             ps.setString(1, cpf);
+            ps.setString(2, senha);
             rs = ps.executeQuery();
 
             if (conn != null) {
@@ -55,5 +56,6 @@ public abstract class LoginDAO extends DAO{
             }
         return rs;
     }
+
 
 }
