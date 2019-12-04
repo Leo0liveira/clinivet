@@ -55,34 +55,7 @@ public abstract class AnimalDAO extends DAO {
             conn = getInstance();
             PreparedStatement ps = conn.prepareStatement(sql.toString());
             ps.setInt(1, animalId);
-            rs = ps.executeQuery();
-
-            while(rs.next())
-            {
-                animal = new Animal(
-                    rs.getString("nome"),
-                    rs.getString("sexo"),
-                    rs.getString("cor"),
-                    rs.getString("raca"),
-                    rs.getInt("donoId")
-                );
-            }
-            
-            //Se não houver resultados na query
-            if (animal == null) {
-                throw new NaoEncontradoExeception("Animal nao cadastrado.");
-            }
-
-            // Fecha conexão
-        } finally {
-            if (rs != null) {
-                rs.close();
-            }
-            if (conn != null) {
-                conn.close();
-            }
-        }
-        return animal;
+            return ps.executeQuery();
     }
 
     /*
