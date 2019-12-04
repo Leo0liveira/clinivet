@@ -98,7 +98,7 @@ public abstract class AnimalDAO extends DAO {
         sql.append("cor = '" + animal.getCor() + "', ");
         sql.append("raca = '" + animal.getRaca() + "', ");
         sql.append("donoId = '" + animal.getDonoId() + "' ");
-        sql.append("WHERE id = '" + animal.getId() + "'");
+        sql.append("WHERE id = '" + animal.getCodigo() + "'");
 
         return executeBooleanQuery(sql);
     }
