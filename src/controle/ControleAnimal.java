@@ -62,7 +62,7 @@ public class ControleAnimal {
         try {
             rs = AnimalDAO.recuperar(codigo);
             while (rs.next()) {
-                animal = new Animal(rs.getInt("codigo"), rs.getString("nome"), rs.getInt("proprietario"), rs.getString("nascimento"), rs.getInt("especie"), rs.getInt("raca"), rs.getString("sexo"), rs.getString("cor"));
+                animal = new Animal(rs.getInt("codigo"), rs.getString("nome"), rs.getInt("id_dono"), rs.getString("data_nascimento"), rs.getInt("id_especie"), rs.getInt("id_raca"), rs.getString("sexo"), rs.getString("cor"));
             }
         } catch (ClassNotFoundException | SQLException | NaoEncontradoExeception e) {
             return null;

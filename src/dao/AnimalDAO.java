@@ -53,7 +53,7 @@ public abstract class AnimalDAO extends DAO {
 
     	StringBuilder sql = new StringBuilder();
         sql.append("SELECT * ");
-        sql.append("FROM animais");
+        sql.append("FROM animais ");
         sql.append("WHERE codigo =  ?");
 
         //Cria instancia da conexão (usando singleton)
@@ -78,9 +78,11 @@ public abstract class AnimalDAO extends DAO {
     public static boolean cadastrar(Animal animal) throws SQLException {
     	StringBuilder sql = new StringBuilder();
         sql.append("INSERT INTO animais");
-        sql.append("(nome, sexo, cor, raca, donoId) ");
+        sql.append("(nome, data_nascimento, id_especie, sexo, cor, id_raca, id_dono) ");
         sql.append("VALUES ("+
                 "'"+animal.getNome()+ "'" + ", " +
+                "'"+animal.getNascimento()+"'" + ", " +
+                "'"+animal.getEspecie()+"'" + ", " +
                 "'"+animal.getSexo()+"'" + ", " +
                 "'"+animal.getCor()+"'" + ", " +
                 "'"+animal.getRaca()+"'" + ", " +
@@ -115,9 +117,8 @@ public abstract class AnimalDAO extends DAO {
         sql.append("nome = '" + animal.getNome() + "', ");
         sql.append("sexo = '" + animal.getSexo() + "', ");
         sql.append("cor = '" + animal.getCor() + "', ");
-        sql.append("raca = '" + animal.getRaca() + "', ");
-        sql.append("donoId = '" + animal.getDonoId() + "' ");
-        sql.append("WHERE id = '" + animal.getCodigo() + "'");
+        sql.append("data_nascimento = '" + animal.getNascimento() + "'");
+        sql.append("WHERE codigo = '" + animal.getCodigo() + "'");
 
         return executeBooleanQuery(sql);
     }
