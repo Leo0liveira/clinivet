@@ -54,6 +54,8 @@ public class FuncionarioCRUD {
     private JPanel remove_error_2;
     private JPanel mainPanel;
     private JPanel remove_panel;
+    private JPasswordField passwordField1;
+    private JLabel tfSenha;
     private Funcionario f;
     private ControleFuncionario cf;
     private int matricula;
@@ -81,7 +83,7 @@ public class FuncionarioCRUD {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 if (verificaCampos(tfnome.getText(), tfcidade.getText(), tfcpf.getText(), tfdatacont.getText(), tfendereco.getText(), tfestado.getText(), tftelres.getText(), tfrelcel.getText(), tfemail.getText())) {
-                    if (cf.adicionaFuncionario(tfnome.getText(), tfendereco.getText(), tfcidade.getText(), tfestado.getText(), tftelres.getText(), tfrelcel.getText(), tfemail.getText(), tfdatacont.getText(), tfcpf.getText(), addpermbox.getActionCommand())) {
+                    if (cf.adicionaFuncionario(tfnome.getText(), tfendereco.getText(), tfcidade.getText(), tfestado.getText(), tftelres.getText(), tfrelcel.getText(), tfemail.getText(), tfdatacont.getText(), tfcpf.getText(), addpermbox.getActionCommand(), tfSenha.getText())) {
                         JOptionPane.showMessageDialog(mainPanel, "Funcionário Adicionado com sucesso");
                     } else {
                         JOptionPane.showMessageDialog(mainPanel, "Não foi possivel cadastrar o funcionário, por favor reveja os campos e tente novamente");
