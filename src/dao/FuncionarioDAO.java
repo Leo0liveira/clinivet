@@ -101,7 +101,7 @@ public abstract class FuncionarioDAO extends DAO {
     public static boolean cadastrarLogin(Login login) throws SQLException{
     	StringBuilder sql1 = new StringBuilder();
         sql1.append("INSERT INTO login ");
-        sql1.append("(cpf, password) ");
+        sql1.append("(cpf, senha) ");
         sql1.append
                 ("VALUES ("+
                 "'" +login.getCpf()+ "'" + ", " +
