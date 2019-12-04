@@ -41,6 +41,7 @@ public class AnimalDAO extends DAO {
     * @param id Int
     * @return
     * */
+  
     public static ResultSet recuperar(int animalId) throws SQLException, ClassNotFoundException, NaoEncontradoExeception {
 
         sql.append("SELECT * ");
@@ -116,22 +117,6 @@ public class AnimalDAO extends DAO {
     }
 
 
-	@Override
-	public boolean alterar() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
-	@Override
-	public boolean remover() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public Object recuperar() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }
