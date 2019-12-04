@@ -70,7 +70,7 @@ public class ControleCliente {
 			return null;
 		}
 
-
+			
             // Se não houver resultados na query
             if (cliente == null) {
                 return null;

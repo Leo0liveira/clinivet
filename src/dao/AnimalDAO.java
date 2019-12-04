@@ -41,21 +41,26 @@ public class AnimalDAO extends DAO {
     * @param id Int
     * @return
     * */
-    public Animal recuperar(int animalId) throws SQLException, ClassNotFoundException, NaoEncontradoExeception {
+    public static ResultSet recuperar(int animalId) throws SQLException, ClassNotFoundException, NaoEncontradoExeception {
 
-        Animal animal = null;
         sql.append("SELECT * ");
         sql.append("FROM animais");
         sql.append("WHERE id =  ?");
 
-        try {
-
-            //Cria instancia da conexão (usando singleton)
-            //Executa query com o sql escrito acima
-            conn = getInstance();
-            PreparedStatement ps = conn.prepareStatement(sql.toString());
-            ps.setInt(1, animalId);
-            return ps.executeQuery();
+        //Cria instancia da conexão (usando singleton)
+        //Executa query com o sql escrito acima
+        conn = getInstance();
+        PreparedStatement ps = conn.prepareStatement(sql.toString());
+        ps.setInt(1, animalId);
+        ResultSet rs = ps.executeQuery();
+        
+        if (rs != null) {
+            rs.close();
+        }
+        if (conn != null) 
+            conn.close();
+       return rs;
+   
     }
 
     /*
@@ -63,7 +68,7 @@ public class AnimalDAO extends DAO {
      * @param animal Animal
      * @return
      * */
-    public boolean cadastrar(Animal animal) throws SQLException {
+    public static boolean cadastrar(Animal animal) throws SQLException {
         sql.append("INSERT INTO animais");
         sql.append("(nome, sexo, cor, raca, donoId) ");
         sql.append("VALUES ("+
@@ -84,7 +89,7 @@ public class AnimalDAO extends DAO {
      * @param String novoValor
      * @return
      * */
-    public boolean alterar(Animal animal) throws SQLException {
+    public static boolean alterar(Animal animal) throws SQLException {
 
         sql.append("UPDATE animais SET ");
         sql.append("nome = '" + animal.getNome() + "', ");
@@ -102,7 +107,7 @@ public class AnimalDAO extends DAO {
      * @param String animalId
      * @return
      * */
-    public boolean remover(int animalId) throws SQLException {
+    public static boolean remover(int animalId) throws SQLException {
 
         sql.append("DELETE FROM animais ");
         sql.append("WHERE id = " + animalId);

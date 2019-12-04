@@ -7,14 +7,13 @@ import java.sql.SQLException;
 
 public class ControleAnimal {
     public Animal animal;
-    public AnimalDAO daoAnimal;
     private ResultSet resultSet;
 
     public boolean adicionaAnimal(String nome, int proprietario, String nascimento, int especie, int raca, String sexo, String cor)
     {
         Animal animal = new Animal("", nome, proprietario, nascimento, especie, raca, sexo, cor);
 
-        if(animalDAO.cadastrar(animal))
+        if(AnimalDAO.cadastrar(animal))
         {
             return true;
         }
@@ -28,32 +27,42 @@ public class ControleAnimal {
     {
         Animal animal = new Animal(codigo, nome, proprietario, nascimento, especie, raca, sexo, cor);
 
-        if(animalDAO.alterar(animal))
-        {
-            return true;
-        }
-        else 
-        {
-            return false;
-        }
+        try {
+			if(AnimalDAO.alterar(animal))
+			{
+			    return true;
+			}
+			else 
+			{
+			    return false;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
     public boolean removeAnimal(int codigo)
     {
-        if(animalDAO.remover(codigo)) 
-        {
-            return true;
-        }
-        else 
-        {
-            return false;
-        }
+        try {
+			if(AnimalDAO.remover(codigo)) 
+			{
+			    return true;
+			}
+			else 
+			{
+			    return false;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
     public boolean recuperar(Animal animal)
         {
             try{
-                resultSet = (ResultSet) daoAnimal.recuperar(Integer.valueOf(animal.getCodigo()));
+                resultSet = (ResultSet) AnimalDAO.recuperar(Integer.valueOf(animal.getCodigo()));
                 animal.setCodigo(resultSet.getInt(1));
                 animal.setNome(resultSet.getString(1));
                 animal.setProprietario(resultSet.getInt(2));
