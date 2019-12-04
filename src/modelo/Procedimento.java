@@ -1,12 +1,14 @@
 package modelo;
 
+import java.sql.Date;
+
 public class Procedimento {
 
     private String tipo;
-    private int dataHora;
+    private Date dataHora;
     private int id;
 
-    public Procedimento(String tipo, int dataHora, int id) {
+    public Procedimento(String tipo, Date dataHora, int id) {
         this.tipo = tipo;
         this.dataHora = dataHora;
         this.id = id;
@@ -40,11 +42,11 @@ public class Procedimento {
         this.id = id;
     }
 
-    public int getDataHora() {
+    public Date getDataHora() {
         return dataHora;
     }
 
-    public void setDataHora(int dataHora) {
+    public void setDataHora(Date dataHora) {
         this.dataHora = dataHora;
     }
 }

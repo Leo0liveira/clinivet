@@ -1,5 +1,7 @@
 package modelo;
 
+import java.sql.Date;
+
 public class Servico extends Procedimento {
 
     private String nome;
@@ -13,7 +15,7 @@ public class Servico extends Procedimento {
         this.codigo = codigo;
     }
 
-    public Servico(String tipo, int dataHora, int id, String nome) {
+    public Servico(String tipo, Date dataHora, int id, String nome) {
         super(tipo, dataHora, id);
         this.nome = nome;
     }
