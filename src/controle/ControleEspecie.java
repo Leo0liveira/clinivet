@@ -12,7 +12,7 @@ public class ControleEspecie {
 	public boolean adicionaEspecie(String especieNome)
 	{
 		// id auto-incremental
-		Especie especie = new Especie(0, descricao);
+		Especie especie = new Especie(0, especieNome);
 
 		try {
 			if(EspecieDAO.cadastrar(especie))
