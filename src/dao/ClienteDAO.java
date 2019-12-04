@@ -58,9 +58,6 @@ public abstract class ClienteDAO extends DAO {
         ps.setString(1, CPF);
         ResultSet rs = ps.executeQuery();
         
-        if (rs != null) {
-            rs.close();
-        }
         if (conn != null) 
             conn.close();
        return rs;

@@ -10,7 +10,7 @@ public class Raca {
 		// TODO Auto-generated constructor stub
 	}
 
-    public Raca(String descricao, int ID) {
+    public Raca(int ID, String descricao) {
         this.descricao = descricao;
         this.ID = ID;
     }

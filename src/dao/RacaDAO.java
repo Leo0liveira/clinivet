@@ -77,7 +77,7 @@ public abstract class RacaDAO extends DAO {
      * @param String novoValor
      * @return
      * */
-    public boolean alterar(Raca raca) throws SQLException {
+    public static boolean alterar(Raca raca) throws SQLException {
 
         sql.append("UPDATE racas ");
         sql.append("SET descricao = ''" + raca.getDescricao()+ "''");

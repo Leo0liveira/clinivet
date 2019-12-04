@@ -1,33 +1,47 @@
 package controle;
 
+import java.sql.SQLException;
+
+import dao.RacaDAO;
+import modelo.Raca;
+
 public class controlerRaca
 {
-    private RacaDAO RDAO = new RacaDAO();
 
     public boolean adicionaRaca(String descricao)
     {
         // id auto-incremental
         Raca raca = new Raca(0, descricao);
 
-        if(RDAO.cadastrar(raca))
-            System.out.println("Cadastrado");
-        else
-            System.out.println("Não Cadastrado");
+        try {
+			if(RacaDAO.cadastrar(raca))
+			    return true;
+			else
+			    return false;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			return false;
+		}
         
     }
     
     public boolean alteraRaca(int id, String descricao)
     {
-        Raca raca = new Raca(id, descricao);
-
-        if(RDAO.alterar(raca))
-            System.out.println("Alterado");
-        else
-            System.out.println("Não alterado");
+    	Raca raca = new Raca(id, descricao);
+    	
+        try {
+			if(RacaDAO.alterar(raca))
+				return false;
+			else
+				return false;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			return false;
+		}
     }
     public boolean removeRaca(int codigo)
     {
-    	if(RDAO.remover(raca))
+    	if(RacaDAO.remover(raca))
             System.out.println("Removido");
         else
             System.out.println("Não removido");
@@ -37,7 +51,7 @@ public class controlerRaca
         Raca raca = null;
         try {
 
-            ResultSet rs = RDAO.recuperar(id);
+            ResultSet rs = RacaDAO.recuperar(id);
             while(rs.next())
             {
                 raca = new raca(rs.getInt("id"), rs.getString("descricao"));
