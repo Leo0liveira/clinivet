@@ -2,13 +2,7 @@ package modelo;
 
 import java.sql.Date;
 
-<<<<<<< HEAD
 public class Consulta extends Procedimento {
-=======
-
-public class Consulta extends Procedimento{
-
->>>>>>> f93c883ad61137e0d2f50872c8a5dcbc29c67630
     private int idAnimal;
     private int idVeterinario;
     private String horario;
@@ -38,29 +32,20 @@ public class Consulta extends Procedimento{
         this.idVeterinario = idVeterinario;
     }
 
-    public void agendarConsulta() {
-        //TODO: implementar
+    public String getHorario() {
+        return horario;
     }
 
-    public void finalizarConsulta() {
-        //TODO: implementar
+    public void setHorario(String horario) {
+        this.horario = horario;
     }
 
-	public String getHorario() {
-		return horario;
-	}
+    public String getPagamentoForma() {
+        return pagamentoForma;
+    }
 
-	public void setHorario(String horario) {
-		this.horario = horario;
-	}
-
-	public String getPagamentoForma() {
-		return pagamentoForma;
-	}
-
-	public void setPagamentoForma(String pagamentoForma) {
-		this.pagamentoForma = pagamentoForma;
-	}
-    
+    public void setPagamentoForma(String pagamentoForma) {
+        this.pagamentoForma = pagamentoForma;
+    }
 
 }
