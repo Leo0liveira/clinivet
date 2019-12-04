@@ -1,7 +1,9 @@
 package controle;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import dao.NaoEncontradoExeception;
 import dao.RacaDAO;
 import modelo.Raca;
 
@@ -31,7 +33,7 @@ public class controlerRaca
     	
         try {
 			if(RacaDAO.alterar(raca))
-				return false;
+				return true;
 			else
 				return false;
 		} catch (SQLException e) {
@@ -39,12 +41,17 @@ public class controlerRaca
 			return false;
 		}
     }
-    public boolean removeRaca(int codigo)
+    public boolean removeRaca(int ID)
     {
-    	if(RacaDAO.remover(raca))
-            System.out.println("Removido");
-        else
-            System.out.println("Não removido");
+    	try {
+			if(RacaDAO.remover(ID))
+				return true;
+			else
+				return false;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			return false;
+		}
     }
     public Raca buscaRaca(int id)
     {
@@ -54,7 +61,7 @@ public class controlerRaca
             ResultSet rs = RacaDAO.recuperar(id);
             while(rs.next())
             {
-                raca = new raca(rs.getInt("id"), rs.getString("descricao"));
+                raca = new Raca(rs.getInt("id"), rs.getString("descricao"));
             }
 
         } catch (SQLException e) {

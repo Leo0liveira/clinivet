@@ -1,6 +1,7 @@
 package controle;
 import modelo.Animal;
 import dao.AnimalDAO;
+import dao.NaoEncontradoExeception;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -51,9 +52,9 @@ public class ControleAnimal {
         Animal animal = null;
         ResultSet rs;
         try {
-            rs = AnimalDAO.recuperar(Codigo);
+            rs = AnimalDAO.recuperar(codigo);
             while (rs.next()) {
-                animal = new Animal(rs.getInt("codigo"), rs.getString("nome"), rs.getInt("proprietario"), rs.getString("nascimento"), rs.getInt("especie"), rs.getInt("raca"), rs.getString("sexo"), rs.getString("cor"))
+                animal = new Animal(rs.getInt("codigo"), rs.getString("nome"), rs.getInt("proprietario"), rs.getString("nascimento"), rs.getInt("especie"), rs.getInt("raca"), rs.getString("sexo"), rs.getString("cor"));
             }
         } catch (ClassNotFoundException | SQLException | NaoEncontradoExeception e) {
             return null;
