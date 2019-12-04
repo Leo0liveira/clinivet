@@ -41,43 +41,17 @@ public abstract class RacaDAO extends DAO {
     * @param cpfFuncionario String
     * @return
     * */
-    public static Raca recuperar(int ID) throws SQLException, ClassNotFoundException, NaoEncontradoExeception {
-        Raca raca = null;
+    public ResultSet recuperar(int ID) throws SQLException, ClassNotFoundException, NaoEncontradoExeception {
         sql.append("SELECT * ");
         sql.append("FROM racas ");
         sql.append("WHERE id = ?");
 
-        try {
-
-            //Cria instancia da conexão (usando singleton)
-            //Executa query com o sql escrito acima
-            conn = getInstance();
-            PreparedStatement ps = conn.prepareStatement(sql.toString());
-            ps.setInt(1, ID);
-            rs = ps.executeQuery();
-            raca = new Raca();
-            
-            while(rs.next())
-            {
-        		raca.setID(rs.getString("ID"));
-        		raca.setDescricao(rs.getString("descricao"));
-            }
-
-            //Se não houver resultados na query
-            if (raca == null) {
-               	throw new NaoEncontradoExeception("Raca nao cadastrado.");
-            }
-
-            // Fecha conexão
-        } finally {
-            if (rs != null) {
-                rs.close();
-            }
-            if (conn != null) {
-                conn.close();
-            }
-        }
-        return raca;
+        //Cria instancia da conexão (usando singleton)
+        //Executa query com o sql escrito acima
+        conn = getInstance();
+        PreparedStatement ps = conn.prepareStatement(sql.toString());
+        ps.setInt(1, ID);
+        return ps.executeQuery();
     }
 
     /*

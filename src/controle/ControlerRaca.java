@@ -34,6 +34,24 @@ public class controlerRaca
     }
     public Raca buscaRaca(int id)
     {
-    	return RDAO.recuperar(id);
+        Raca raca = null;
+        try {
+
+            ResultSet rs = RDAO.recuperar(id);
+            while(rs.next())
+            {
+                raca = new raca(rs.getInt("id"), rs.getString("descricao"));
+            }
+
+        } catch (SQLException e) {
+           return null;
+        }
+        catch (NaoEncontradoExeception e) {
+           return null;
+        }
+        catch (ClassNotFoundException e) {
+           return null;
+        }
+        
     }
 }
