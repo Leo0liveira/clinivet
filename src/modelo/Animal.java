@@ -22,7 +22,11 @@ public class Animal {
         this.cor = cor;
     }
 
-    public int getCodigo() {
+    public Animal() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public int getCodigo() {
         return codigo;
     }
 

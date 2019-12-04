@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public abstract class AnimalDAO extends DAO {
+public class AnimalDAO extends DAO {
 
     static Connection conn = null;
     static ResultSet rs = null;

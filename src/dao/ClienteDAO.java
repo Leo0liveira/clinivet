@@ -45,7 +45,7 @@ public abstract class ClienteDAO extends DAO {
      * 
      * @return
      */
-    public ResultSet recuperar(String CPF) throws SQLException, ClassNotFoundException, NaoEncontradoExeception {
+    public static ResultSet recuperar(String CPF) throws SQLException, ClassNotFoundException, NaoEncontradoExeception {
 
         sql.append("SELECT * ");
         sql.append("FROM clientes");
@@ -56,7 +56,14 @@ public abstract class ClienteDAO extends DAO {
         conn = getInstance();
         PreparedStatement ps = conn.prepareStatement(sql.toString());
         ps.setString(1, CPF);
-        return ps.executeQuery();
+        ResultSet rs = ps.executeQuery();
+        
+        if (rs != null) {
+            rs.close();
+        }
+        if (conn != null) 
+            conn.close();
+       return rs;
     }
 
     /*
@@ -66,19 +73,18 @@ public abstract class ClienteDAO extends DAO {
      * 
      * @return
      */
-    public boolean cadastrar(Cliente cliente) throws SQLException {
+    public static boolean cadastrar(Cliente cliente) throws SQLException {
         sql.append("INSERT INTO clientes");
-        sql.append("(nome, sexo, endereco, cidade, estado, telefoneResidencial, telefoneCelular, email, cpf) ");
+        sql.append("(CPF, Nome, Endereco, Cidade, Estado, Telefone, Documento, Email) ");
         sql.append("VALUES (" + 
-        "'" + cliente.getNome() + "','" 
-        + cliente.getSexo() + "','"
-        + cliente.getEndereco() + "','" 
-        + cliente.getCidade() + "','"
-        + cliente.getEstado() + "','" 
-        + cliente.getTelefoneResidencial() + "','"
-        + cliente.getTelefoneCelular() + "','" 
-        + cliente.getEmail() + "','"
-        + cliente.getCpf() + "'" + ");");
+        "'" + cliente.getCPF() + "','" 
+        + cliente.getNome() + "','" 
+        + cliente.getEndereco() + "','"
+        + cliente.getCidade() + "','" 
+        + cliente.getEstado() + "','"
+        + cliente.getTelefone() + "','" 
+        + cliente.getDocumento() + "','"
+        + cliente.getEmail() + "'" + ");");
 
         System.out.println(sql);
         return executeBooleanQuery(sql);
@@ -95,7 +101,7 @@ public abstract class ClienteDAO extends DAO {
      * 
      * @return
      */
-    public boolean alterar(Cliente cliente) throws SQLException {
+    public static boolean alterar(Cliente cliente) throws SQLException {
 
         sql.append("UPDATE clientes SET ");
         sql.append("CPF = '" + cliente.getCPF() + "',");
@@ -118,7 +124,7 @@ public abstract class ClienteDAO extends DAO {
      * 
      * @return
      */
-    public boolean remover(String cpf) throws SQLException {
+    public static boolean remover(String cpf) throws SQLException {
 
         sql.append("DELETE FROM clientes ");
         sql.append("WHERE cpf = '" + cpf + "'");
