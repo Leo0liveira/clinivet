@@ -41,7 +41,7 @@ public abstract class RacaDAO extends DAO {
     * @param cpfFuncionario String
     * @return
     * */
-    public ResultSet recuperar(int ID) throws SQLException, ClassNotFoundException, NaoEncontradoExeception {
+    public static ResultSet recuperar(int ID) throws SQLException, ClassNotFoundException, NaoEncontradoExeception {
         sql.append("SELECT * ");
         sql.append("FROM racas ");
         sql.append("WHERE id = ?");
@@ -91,7 +91,7 @@ public abstract class RacaDAO extends DAO {
      * @param String cpfFuncionario
      * @return
      * */
-    public boolean remover(int ID) throws SQLException {
+    public static boolean remover(int ID) throws SQLException {
         sql.append("DELETE FROM raca ");
         sql.append("WHERE id = " + ID);
 

@@ -10,8 +10,8 @@ import modelo.Cliente;
 public class ControleCliente {
 
 
-    public boolean IncluiCliente(String CPF, String Nome, String Endereço, String Cidade, String Estado, String Telefone, String Documento, String Email) {
-        Cliente cliente = new Cliente(CPF, Nome, Endereço, Cidade, Estado, Telefone, Documento, Email);
+    public boolean IncluiCliente(String CPF, String Nome, String Endereco, String Cidade, String Estado, String Telefone, String Documento, String Email) {
+        Cliente cliente = new Cliente(CPF, Nome, Endereco, Cidade, Estado, Telefone, Documento, Email);
 
         try {
 			if (ClienteDAO.cadastrar(cliente)) {
@@ -25,8 +25,8 @@ public class ControleCliente {
 		}
     }
 
-    public boolean AlteraCliente(String CPF, String Nome, String Endereço, String Cidade, String Estado, String Telefone, String Documento, String Email) {
-        Cliente cliente = new Cliente(CPF, Nome, Endereço, Cidade, Estado, Telefone, Documento, Email);
+    public boolean AlteraCliente(String CPF, String Nome, String Endereco, String Cidade, String Estado, String Telefone, String Documento, String Email) {
+        Cliente cliente = new Cliente(CPF, Nome, Endereco, Cidade, Estado, Telefone, Documento, Email);
 
         try {
 			if (ClienteDAO.alterar(cliente)) {
