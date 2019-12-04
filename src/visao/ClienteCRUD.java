@@ -80,6 +80,7 @@ public class ClienteCRUD extends JFrame {
         campoREMOVEestado.setEditable(false);
         campoREMOVEdocumento.setEditable(false);
         campoREMOVEemail.setEditable(false);
+        incluePanel.setVisible(false);
 
         ControleCliente cc = new ControleCliente();
 
