@@ -62,7 +62,7 @@ public abstract class RacaDAO extends DAO {
     public static boolean alterar(Raca raca) throws SQLException {
 
         sql.append("UPDATE racas ");
-        sql.append("SET descricao = ''" + raca.getDescricao()+ "''");
+        sql.append("SET descricao = ''" + raca.getDescricao()+ "'");
         sql.append("WHERE codigo = " + raca.getID());
 
         return executeBooleanQuery(sql);
